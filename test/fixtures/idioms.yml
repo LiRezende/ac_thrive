@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idiom_name: MyString
+  idiom_level: MyString
+
+two:
+  idiom_name: MyString
+  idiom_level: MyString
