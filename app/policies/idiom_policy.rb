@@ -2,8 +2,10 @@ class IdiomPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      if user.has_role?(:admin)
-      scope.all
+      if user&.has_role?(:admin) || user&.has_role?(:admin)
+        scope.all
+      else
+        raise Pundit::NotAuthorizedError
       end
     end
   end
@@ -16,7 +18,15 @@ class IdiomPolicy < ApplicationPolicy
     true
   end
 
-  def edit?
+  def create?
+    user&.has_role?(:admin)
+  end
+
+  def update?
+    user&.has_role?(:admin)
+  end
+
+  def destroy?
     user&.has_role?(:admin)
   end
 end

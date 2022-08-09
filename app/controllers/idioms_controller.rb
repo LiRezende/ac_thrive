@@ -14,6 +14,7 @@ class IdiomsController < ApplicationController
   # GET /idioms/new
   def new
     @idiom = Idiom.new
+    authorize @idiom
   end
 
   # GET /idioms/1/edit
