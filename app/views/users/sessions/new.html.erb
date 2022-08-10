@@ -1,26 +1,50 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=5"/>
+        <meta name="robots" content="noindex">
+        <link rel="shortcut icon" href="assets/images/code-solid.svg" type="image/x-icon" />
+        <title>Login | Aliança Cultural Idiomas</title>
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet-login.css">
+    </head>
+    <body>
+        <section class="container-login">
+          <div>
+            <div>
+              <img class="logo-img" src="https://aliancacultural.com/wp-content/uploads/2020/08/ALIANCA-CULTURAL-LOGO-152x152-1.png" alt="Logotipo da Aliança Cultural Idiomas." width="150px" />
+              <h1>Login</h1>
+              <p>Nos vemos do outro lado para um mundo de aprendizado!</p>
+            </div>
+            <div>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                  <div class="label"><%= f.label :email %></div>
+                  <div class="field-label"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+                </div>
+              
+                <div class="field">
+                  <div class="label"><%= f.label :password %><br /></div>
+                  <div class="field-label"><%= f.password_field :password, autocomplete: "current-password" %></div>
+                </div>
+              
+                <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                    <div class="label-remember">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me %>
+                    </div>
+                  </div>
+                <% end %>
+              
+                <div class="actions">
+                  <%= f.submit "Log in" %>
+                </div>
+              <% end %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+              <%= render "users/shared/links" %>
+            </div>
+          </div>
+        </section>
+    </body>
+</html>
