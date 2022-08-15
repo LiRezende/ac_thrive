@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+    protect_from_forgery with: :exception
+    before_action :configure_sanitized_params, if: :devise_controller?
+
+    def configure_sanitized_params
+        devise_parameter_sanitizer.permit(:sign_up) do |u|
+            u.permit(:email, :password, :password_confirmation, person_attributes: [:first_name, :last_name, :phone])
+        end
+    end
+
     private
 
     def user_not_authorized(exception)
