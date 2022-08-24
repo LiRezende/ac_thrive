@@ -106,14 +106,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <%= @people.each do |person| %>
+                        <% @people.each do |person| %>
                             <tr>
                                 <td><%= person.id %></td>
                                 <td><%= person.first_name %></td>
                                 <td><%= person.last_name %></td>
                                 <td><%= person.phone %></td>
                                 <td>Ativo</td>
-                                <td>Editar</td>
+                                <td><span class="material-icons-sharp">edit</span>Editar</td>
                             </tr>
                         <% end %>
                     </tbody>
