@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :teachers
   devise_for :users
-  resources :people
+  resources :teachers
   namespace :backoffice do
     get 'dashboard/index'
   end
