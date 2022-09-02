@@ -21,7 +21,7 @@
             </div>
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b><%= current_user.email %></b>!</p>                    
+                    <p>Hey, <b><%= current_user.first_name %></b>!</p>                    
                 </div>
             </div>
         </div>
@@ -100,18 +100,21 @@
                             <th>Nome</th>
                             <th>Sobrenome</th>
                             <th>Telefone</th>
+                            <th>Email</th>
                             <th>Status</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% @people.each do |p| %>
+                        <% @users.each do |user| %>
                             <tr>
-                                <td><%= p.id %></td>
-                                <td><%= p.first_name %></td>
-                                <td><%= p.last_name %></td>
-                                <td><%= p.phone %></td>
+                                <td><%= user.id %></td>
+                                <td><%= user.first_name %></td>
+                                <td><%= user.last_name %></td>
+                                <td><%= user.phone_number %></td>
+                                <td><%= user.email %></td>
+                                <td><%= user.profile_name %></td>
                                 <td>Ativo</td>
                                 <td><span class="material-icons-sharp">edit</span>Editar</td>
                             </tr>

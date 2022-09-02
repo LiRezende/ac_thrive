@@ -1,9 +1,7 @@
 class Backoffice::DashboardController < BackofficeController
-  def index
-    @users = User.all
-  end
+    def index
+        @users = User.all
 
-  def index
-    @people = Person.all
-  end
+        @user_role = User.includes(:role)
+    end
 end
