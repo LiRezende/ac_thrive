@@ -21,7 +21,7 @@
             </div>
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b><%= current_user.first_name %></b>!</p>                    
+                    <p>Hey, <b><%= current_user.email %></b>!</p>                    
                 </div>
             </div>
         </div>
@@ -52,6 +52,10 @@
                 <a href="#">
                     <span class="material-icons-sharp">manage_accounts</span>
                     <h3>Meu Perfil</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">pin_drop</span>
+                    <h3>Endereço</h3>
                 </a>
                 <a href="#">
                     <span class="material-icons-sharp">logout</span>
@@ -90,37 +94,8 @@
                 <!-- End of Card Teachers -->
             </div>
 
-            <!-- Table Recent Order -->
-            <div class="recent-orders">
-                <h2>Usuários</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Sobrenome</th>
-                            <th>Telefone</th>
-                            <th>Email</th>
-                            <th>Perfil</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @users.each do |user| %>
-                            <tr>
-                                <td><%= user.id %></td>
-                                <td><%= user.first_name %></td>
-                                <td><%= user.last_name %></td>
-                                <td><%= user.phone_number %></td>
-                                <td><%= user.email %></td>
-                                <td><%= user.profile_name %></td>
-                                <td><span class="material-icons-sharp">edit</span>Editar</td>
-                            </tr>
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
+            <%= yield %>
+
         </main>
         <!-- End of Main Section -->
     </section>
@@ -132,17 +107,19 @@
         </div>
         <div>
             <h3>Atendimento</h3>
-            <p><a href="https://api.whatsapp.com/send?phone=5521969799697"><span class="material-icons-sharp">phone_iphone</span> +55 21 96979 9697</a></p>
-            <p><a href="mailto:corporate@aliancacultural.com"><span class="material-icons-sharp">mail</span> corporate@aliancacultural.com</a></p>
-            <p><span class="material-icons-sharp">alarm_on</span> Segunda a Sexta: 8h às 21h</p>
-            <p><span class="material-icons-sharp">alarm_on</span> Sábados: 8h às 16h</p>
-        </div>
-        <div>
-            <h3>Conecte-se</h3>
-            <p><a href="https://api.whatsapp.com/send?phone=5521969799697"><span class="material-icons-sharp">phone_iphone</span></a></p>
-        </div>       
+            <div>
+                <div>
+                    <p><a href="https://api.whatsapp.com/send?phone=5521969799697"><span class="material-icons-sharp">phone_iphone</span> +55 21 96979 9697</a></p>
+                    <p><a href="mailto:corporate@aliancacultural.com"><span class="material-icons-sharp">mail</span> corporate@aliancacultural.com</a></p>
+                </div>
+                <div>
+                    <p><span class="material-icons-sharp">alarm_on</span> Segunda a Sexta: 8h às 21h</p>
+                    <p><span class="material-icons-sharp">alarm_on</span> Sábados: 8h às 16h</p>
+                </div>          
+            </div>
+        </div>      
     </footer>
     <!-- End of Footer -->
-    <script src="/javascripts/dashboard-index.js"></script>
+    <script src="/assets/javascripts/dashboard-index.js"></script>
 </body>
 </html>

@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_02_192542) do
+ActiveRecord::Schema.define(version: 2022_10_05_151116) do
 
-  create_table "idioms", force: :cascade do |t|
-    t.string "idiom_name"
-    t.string "idiom_level"
+  create_table "adresses", force: :cascade do |t|
+    t.string "street"
+    t.integer "number"
+    t.string "complement"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_adresses_on_person_id"
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.date "birthdate"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_people_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -30,8 +47,8 @@ ActiveRecord::Schema.define(version: 2022_09_02_192542) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
-  create_table "teachers", force: :cascade do |t|
-    t.decimal "hour_fee"
+  create_table "statuses", force: :cascade do |t|
+    t.string "status_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,13 +59,12 @@ ActiveRecord::Schema.define(version: 2022_09_02_192542) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["status_id"], name: "index_users_on_status_id"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|

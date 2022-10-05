@@ -1,22 +1,27 @@
-<h2>Sign up</h2>
+<h2>Registrar Novo Usuário</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= nested_form_for([resource_name, resource.with_person], url: registration_path(resource_name)) do |f| %>
+  
   <%= render "users/shared/error_messages", resource: resource %>
+    
+  <%= f.select(:status_id, Status.all.map{|s| [s.status_name, s.id]}) %>
+  
+  <%= f.fields_for :person do |pf| %>
+    <div class="field">
+      <%= pf.label :first_name %><br />
+      <%= pf.text_field :first_name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
+    <div class="field">
+      <%= pf.label :last_name %><br />
+      <%= pf.text_field :last_name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number  %>
-  </div>
+    <div class="field">
+      <%= pf.label :phone_number %><br />
+      <%= pf.text_field :phone_number  %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :email %><br />

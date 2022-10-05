@@ -4,8 +4,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  belongs_to :status
+  has_one :person
   
-  def profile_name
-    roles.collect(&:name).join(', ')
+  accepts_nested_attributes_for :status
+  accepts_nested_attributes_for :person
+
+  def with_person
+    build_person if person.nil?
+    self
   end
 end

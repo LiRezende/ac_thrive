@@ -1,1 +1,30 @@
 <h1>Backoffice::Dashboard#index</h1>
+<!-- Table Recent Order -->
+            <div class="recent-orders">
+                <h2>Usuários</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>Telefone</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @users.each do |user| %>
+                            <tr>
+                                <td><%= user.id %></td>
+                                <td><%= user.person.first_name %></td>
+                                <td><%= user.person.last_name %></td>
+                                <td><%= user.person.phone_number %></td>
+                                <td><%= user.status %></td>
+                                <td><a href="/backoffice/users/<%= user.id%>"><span class="material-icons-sharp">edit</span>Mostrar</a></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
