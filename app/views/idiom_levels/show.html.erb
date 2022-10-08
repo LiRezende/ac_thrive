@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @idiom_level.name %>
+</p>
+
+<p>
+  <strong>Idiom:</strong>
+  <%= @idiom_level.idiom %>
+</p>
+
+<%= link_to 'Edit', edit_idiom_level_path(@idiom_level) %> |
+<%= link_to 'Back', idiom_levels_path %>

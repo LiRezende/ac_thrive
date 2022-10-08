@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :idiom_levels
+  resources :idioms
   resources :people do
     resources :adresses
   end
