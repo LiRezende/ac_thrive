@@ -1,50 +1,43 @@
 <p id="notice"><%= notice %></p>
-
+<h2>Informações do Usuário</h2>
 <p>
   <strong>First name:</strong>
   <%= @person.first_name %>
 </p>
-
 <p>
   <strong>Last name:</strong>
   <%= @person.last_name %>
 </p>
-
 <p>
   <strong>Phone number:</strong>
   <%= @person.phone_number %>
 </p>
-
 <p>
   <strong>Birthdate:</strong>
   <%= @person.birthdate %>
 </p>
-
 <p>
   <strong>User:</strong>
   <%= @person.user.email %>
 </p>
-
-<hr></hr>
+<h2>Endereço</h2>
 <table>
-                    <thead>
-                        <tr>
-                            <th>Rua</th>
-                            <th>Numero</th>
-                            <th>Cidade</th>
-      
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @person.adresses.each do |adress| %>
-                            <tr>
-                                <td><%= adress.street %></td>
-                                <td><%= adress.number %></td>
-                                <td><%= adress.city %></td>
-                            </tr>
-                        <% end %>
-                    </tbody>
-                </table>
-
+  <thead>
+    <tr>
+      <th>Rua</th>
+      <th>Numero</th>
+      <th>Cidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @person.adresses.each do |adress| %>
+      <tr>
+        <td><%= adress.street %></td>
+        <td><%= adress.number %></td>
+        <td><%= adress.city %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_person_adress_path(@person) %> |
 <%= link_to 'Back', people_path %>

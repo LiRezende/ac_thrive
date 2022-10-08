@@ -1,97 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/stylesheets/stylesheet-dashboard-index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
     <title>Aliança Cultural Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Theme Toggler -->
     <nav class="right">
-        <div class="top">
-            <button id="menu-btn">
-                <span class="material-icons-sharp">menu</span>
-            </button>
-            <div class="theme-toggler">
-                <span class="material-icons-sharp active">light_mode</span>
-                <span class="material-icons-sharp">dark_mode</span>
-            </div>
-            <div class="profile">
-                <div class="info">
-                    <p>Hey, <b><%= current_user.email %></b>!</p>                    
-                </div>
-            </div>
+      <div class="top">
+        <button id="menu-btn">
+          <span class="material-icons-sharp">menu</span>
+        </button>
+        <div class="theme-toggler">
+          <span class="material-icons-sharp active">light_mode</span>
+          <span class="material-icons-sharp">dark_mode</span>
         </div>
+        <div class="profile">
+          <div class="info">
+            <p>Hey, <b><%= current_user.person.first_name %></b>!</p>
+          </div>
+        </div>
+      </div>
     </nav>
     <!-- End of Theme Toggler -->
-
     <section class="container">
-        <!-- Side Menu -->
-        <aside>
-            <div class="top"> 
-                <div class="logo">
-                    <img src="/assets/images/alianca-cultural-simbolo.png" alt="Logo" />
-                </div>
-            </div>
-            <div class="sidebar">
-                <a href="#">
-                    <span class="material-icons-sharp">grid_view</span>
-                    <h3>Dashboard</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">person_add</span>
-                    <h3>Novo Usuário</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">forum</span>
-                    <h3>Idiomas</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">manage_accounts</span>
-                    <h3>Meu Perfil</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">pin_drop</span>
-                    <h3>Endereço</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">logout</span>
-                    <h3>Logout</h3>
-                </a>
-            </div>
-        </aside>
-        <!-- End of Side Menu -->
-
-        <!-- Main Content -->
-        <main>
-            <%= yield %>
-        </main>
-        <!-- End of Main Section -->
+      <!-- Side Menu -->
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="/assets/images/alianca-cultural-simbolo.png" alt="Logo" />
+          </div>
+        </div>
+        <div class="sidebar">
+          <a href="#">
+            <span class="material-icons-sharp">grid_view</span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp">person_add</span>
+            <h3>Novo Usuário</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp">forum</span>
+            <h3>Idiomas</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp">manage_accounts</span>
+            <h3>Meu Perfil</h3>
+          </a>
+          <a href="/people/:person_id/adresses">
+            <span class="material-icons-sharp">pin_drop</span>
+            <h3>Endereço</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp">logout</span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+      <!-- End of Side Menu -->
+      <!-- Main Content -->
+      <main>
+        <%= yield %>
+      </main>
+      <!-- End of Main Section -->
     </section>
-
     <!-- Footer -->
     <footer>
-        <div>
-            <img src="https://aliancacultural.com/wp-content/uploads/2020/08/ALIANCA-CULTURAL-LOGO-152x152-1.png" />
-        </div>
-        <div>
-            <h3>Atendimento</h3>
-            <div>
-                <div>
-                    <p><a href="https://api.whatsapp.com/send?phone=5521969799697"><span class="material-icons-sharp">phone_iphone</span> +55 21 96979 9697</a></p>
-                    <p><a href="mailto:corporate@aliancacultural.com"><span class="material-icons-sharp">mail</span> corporate@aliancacultural.com</a></p>
-                </div>
-                <div>
-                    <p><span class="material-icons-sharp">alarm_on</span> Segunda a Sexta: 8h às 21h</p>
-                    <p><span class="material-icons-sharp">alarm_on</span> Sábados: 8h às 16h</p>
-                </div>          
-            </div>
-        </div>      
+      <div>
+        <img src="https://aliancacultural.com/wp-content/uploads/2020/08/ALIANCA-CULTURAL-LOGO-152x152-1.png" />
+      </div>
+      <div>
+        <p>Desenvolvido por</p>
+      </div>
     </footer>
     <!-- End of Footer -->
     <script src="/assets/javascripts/dashboard-index.js"></script>
-</body>
+  </body>
 </html>

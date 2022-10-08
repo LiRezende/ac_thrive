@@ -1,1 +1,17 @@
-<h1><%= @user.email %></h1>
+<h1>Visualizando Informações de <%= @user.person.first_name %> <%= @user.person.last_name %></h1>
+<div class="card-display">
+  <h2>Informações Pessoais</h2>
+  <div class="container-flex">
+    <div>
+      <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @user.person.first_name %> <%= @user.person.last_name %></h3>
+      <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @user.person.phone_number %></h3>
+      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= @user.email %></h3>
+    </div>
+    <div>
+      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @user.status.status_name %></h3>
+      <h3><strong><span class="material-icons-sharp">calendar_month</span> Data de nascimento:</strong> <%= @user.person.birthdate %></h3>
+    </div>
+  </div>
+  <button type="button" onclick="location.href = 'www.yoursite.com';" class="edit-btn">Editar</button>
+</div>
+<hr>

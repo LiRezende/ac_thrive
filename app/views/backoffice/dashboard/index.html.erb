@@ -1,62 +1,23 @@
 <!-- Main Content -->
-        <main>
-            <div class="insights">
-                <!-- Card Students -->
-                <div class="sales">
-                    <span class="material-icons-sharp">group</span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total de Estudantes</h3>
-                            <h1>200</h1>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Students -->
-
-                <!-- Card Teachers -->
-                <div class="expenses">
-                    <span class="material-icons-sharp">school</span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total de Professores</h3>
-                            <h1>30</h1>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Card Teachers -->
-            </div>
-
-            <!-- Table Recent Order -->
-            <div class="recent-orders">
-                <h2>Usuários</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Sobrenome</th>
-                            <th>Telefone</th>
-                            <th>Status</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @users.each do |user| %>
-                            <tr>
-                                <td><%= user.id %></td>
-                                <td><%= user.person.first_name %></td>
-                                <td><%= user.person.last_name %></td>
-                                <td><%= user.person.phone_number %></td>
-                                <td><%= user.status %></td>
-                                <td><a href="/backoffice/users/<%= user.id%>"><span class="material-icons-sharp">edit</span>Mostrar</a></td>
-                            </tr>
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
-        </main>
-        <!-- End of Main Section -->
-
-
-
+<main>
+  <section>
+    <h1>Bem vindo(a)!</h1>
+    <p>Este é o seu espaço em nossa ferramenta de aprendizagem. 
+      Utilize as opções do meu para cadastrar ou atualizar o seu perfil.
+      Caso tenha dúvidas ou dificuldades, entre em contato através de 
+      nossos canais de atendimento.
+    </p>
+    <h2>Atendimento</h2>
+    <div class="container-flex">
+      <div>
+        <p><span class="material-icons-sharp">alarm_on</span> Segunda a Sexta: 8h às 21h</p>
+        <p><span class="material-icons-sharp">alarm_on</span> Sábados: 8h às 16h</p>
+      </div>
+      <div>
+        <p><a href="https://api.whatsapp.com/send?phone=5521969799697"><span class="material-icons-sharp">phone_iphone</span> +55 21 96979 9697</a></p>
+        <p><a href="mailto:corporate@aliancacultural.com"><span class="material-icons-sharp">mail</span> corporate@aliancacultural.com</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End of Main Section -->

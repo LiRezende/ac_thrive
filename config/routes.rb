@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   namespace :backoffice do
     get 'dashboard/index'
+    get '/users/index', to: 'users#index'
     get '/users/:user_id', to: 'users#show'
   end
   namespace :site do
