@@ -12,6 +12,34 @@
       <h3><strong><span class="material-icons-sharp">calendar_month</span> Data de nascimento:</strong> <%= @user.person.birthdate %></h3>
     </div>
   </div>
-  <button type="button" onclick="location.href = 'www.yoursite.com';" class="edit-btn">Editar</button>
+  <button type="button" onclick="location.href = 'www.yoursite.com';" class="edit-btn">Editar <span class="material-icons-sharp">draw</span></button>
+  <button type="button" onclick="location.href = 'www.yoursite.com';" class="exclude-btn">Excluir <span class="material-icons-sharp">delete_forever</span></button>
 </div>
-<hr>
+<div class="card-display">
+  <h2>Endereço</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Rua</th>
+        <th>Numero</th>
+        <th>Complemento</th>
+        <th>Bairro</th>
+        <th>CEP</th>
+        <th>Cidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.person.adresses.each do |adress| %>
+        <tr>
+          <td><%= adress.street %></td>
+          <td><%= adress.number %></td>
+          <td><%= adress.complement %></td>
+          <td><%= adress.neighborhood %></td>
+          <td><%= adress.state %></td>
+          <td><%= adress.city %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <button type="button" onclick="location.href = 'www.yoursite.com';" class="edit-btn">Editar <span class="material-icons-sharp">draw</span></button>
+</div>
