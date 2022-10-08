@@ -1,49 +1,45 @@
 <h2>Registrar Novo Usuário</h2>
-
 <%= nested_form_for([resource_name, resource.with_person], url: registration_path(resource_name)) do |f| %>
-  
   <%= render "users/shared/error_messages", resource: resource %>
-    
-  <%= f.select(:status_id, Status.all.map{|s| [s.status_name, s.id]}) %>
-  
+  <div class="field">
+    <p>Selecione o Status:</p>
+    <%= f.select(:status_id, Status.all.map{|s| [s.status_name, s.id]}) %>
+  </div>
+  <div class="field">
+    <p>Selecione o Perfil:</p>
+    <%= f.select(:role_ids, Role.all.map{|r| [r.name, r.id]})%>
+  </div>
   <%= f.fields_for :person do |pf| %>
     <div class="field">
       <%= pf.label :first_name %><br />
       <%= pf.text_field :first_name %>
     </div>
-
     <div class="field">
       <%= pf.label :last_name %><br />
       <%= pf.text_field :last_name %>
     </div>
-
     <div class="field">
       <%= pf.label :phone_number %><br />
       <%= pf.text_field :phone_number  %>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
 <%= render "users/shared/links" %>
