@@ -32,6 +32,7 @@
         <th>Nome</th>
         <th>Sobrenome</th>
         <th>Telefone</th>
+        <th>Perfil</th>
         <th>Status</th>
         <th></th>
       </tr>
@@ -43,8 +44,9 @@
           <td><%= user.person.first_name %></td>
           <td><%= user.person.last_name %></td>
           <td><%= user.person.phone_number %></td>
+          <td><%= user.roles.name %></td>
           <td><%= user.status.status_name %></td>
-          <td><a href="/backoffice/users/<%= user.id%>"><span class="material-icons-sharp">edit</span>Mostrar</a></td>
+          <td><a href="/backoffice/users/<%= user.id%>">Mostrar <span class="material-icons-sharp">visibility</span></a></td>
         </tr>
       <% end %>
     </tbody>
