@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_08_205816) do
+ActiveRecord::Schema.define(version: 2022_10_09_145002) do
 
   create_table "adresses", force: :cascade do |t|
     t.string "street"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 2022_10_08_205816) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_adresses_on_person_id"
+  end
+
+  create_table "class_days", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "class_hours", force: :cascade do |t|
+    t.time "description"
+    t.integer "class_day_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["class_day_id"], name: "index_class_hours_on_class_day_id"
+  end
+
+  create_table "days_weeks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "idiom_levels", force: :cascade do |t|
@@ -65,6 +85,14 @@ ActiveRecord::Schema.define(version: 2022_10_08_205816) do
     t.string "status_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "time_classes", force: :cascade do |t|
+    t.time "description"
+    t.integer "days_week_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["days_week_id"], name: "index_time_classes_on_days_week_id"
   end
 
   create_table "users", force: :cascade do |t|

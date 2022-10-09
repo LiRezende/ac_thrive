@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :class_hours
+  resources :class_days
   resources :idiom_levels
   resources :idioms
   resources :people do
