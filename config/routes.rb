@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :teachers
   resources :class_hours
   resources :class_days
   resources :idiom_levels

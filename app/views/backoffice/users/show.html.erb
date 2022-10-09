@@ -43,3 +43,56 @@
   </table>
   <button type="button" onclick="location.href = '/'" class="edit-btn">Editar <span class="material-icons-sharp">draw</span></button>
 </div>
+<div class="card-display">
+  <h2>Matrícula Aluno</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Idioma</th>
+        <th>Nível</th>
+        <th>Professor</th>
+        <th>Dias Disponíveis</th>
+        <th>Horários Disponíveis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.person.adresses.each do |adress| %>
+        <tr>
+          <td><%= adress.street %></td>
+          <td><%= adress.number %></td>
+          <td><%= adress.complement %></td>
+          <td><%= adress.neighborhood %></td>
+          <td><%= adress.state %></td>
+          <td><%= adress.city %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <button type="button" onclick="location.href = '/'" class="edit-btn">Editar <span class="material-icons-sharp">draw</span></button>
+</div>
+<div class="card-display">
+  <h2>Matrícula Professor</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Idioma</th>
+        <th>Valor Hora</th>
+        <th>Dias Disponíveis</th>
+        <th>Horários Disponíveis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.person.adresses.each do |adress| %>
+        <tr>
+          <td><%= adress.street %></td>
+          <td><%= adress.number %></td>
+          <td><%= adress.complement %></td>
+          <td><%= adress.neighborhood %></td>
+          <td><%= adress.state %></td>
+          <td><%= adress.city %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <button type="button" onclick="location.href = '/'" class="edit-btn">Editar <span class="material-icons-sharp">draw</span></button>
+</div>

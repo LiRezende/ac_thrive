@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fee: 9.99
+  person: one
+  idiom: one
+  class_day: one
+  class_hour: one
+
+two:
+  fee: 9.99
+  person: two
+  idiom: two
+  class_day: two
+  class_hour: two

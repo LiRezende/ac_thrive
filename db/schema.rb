@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_09_145002) do
+ActiveRecord::Schema.define(version: 2022_10_09_150528) do
 
   create_table "adresses", force: :cascade do |t|
     t.string "street"
@@ -37,12 +37,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_145002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["class_day_id"], name: "index_class_hours_on_class_day_id"
-  end
-
-  create_table "days_weeks", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "idiom_levels", force: :cascade do |t|
@@ -87,12 +81,18 @@ ActiveRecord::Schema.define(version: 2022_10_09_145002) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "time_classes", force: :cascade do |t|
-    t.time "description"
-    t.integer "days_week_id"
+  create_table "teachers", force: :cascade do |t|
+    t.decimal "fee"
+    t.integer "person_id"
+    t.integer "idiom_id"
+    t.integer "class_day_id"
+    t.integer "class_hour_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["days_week_id"], name: "index_time_classes_on_days_week_id"
+    t.index ["class_day_id"], name: "index_teachers_on_class_day_id"
+    t.index ["class_hour_id"], name: "index_teachers_on_class_hour_id"
+    t.index ["idiom_id"], name: "index_teachers_on_idiom_id"
+    t.index ["person_id"], name: "index_teachers_on_person_id"
   end
 
   create_table "users", force: :cascade do |t|
