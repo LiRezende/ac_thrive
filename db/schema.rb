@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2022_10_09_150528) do
     t.integer "number"
     t.string "complement"
     t.string "neighborhood"
+    t.string "cep"
     t.string "city"
     t.string "state"
     t.integer "person_id"

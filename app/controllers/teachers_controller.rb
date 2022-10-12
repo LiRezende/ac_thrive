@@ -1,5 +1,6 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: %i[ show edit update destroy ]
+  before_action :set_person
 
   # GET /teachers or /teachers.json
   def index
@@ -22,10 +23,11 @@ class TeachersController < ApplicationController
   # POST /teachers or /teachers.json
   def create
     @teacher = Teacher.new(teacher_params)
+    @teacher.person_id = @person.id
 
     respond_to do |format|
       if @teacher.save
-        format.html { redirect_to teacher_url(@teacher), notice: "Teacher was successfully created." }
+        format.html { redirect_to person_teacher_url(@person, @teacher), notice: "Teacher was successfully created." }
         format.json { render :show, status: :created, location: @teacher }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class TeachersController < ApplicationController
   def update
     respond_to do |format|
       if @teacher.update(teacher_params)
-        format.html { redirect_to teacher_url(@teacher), notice: "Teacher was successfully updated." }
+        format.html { redirect_to person_teacher_url(@person, @teacher), notice: "Teacher was successfully updated." }
         format.json { render :show, status: :ok, location: @teacher }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +54,7 @@ class TeachersController < ApplicationController
     @teacher.destroy
 
     respond_to do |format|
-      format.html { redirect_to teachers_url, notice: "Teacher was successfully destroyed." }
+      format.html { redirect_to person_teachers_url(@person), notice: "Teacher was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -61,6 +63,10 @@ class TeachersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_teacher
       @teacher = Teacher.find(params[:id])
+    end
+
+    def set_person
+      @person = Person.find(params[:person_id])
     end
 
     # Only allow a list of trusted parameters through.

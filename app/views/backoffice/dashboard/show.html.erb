@@ -1,6 +1,6 @@
-<h1>Visualizando Informações de <%= @user.person.first_name %> <%= @user.person.last_name %></h1>
+<h1>Cadastro de <%= @user.person.first_name %> <%= @user.person.last_name %></h1>
 <div class="card-display">
-  <h2>Informações Pessoais</h2>
+  <h2><span class="material-icons-sharp">account_circle</span> Informações Pessoais</h2>
   <div class="container-flex">
     <div>
       <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @user.person.first_name %> <%= @user.person.last_name %></h3>
@@ -16,7 +16,7 @@
   <button type="button" onclick="location.href = 'www.yoursite.com';" class="exclude-btn">Excluir <span class="material-icons-sharp">delete_forever</span></button>
 </div>
 <div class="card-display">
-  <h2>Endereço</h2>
+  <h2><span class="material-icons-sharp">pin_drop</span> Endereço</h2>
   <table>
     <thead>
       <tr>
@@ -82,14 +82,12 @@
       </tr>
     </thead>
     <tbody>
-      <% @user.person.adresses.each do |adress| %>
+      <% @user.person.teachers.each do |teacher| %>
         <tr>
-          <td><%= adress.street %></td>
-          <td><%= adress.number %></td>
-          <td><%= adress.complement %></td>
-          <td><%= adress.neighborhood %></td>
-          <td><%= adress.state %></td>
-          <td><%= adress.city %></td>
+          <td><%= teacher.idiom.name %></td>
+          <td><%= teacher.fee %></td>
+          <td><%= teacher.class_day.name %></td>
+          <td><%= teacher.class_hour.description %></td>
         </tr>
       <% end %>
     </tbody>

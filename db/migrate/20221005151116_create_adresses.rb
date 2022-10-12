@@ -5,6 +5,7 @@ class CreateAdresses < ActiveRecord::Migration[5.2]
       t.integer :number
       t.string :complement
       t.string :neighborhood
+      t.string :cep
       t.string :city
       t.string :state
       t.references :person, foreign_key: true
