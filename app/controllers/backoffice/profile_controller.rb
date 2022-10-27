@@ -1,5 +1,4 @@
 class Backoffice::ProfileController < BackofficeController
-
     def index
         @user = current_user
     end
@@ -16,17 +15,16 @@ class Backoffice::ProfileController < BackofficeController
         
         if @user.email != params[:user][:email] 
             flash[:alert] = "email não reconhecido"
-            return redirect_to "/meu-perfil/edit"            
+            return redirect_to "/profile/edit"            
         end
         if password_confirmation != params[:user][:password] 
             flash[:alert] = "email não bate com a confirmação"
-            return redirect_to "/meu-perfil/edit"            
+            return redirect_to "/profile/edit"            
         end
         @user.password = params[:user][:password] 
 
         @user.save 
-        return redirect_to "/meu-perfil"     
+        return redirect_to "/profile"     
         
     end
-    
 end

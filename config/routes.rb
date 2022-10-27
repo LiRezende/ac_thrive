@@ -3,11 +3,7 @@ Rails.application.routes.draw do
   resources :class_days
   resources :idiom_levels
   resources :idioms
-  resources :people do
-    resources :adresses
-    resources :teachers
-  end
-
+  
   devise_for :users
   resources :statuses
   namespace :backoffice do
@@ -16,6 +12,11 @@ Rails.application.routes.draw do
     get 'home/index'
     get '/dashboard/index', to: 'dashboard#index'
     get '/dashboard/:user_id', to: 'dashboard#show'
+
+    resources :people do
+      resources :adresses
+      resources :teachers
+    end
   end
   namespace :site do
     get 'home/index'

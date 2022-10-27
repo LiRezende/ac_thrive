@@ -1,7 +1,5 @@
-class PeopleController < ApplicationController
+class Backoffice::PeopleController < BackofficeController
   before_action :set_person, only: %i[ show edit update destroy ]
-
-  layout "backoffice"
 
   # GET /people or /people.json
   def index
