@@ -27,9 +27,9 @@
         <td><%= adress.city %></td>
         <td><%= adress.state %></td>
         <td><%= adress.person.first_name %></td>
-        <td><%= link_to 'Show', person_adress_path(@person, adress) %></td>
-        <td><%= link_to 'Edit', edit_person_adress_path(@person, adress) %></td>
-        <td><%= link_to 'Destroy', person_adress_path(@person, adress), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', backoffice_person_adress_path(@person, adress) %></td>
+        <td><%= link_to 'Edit', edit_backoffice_person_adress_path(@person, adress) %></td>
+        <td><%= link_to 'Destroy', backoffice_person_adress_path(@person, adress), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -37,4 +37,5 @@
 
 <br>
 
-<%= link_to 'New Adress', new_person_adress_path %>
+<%= link_to 'New Adress', new_backoffice_person_adress_path(@person) %>
+<%= link_to 'Voltar', "/profile" %>

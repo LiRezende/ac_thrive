@@ -35,5 +35,5 @@
   <%= @adress.person.first_name %>
 </p>
 
-<%= link_to 'Edit', edit_person_adress_path(@adress) %> |
-<%= link_to 'Back', person_adresses_path %>
+<%= link_to 'Edit', edit_backoffice_person_adress_path(@person, @adress) %> |
+<%= link_to 'Back', backoffice_person_adresses_path(@person) %>

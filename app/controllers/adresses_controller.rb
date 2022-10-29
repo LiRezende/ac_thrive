@@ -27,7 +27,7 @@ class AdressesController < ApplicationController
 
     respond_to do |format|
       if @adress.save
-        format.html { redirect_to person_adress_url(@person, @adress), notice: "Adress was successfully created." }
+        format.html { redirect_to backoffice_person_adress_url(@person, @adress), notice: "Adress was successfully created." }
         format.json { render :show, status: :created, location: @adress }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class AdressesController < ApplicationController
   def update
     respond_to do |format|
       if @adress.update(adress_params)
-        format.html { redirect_to person_adress_url(@person, @adress), notice: "Adress was successfully updated." }
+        format.html { redirect_to backoffice_person_adress_url(@person, @adress), notice: "Adress was successfully updated." }
         format.json { render :show, status: :ok, location: @adress }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class AdressesController < ApplicationController
     @adress.destroy
 
     respond_to do |format|
-      format.html { redirect_to person_adresses_url(@person), notice: "Adress was successfully destroyed." }
+      format.html { redirect_to backoffice_person_adresses_url(@person), notice: "Adress was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -66,7 +66,9 @@ class AdressesController < ApplicationController
     end
 
     def set_person
-      @person = Person.find(params[:person_id])
+      person_id = params[:person_id]
+      person_id ||= current_user.id
+      @person = Person.find(person_id)
     end
 
     # Only allow a list of trusted parameters through.
