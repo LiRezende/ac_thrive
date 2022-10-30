@@ -15,7 +15,15 @@ class Backoffice::AdressesController < BackofficeController
   end
 
   def update
+    adress = Adress.find(params[:id])
+    params_adress = params.require(:adress).permit(:number)
     
+    if adress.update(params_adress)
+      redirect_to backoffice_user_path, notice:
+      "Endereço atualizado com sucesso!"
+    else
+      render :edit
+    end
   end
 
   private
