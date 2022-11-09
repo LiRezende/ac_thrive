@@ -1,26 +1,36 @@
-<h1>Editando Registro</h1>
-<%= form_with(model: [ :backoffice, @user ], local: true) do |f| %>
-    
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
+<h1>Editando Informações de Acesso</h1>
+<%= form_with(model: [ :backoffice, @user], local: true) do |f| %>
 
-    <div class="actions">
-      <%= f.submit "Update" %>
+  <% if @user.errors.any? %>
+    <div>
+      <ul>
+        <% @user.errors.full_messages.each do |m| %>
+          <li>
+            <%= m %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+
+  <%= f.select(:status, Status.all.map{|s| s.id}) %>
+  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Atualizar" %>
+  </div>
+<% end %>
