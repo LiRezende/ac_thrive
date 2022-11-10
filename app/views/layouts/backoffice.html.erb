@@ -56,10 +56,10 @@
             <span class="material-icons-sharp">pin_drop</span>
             <h3>Endereço</h3>
           </a>
-          <a href="#">
+          <%= link_to destroy_user_session_path, method: :delete do %>
             <span class="material-icons-sharp">logout</span>
             <h3>Logout</h3>
-          </a>
+          <% end %>
         </div>
       </aside>
       <!-- End of Side Menu -->
