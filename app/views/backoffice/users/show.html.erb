@@ -10,9 +10,11 @@
       <h3><strong><span class="material-icons-sharp">calendar_month</span> Data de nascimento:</strong> <%= @user.person.birthdate %></h3>
     </div>
   </div>
-  <%= link_to edit_backoffice_user_person_path(@user), class:"edit-btn" do %>
-    Editar <span class="material-icons-sharp">draw</span> 
-  <% end %>
+  <button class="btn-edit">
+    <%= link_to edit_backoffice_user_person_path(@user), class:"edit-btn" do %>
+      Editar <span class="material-icons-sharp">draw</span> 
+    <% end %>
+  </button>
 </div>
 
 <div class="card-display">
@@ -30,9 +32,11 @@
       <h3><strong><span class="material-icons-sharp">calendar_month</span> Cidade:</strong> <%= @user.person.adress.city %></h3>
     </div>
   </div>
-  <%= link_to edit_backoffice_user_adress_path(@user), class:"edit-btn" do %>
-    <span class="material-icons-sharp">draw</span> Editar
-  <% end %>
+  <button class="btn-edit">
+    <%= link_to edit_backoffice_user_adress_path(@user), class:"edit-btn" do %>
+      Editar <span class="material-icons-sharp">draw</span>
+    <% end %>
+  </button>
 </div>
 
 <div class="card-display">
@@ -45,8 +49,10 @@
       <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @user.status.status_name %></h3>
     </div>
   </div>
-  <%= link_to edit_backoffice_user_path(@user), class:"edit-btn" do %>
-    Editar <span class="material-icons-sharp">draw</span> 
-  <% end %>
+  <button class="btn-edit">
+    <%= link_to edit_backoffice_user_path(@user), class:"edit-btn" do %>
+      Editar <span class="material-icons-sharp">draw</span> 
+    <% end %>
+  </button>
   <button type="button" onclick="location.href = 'www.yoursite.com';" class="exclude-btn">Excluir <span class="material-icons-sharp">delete_forever</span></button>
 </div>
