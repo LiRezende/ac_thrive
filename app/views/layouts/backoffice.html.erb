@@ -48,11 +48,11 @@
             <span class="material-icons-sharp">forum</span>
             <h3>Idiomas</h3>
           </a>
-          <a href="/profile">
+          <%= link_to backoffice_account_profile_path(current_user) do %>
             <span class="material-icons-sharp">manage_accounts</span>
             <h3>Meu Perfil</h3>
-          </a>
-          <a href="/people/:person_id/adresses">
+          <% end %>
+          <a href="/backoffice/account/people/:person_id/adresses/:id">
             <span class="material-icons-sharp">pin_drop</span>
             <h3>Endereço</h3>
           </a>
