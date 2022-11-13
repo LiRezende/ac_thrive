@@ -77,7 +77,7 @@ body {
     grid-template-columns: 15rem auto;
 }
 
-.container-flex {
+.container-flex, .container-btn {
     display: flex;
     gap: 2rem;
     margin-top: 15px;
@@ -91,6 +91,11 @@ body {
 
 .container-flex .material-icons-sharp {
     font-size: 1.1rem;
+}
+
+.container-btn {
+    justify-items: center;
+    align-items: center;
 }
 
 h1 {
@@ -361,32 +366,55 @@ main .card-display a {
     margin: 1rem auto;
 }
 
-button {
+.create-btn, 
+.edit-btn, 
+.exclude-btn {
     font-size: 1.2rem;
     font-weight: 600;
     margin-top: 20px;
-    padding: 2px 20px;
+    padding: 8px 20px;
     cursor: pointer;
+    border-radius: 12px;
+    width: 125px;
 }
 
-.btn-edit {
-    border: 2px solid var(--color-background);
-    border-radius: var(--border-radius-1);
+.create-btn {
+    font-size: 1.1rem;
+    color: var(--color-white)!important;
+    border: 2px solid var(--color-success);
+    background-color: var(--color-success);
+    width: 225px;
+}
+
+.create-btn:hover {
+    color: var(--color-success)!important;
     background-color: var(--color-background);
 }
 
-.btn-edit:hover {
+.edit-btn {
     border: 2px solid var(--color-primary);
+    background-color: var(--color-white);
+}
+
+.edit-btn:hover {
+    border: 2px solid var(--color-background);
+    background-color: var(--color-background);
 }
 
 .exclude-btn {
-    color: var(--color-danger);
-    background-color: transparent;
-    border: 2px solid var(--color-danger);
+    color: var(--color-danger)!important;
+    border: 2px solid var(--color-background);
+    background-color: var(--color-background);
 }
 
-button span.material-icons-sharp {
-    font-size: 1.2rem;
+.exclude-btn:hover {
+    color: var(--color-white)!important;
+    border: 2px solid var(--color-danger);
+    background-color: var(--color-danger);
+}
+
+a span.material-icons-sharp {
+    font-size: 1.3rem;
 }
 
 /* Right Top Bar Style */

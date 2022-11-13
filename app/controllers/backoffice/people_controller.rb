@@ -1,5 +1,6 @@
 class Backoffice::PeopleController < BackofficeController
   before_action :set_person, only: %i[ show edit update destroy ]
+  before_action :set_user
 
   # GET /people or /people.json
   def index
@@ -36,14 +37,14 @@ class Backoffice::PeopleController < BackofficeController
 
   # PATCH/PUT /people/1 or /people/1.json
   def update
-    respond_to do |format|
-      if @person.update(person_params)
-        format.html { redirect_to person_url(@person), notice: "Person was successfully updated." }
-        format.json { render :show, status: :ok, location: @person }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
+    person = Person.find(params[:id])
+    params_person = params.require(:person).permit(:first_name, :last_name)
+    
+    if person.update(params_person)
+      redirect_to backoffice_user_path, notice:
+      "Identificação atualizada com sucesso!"
+    else
+      render :edit
     end
   end
 
@@ -61,6 +62,11 @@ class Backoffice::PeopleController < BackofficeController
     # Use callbacks to share common setup or constraints between actions.
     def set_person
       @person = Person.find(params[:id])
+    end
+
+    def set_user
+      user_id = params[:user_id]
+      @user = User.find(user_id)
     end
 
     # Only allow a list of trusted parameters through.

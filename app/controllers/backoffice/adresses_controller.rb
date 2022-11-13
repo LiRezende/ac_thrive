@@ -1,6 +1,5 @@
 class Backoffice::AdressesController < BackofficeController
   before_action :set_adress, only: %i[ show edit update destroy ]
-  before_action :set_user
 
   def index
     @adress = Adress.all
@@ -10,8 +9,22 @@ class Backoffice::AdressesController < BackofficeController
     
   end
 
+  def new
+    @adress = Adress.new
+  end
+
   def edit
     
+  end
+
+  def create
+    @adress = current_user.adress.build(adress_params)
+
+    if @adress.save
+      redirect_to backoffice_profile_adress_path
+    else
+      render :create
+    end
   end
 
   def update
@@ -27,8 +40,18 @@ class Backoffice::AdressesController < BackofficeController
   end
 
   private
+  def adress_params
+    params_adress = params.require(:adress).permit(:street, :number, :complement, :neighborhood, :cep, :city, :state)
+  end
+
   def set_adress
     @adress = Adress.find(params[:id])
+  end
+
+  def set_person
+    person_id = params[:person_id]
+    person_id ||= current_user.id
+    @person = Person.find(person_id)
   end
 
   def set_user

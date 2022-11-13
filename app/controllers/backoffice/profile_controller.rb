@@ -1,30 +1,40 @@
 class Backoffice::ProfileController < BackofficeController
+    before_action :set_user, only: %i[ show edit update destroy ]
+    before_action :verify_password, only: [:update]
+
     def index
-        @user = current_user
+        
     end
 
     def edit
-        @user = current_user
+        
+    end
+
+    def show
+         
     end
 
     def update
-        @user = current_user
-        
-        password_confirmation = params[:user][:password_confirmation]
-        current_password = params[:user][:current_password]
-        
-        if @user.email != params[:user][:email] 
-            flash[:alert] = "email não reconhecido"
-            return redirect_to "/profile/edit"            
-        end
-        if password_confirmation != params[:user][:password] 
-            flash[:alert] = "email não bate com a confirmação"
-            return redirect_to "/profile/edit"            
-        end
-        @user.password = params[:user][:password] 
-
-        @user.save 
-        return redirect_to "/profile"     
-        
+      if @profile.update(params_user)
+        redirect_to backoffice_user_path, notice:
+        "Usuário atualizado com sucesso!"
+      else
+        render :edit
+      end   
     end
+
+  private
+  def set_user
+    @profile = current_user
+  end
+
+  def verify_password
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].extract!(:password, :password_confirmation)
+    end
+  end
+
+  def params_user
+    params.require(:user).permit(:email, :password, :password_confirmation, :status_id, :role_id)
+  end
 end
