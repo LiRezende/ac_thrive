@@ -13,12 +13,12 @@ Rails.application.routes.draw do
 
     resources :users do
       resources :people
-      #resources :adresses
+      resources :adresses
     end
 
     resources :profile do
       resources :people
-      resources :adressess
+      resources :adresses
     end
   end
 
