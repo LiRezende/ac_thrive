@@ -18,6 +18,23 @@
 </div>
 
 <div class="card-display">
+  <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
+  <div class="container-flex">
+    <div>
+      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= @user.email %></h3>
+    </div>
+    <div>
+      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @user.status.status_name %></h3>
+    </div>
+  </div>
+  <div class="container-btn">
+    <%= link_to edit_backoffice_user_path(@user), class:"edit-btn" do %>
+      Editar
+    <% end %>
+  </div>
+</div>
+
+<div class="card-display">
   <h2><span class="material-icons-sharp">pin_drop</span> Endereço</h2>
   <% if @user.person.adress.present? %>
     <div class="container-flex">
@@ -42,27 +59,18 @@
   <p>Endereço ainda não cadastrado. Clique no botão abaixo para cadastrar o endereço.</p>
   <div class="container-btn">
       <%= link_to new_backoffice_user_adress_path(@user), class:"create-btn" do %>
-        Cadastrar Endereço <span class="material-icons-sharp">
+        Cadastrar Endereço<span class="material-icons-sharp">
       <% end %>
   </div>
 </div>
 
-<div class="card-display">
-  <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
-  <div class="container-flex">
-    <div>
-      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= @user.email %></h3>
-    </div>
-    <div>
-      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @user.status.status_name %></h3>
-    </div>
-  </div>
+<div class="container-danger">
+  <h2><span class="material-icons-sharp">warning</span> Danger Zone</h2>
+  <p>Caso tenha interesse em excluir este usuário, clique no botão abaixo. 
+  <strong>Observação importante: após excluir o usuário não será possível recuperar seus dados.</strong></p>      
   <div class="container-btn">
-    <%= link_to edit_backoffice_user_path(@user), class:"edit-btn" do %>
-      Editar
-    <% end %>
     <%= link_to backoffice_user_path(@user), method: :delete, class:"exclude-btn" do %>
-      Excluir 
+      Excluir
     <% end %>
   </div>
 </div>
