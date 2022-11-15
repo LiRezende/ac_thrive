@@ -1,17 +1,18 @@
-<h1>Cadastro de <%= @user.person.first_name %> <%= @user.person.last_name %></h1>
+<h1>Meu Registro</h1>
 <div class="card-display">
-  <h2><span class="material-icons-sharp">person</span> Identificação</h2>
+  <h2><span class="material-icons-sharp">account_circle</span> Identificação</h2>
   <div class="container-flex">
     <div>
-      <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @user.person.first_name %> <%= @user.person.last_name %></h3>
-      <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @user.person.phone_number %></h3>
+      <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @profile.person.first_name %> <%= @profile.person.last_name %></h3>
+      <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @profile.person.phone_number %></h3>
     </div>
     <div>
-      <h3><strong><span class="material-icons-sharp">calendar_month</span> Data de nascimento:</strong> <%= @user.person.birthdate %></h3>
+      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @profile.status.status_name %></h3>
+      <h3><strong><span class="material-icons-sharp">calendar_month</span> Data de nascimento:</strong> <%= @profile.person.birthdate %></h3>
     </div>
   </div>
   <div class="container-btn">
-    <%= link_to edit_backoffice_user_person_path(@user), class:"edit-btn" do %>
+    <%= link_to edit_backoffice_profile_path(@profile), class:"edit-btn" do %>
       Editar
     <% end %>
   </div>
@@ -21,22 +22,20 @@
   <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
   <div class="container-flex">
     <div>
-      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= @user.email %></h3>
+      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= current_user.email %></h3>
     </div>
     <div>
-      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @user.status.status_name %></h3>
+      <h3><strong><span class="material-icons-sharp">key</span> Senha:</strong> ******</h3>
     </div>
   </div>
   <div class="container-btn">
-    <%= link_to edit_backoffice_user_path(@user), class:"edit-btn" do %>
       Editar
-    <% end %>
   </div>
 </div>
 
 <div class="card-display">
   <h2><span class="material-icons-sharp">pin_drop</span> Endereço</h2>
-  <% if @user.person.adress.present? %>
+  <% if @profile.person.adress.present? %>
     <div class="container-flex">
       <div>
         <h3><strong><span class="material-icons-sharp">person</span> Rua:</strong> <%= @user.person.adress.street %></h3>
@@ -58,24 +57,13 @@
   <% end %>
   <p>Endereço ainda não cadastrado. Clique no botão abaixo para cadastrar o endereço.</p>
   <div class="container-btn">
-      <%= link_to new_backoffice_user_adress_path(@user), class:"create-btn" do %>
+      <%= link_to '/backoffice/profile/current_user/adresses/new', class:"create-btn" do %>
         Cadastrar Endereço
       <% end %>
   </div>
   <div class="container-btn">
-      <%= link_to new_backoffice_user_adress_path(@user), class:"edit-btn" do %>
+      <%= link_to '/backoffice/profile/current_user/adresses/new', class:"edit-btn" do %>
         Editar
       <% end %>
-  </div>
-</div>
-
-<div class="container-danger">
-  <h2><span class="material-icons-sharp">warning</span> Danger Zone</h2>
-  <p>Caso tenha interesse em excluir este usuário, clique no botão abaixo. 
-  <strong>Observação importante: após excluir o usuário não será possível recuperar seus dados.</strong></p>      
-  <div class="container-btn">
-    <%= link_to backoffice_user_path(@user), method: :delete, class:"exclude-btn" do %>
-      Excluir
-    <% end %>
   </div>
 </div>
