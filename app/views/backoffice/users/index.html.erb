@@ -24,8 +24,18 @@
 </div>
 <!-- Table of Users -->
 <div class="card-display">
-  <h2>Usuários</h2>
-  <a href="/backoffice/usuarios/new">Novo <span class="material-icons-sharp">visibility</span></a>
+<div class="container-btn">
+  <%= link_to new_backoffice_user_path, class:"material-icons-sharp" do %>
+      Novo 
+  <% end %>
+</div>
+</div>
+<div class="card-display">
+  <div class="container-flex">
+    <div>
+      <h2>Usuários</h2>
+    </div>
+  </div>
   <table>
     <thead>
       <tr>

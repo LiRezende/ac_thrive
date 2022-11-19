@@ -10,6 +10,20 @@ class Backoffice::UsersController < BackofficeController
     
   end
 
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(params_user)
+    if @user.save
+      redirect_to backoffice_users_path, notice:
+      "Usuário cadastrado com sucesso!"
+    else
+      render :new
+    end
+  end
+
   def edit
     
   end
@@ -23,9 +37,19 @@ class Backoffice::UsersController < BackofficeController
     end
   end
 
+  def destroy
+    if @user.person.present?
+      @user.person.adress.destroy  if @user.person.adress.present?
+      @user.person.destroy
+    end
+    @user.destroy
+
+    redirect_to "/backoffice/users", notice: "Usuário atualizado com sucesso!"
+  end
+
   private
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id] || params[:user_id])
   end
 
   def verify_password

@@ -1,6 +1,6 @@
-<h1>Meu Registro</h1>
+<h1>Meu Perfil</h1>
 <div class="card-display">
-  <h2><span class="material-icons-sharp">account_circle</span> Identificação</h2>
+  <h2><span class="material-icons-sharp">account_circle</span> Informações Pessoais</h2>
   <div class="container-flex">
     <div>
       <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @profile.person.first_name %> <%= @profile.person.last_name %></h3>
@@ -38,32 +38,28 @@
   <% if @profile.person.adress.present? %>
     <div class="container-flex">
       <div>
-        <h3><strong><span class="material-icons-sharp">person</span> Rua:</strong> <%= @user.person.adress.street %></h3>
-        <h3><strong><span class="material-icons-sharp">mail</span> Complemento:</strong> <%= @user.person.adress.complement %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> CEP:</strong> <%= @user.person.adress.cep %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Estado:</strong> <%= @user.person.adress.state %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Rua:</strong> <%= @profile.person.adress.street %></h3>
+        <h3><strong><span class="material-icons-sharp">mail</span> Complemento:</strong> <%= @profile.person.adress.complement %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> CEP:</strong> <%= @profile.person.adress.cep %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Estado:</strong> <%= @profile.person.adress.state %></h3>
       </div>
       <div>
-        <h3><strong><span class="material-icons-sharp">phone_iphone</span> Número:</strong> <%= @user.person.adress.number %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Bairro:</strong> <%= @user.person.adress.neighborhood %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Cidade:</strong> <%= @user.person.adress.city %></h3>
+        <h3><strong><span class="material-icons-sharp">phone_iphone</span> Número:</strong> <%= @profile.person.adress.number %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Bairro:</strong> <%= @profile.person.adress.neighborhood %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Cidade:</strong> <%= @profile.person.adress.city %></h3>
       </div>
     </div>
     <div class="container-btn">
-      <%= link_to edit_backoffice_user_adress_path(@user), class:"edit-btn" do %>
+      <%= link_to edit_backoffice_user_adress_path(@profile, @profile.person.adress), class:"edit-btn" do %>
         Editar
       <% end %>
     </div>
-  <% end %>
-  <p>Endereço ainda não cadastrado. Clique no botão abaixo para cadastrar o endereço.</p>
-  <div class="container-btn">
+  <% else %>
+    <p>Endereço ainda não cadastrado. Clique no botão abaixo para cadastrar o endereço.</p>
+    <div class="container-btn">
       <%= link_to '/backoffice/profile/current_user/adresses/new', class:"create-btn" do %>
         Cadastrar Endereço
       <% end %>
-  </div>
-  <div class="container-btn">
-      <%= link_to '/backoffice/profile/current_user/adresses/new', class:"edit-btn" do %>
-        Editar
-      <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

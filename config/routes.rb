@@ -12,14 +12,13 @@ Rails.application.routes.draw do
     get '/dashboard/index', to: 'dashboard#index'
 
     resources :users do
+      get '/delete', to: 'users#destroy'
+      
       resources :people
       resources :adresses
     end
 
-    resources :profile do
-      resources :people
-      resources :adresses
-    end
+    resources :profile
   end
 
   namespace :site do
