@@ -1,2 +1,0 @@
-module ClassDaysHelper
-end

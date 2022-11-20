@@ -22,8 +22,13 @@ class Backoffice::AdressesController < BackofficeController
     @adress = Adress.new(adress_params)
     @adress.person_id = @person.id
 
-    if @adress.save  
-      redirect_to "/backoffice/users/#{@user.id}"
+    if @adress.save
+      if @user == current_user
+        redirect_to backoffice_profile_path(current_user)
+      else
+        redirect_to "/backoffice/users/#{@user.id}"
+      end
+      flash[:notice] = "Endereço cadastrado com sucesso!"  
     else
       render :create
     end

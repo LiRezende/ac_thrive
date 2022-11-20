@@ -57,9 +57,62 @@
   <% else %>
     <p>Endereço ainda não cadastrado. Clique no botão abaixo para cadastrar o endereço.</p>
     <div class="container-btn">
-      <%= link_to '/backoffice/profile/current_user/adresses/new', class:"create-btn" do %>
+      <%= link_to new_backoffice_user_adress_path(current_user), class:"create-btn" do %>
         Cadastrar Endereço
       <% end %>
     </div>
   <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">pin_drop</span> Matrícula do Professor</h2>
+  <% if @profile.person.teacher.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Idioma:</strong> <%= @profile.person.teacher.idiom.name %></h3>
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Valor hora:</strong> <%= @profile.person.teacher.fee %></h3>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><strong><span class="material-icons-sharp">person</span> Horários Disponíveis</h2>
+  <div class="container-flex">
+    <table>
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Horário</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @profile.person.schedules.each do |s| %>
+          <tr>
+            <td><%= s.day %></td>
+            <td><%= s.hour %></td>
+            <td>
+              <%= link_to edit_backoffice_user_schedule_path(@profile, @profile.person.schedules), class:"edit-btn" do %>
+                Editar
+              <% end %>
+            </td>
+            <td>
+              <%= link_to edit_backoffice_user_schedule_path(@profile, @profile.person.schedules), class:"exclude-btn" do %>
+                Deletar
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="container-btn">
+    <%= link_to new_backoffice_user_schedule_path(current_user), class:"create-btn" do %>
+      Cadastrar Horário
+    <% end %>
+  </div>
 </div>

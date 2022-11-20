@@ -1,0 +1,17 @@
+<h1>Cadastrar Matrícula de Professor de <%= @person.first_name %></h1>
+<%= form_with(model: [ :backoffice, @user, @teacher ], local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :fee %>
+    <%= form.text_field :fee %>
+  </div>
+
+  <div class="field">
+    <%= form.label :idiom_id %>
+    <%= form.text_field :idiom_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

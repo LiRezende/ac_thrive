@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_09_150528) do
+ActiveRecord::Schema.define(version: 2022_11_20_191803) do
 
   create_table "adresses", force: :cascade do |t|
     t.string "street"
@@ -24,20 +24,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_150528) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_adresses_on_person_id"
-  end
-
-  create_table "class_days", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "class_hours", force: :cascade do |t|
-    t.time "description"
-    t.integer "class_day_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["class_day_id"], name: "index_class_hours_on_class_day_id"
   end
 
   create_table "idiom_levels", force: :cascade do |t|
@@ -76,6 +62,15 @@ ActiveRecord::Schema.define(version: 2022_10_09_150528) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.string "day"
+    t.time "hour"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_schedules_on_person_id"
+  end
+
   create_table "statuses", force: :cascade do |t|
     t.string "status_name"
     t.datetime "created_at", null: false
@@ -86,12 +81,8 @@ ActiveRecord::Schema.define(version: 2022_10_09_150528) do
     t.decimal "fee"
     t.integer "person_id"
     t.integer "idiom_id"
-    t.integer "class_day_id"
-    t.integer "class_hour_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["class_day_id"], name: "index_teachers_on_class_day_id"
-    t.index ["class_hour_id"], name: "index_teachers_on_class_hour_id"
     t.index ["idiom_id"], name: "index_teachers_on_idiom_id"
     t.index ["person_id"], name: "index_teachers_on_person_id"
   end

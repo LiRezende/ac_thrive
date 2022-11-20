@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @schedule.day %>
+</p>
+
+<p>
+  <strong>Hour:</strong>
+  <%= @schedule.hour %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @schedule.person %>
+</p>
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>

@@ -65,6 +65,32 @@
   <% end %>
 </div>
 
+<div class="card-display">
+  <h2><span class="material-icons-sharp">pin_drop</span> Matrícula do Professor</h2>
+  <% if @user.person.teacher.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Idioma:</strong> <%= @user.person.teacher.idiom.name %></h3>
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Valor hora:</strong> <%= @user.person.teacher.fee %></h3>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_teacher_path(@user), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Informações da matrícula ainda não cadastradas. Clique no botão abaixo para cadastrar matrícula.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_teacher_path(@user), class:"create-btn" do %>
+        Cadastrar Matrícula
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 <div class="container-danger">
   <h2><span class="material-icons-sharp">warning</span> Atenção!</h2>
   <p>Caso tenha interesse em excluir este usuário, clique no botão abaixo. 

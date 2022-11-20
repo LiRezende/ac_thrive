@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :class_hours
-  resources :class_days
   resources :idiom_levels
   resources :idioms
   resources :statuses
@@ -16,6 +14,8 @@ Rails.application.routes.draw do
       
       resources :people
       resources :adresses
+      resources :teachers
+      resources :schedules
     end
 
     resources :profile
