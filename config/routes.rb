@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :idiom_levels
-  resources :idioms
   resources :statuses
 
   devise_for :users
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
     end
 
     resources :profile
+    resources :idioms
   end
 
   namespace :site do

@@ -44,10 +44,10 @@
             <span class="material-icons-sharp">person_add</span>
             <h3>Usuários</h3>
           </a>
-          <a href="#">
+          <%= link_to backoffice_idioms_path do %>
             <span class="material-icons-sharp">forum</span>
             <h3>Idiomas</h3>
-          </a>
+          <% end %>
           <%= link_to backoffice_profile_path(current_user) do %>
             <span class="material-icons-sharp">manage_accounts</span>
             <h3>Meu Perfil</h3>

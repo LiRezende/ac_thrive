@@ -1,4 +1,4 @@
-class IdiomsController < ApplicationController
+class Backoffice::IdiomsController < BackofficeController
   before_action :set_idiom, only: %i[ show edit update destroy ]
 
   # GET /idioms or /idioms.json
@@ -25,7 +25,7 @@ class IdiomsController < ApplicationController
 
     respond_to do |format|
       if @idiom.save
-        format.html { redirect_to idiom_url(@idiom), notice: "Idiom was successfully created." }
+        format.html { redirect_to backoffice_idioms_path, notice: "Idioma cadastrado com sucesso." }
         format.json { render :show, status: :created, location: @idiom }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class IdiomsController < ApplicationController
   def update
     respond_to do |format|
       if @idiom.update(idiom_params)
-        format.html { redirect_to idiom_url(@idiom), notice: "Idiom was successfully updated." }
+        format.html { redirect_to backoffice_idioms_path, notice: "Idiom was successfully updated." }
         format.json { render :show, status: :ok, location: @idiom }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class IdiomsController < ApplicationController
     @idiom.destroy
 
     respond_to do |format|
-      format.html { redirect_to idioms_url, notice: "Idiom was successfully destroyed." }
+      format.html { redirect_to backoffice_idioms_path, notice: "Idiom was successfully destroyed." }
       format.json { head :no_content }
     end
   end
