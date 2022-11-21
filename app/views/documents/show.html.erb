@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Identity:</strong>
+  <%= @document.identity %>
+</p>
+
+<p>
+  <strong>Expeditor:</strong>
+  <%= @document.expeditor %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @document.cpf %>
+</p>
+
+<p>
+  <strong>Nacionality:</strong>
+  <%= @document.nacionality %>
+</p>
+
+<p>
+  <strong>Father name:</strong>
+  <%= @document.father_name %>
+</p>
+
+<p>
+  <strong>Mother name:</strong>
+  <%= @document.mother_name %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @document.person %>
+</p>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>

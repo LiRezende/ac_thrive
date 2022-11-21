@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  identity: MyString
+  expeditor: MyString
+  cpf: MyString
+  nacionality: MyString
+  father_name: MyString
+  mother_name: MyString
+  person: one
+
+two:
+  identity: MyString
+  expeditor: MyString
+  cpf: MyString
+  nacionality: MyString
+  father_name: MyString
+  mother_name: MyString
+  person: two

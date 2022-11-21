@@ -3,4 +3,5 @@ class Person < ApplicationRecord
   has_one :adress
   has_one :teacher
   has_many :schedules
+  has_one :document
 end

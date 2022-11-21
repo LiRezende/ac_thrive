@@ -507,6 +507,12 @@ footer .material-icons-sharp {
     font-size: 1.1rem;
 }
 
+nav.pagination {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 14px;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 1200px) {

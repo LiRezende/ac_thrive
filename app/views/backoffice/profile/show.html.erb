@@ -19,6 +19,36 @@
 </div>
 
 <div class="card-display">
+  <h2><span class="material-icons-sharp">pin_drop</span> Documentos Pessoais</h2>
+  <% if @profile.person.document.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Identidade:</strong> <%= @profile.person.document.identity %></h3> 
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> CPF:</strong> <%= @profile.person.document.cpf %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nome do Pai:</strong> <%= @profile.person.document.father_name %></h3>
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">mail</span> Orgão Expeditor:</strong> <%= @profile.person.document.expeditor %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nacionalidade:</strong> <%= @profile.person.document.nacionality %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nome da Mãe:</strong> <%= @profile.person.document.mother_name %></h3>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_document_path(@profile, @profile.person.document), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Endereço ainda não cadastrado. Clique no botão abaixo para cadastrar o endereço.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_document_path(current_user), class:"create-btn" do %>
+        Cadastrar Documento Pessoal
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
   <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
   <div class="container-flex">
     <div>

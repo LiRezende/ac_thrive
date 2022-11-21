@@ -3,7 +3,7 @@ class Backoffice::UsersController < BackofficeController
   before_action :verify_password, only: [:update]
   
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(3)
   end
     
   def show
