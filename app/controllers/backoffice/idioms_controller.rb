@@ -38,7 +38,7 @@ class Backoffice::IdiomsController < BackofficeController
   def update
     respond_to do |format|
       if @idiom.update(idiom_params)
-        format.html { redirect_to backoffice_idioms_path, notice: "Idiom was successfully updated." }
+        format.html { redirect_to backoffice_idioms_path, notice: "Idiom atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @idiom }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class Backoffice::IdiomsController < BackofficeController
     @idiom.destroy
 
     respond_to do |format|
-      format.html { redirect_to backoffice_idioms_path, notice: "Idiom was successfully destroyed." }
+      format.html { redirect_to backoffice_idioms_path, notice: "Idiom excluído com sucesso." }
       format.json { head :no_content }
     end
   end

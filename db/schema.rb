@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_21_180430) do
+ActiveRecord::Schema.define(version: 2022_11_21_232122) do
 
   create_table "adresses", force: :cascade do |t|
     t.string "street"
@@ -24,6 +24,26 @@ ActiveRecord::Schema.define(version: 2022_11_21_180430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_adresses_on_person_id"
+  end
+
+  create_table "backoffice_companies", force: :cascade do |t|
+    t.string "name"
+    t.string "cnpj"
+    t.string "legal_representative"
+    t.string "phone_number"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "cnpj"
+    t.string "legal_representative"
+    t.string "phone_number"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "documents", force: :cascade do |t|

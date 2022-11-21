@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     resources :profile
     resources :idioms
+    resources :companies
   end
 
   namespace :site do
