@@ -1,9 +1,10 @@
-<h1>Cadastrar Horário Disponívl para Aula</h1>
+<h1>Cadastrar Horário Disponível para Aula</h1>
+<p>Selecione abaixo o melhor dia e horário disponíveis para as aulas.</p>
 <%= form_with(model: [ :backoffice, @user, @schedule ], local: true) do |form| %>
 
   <div class="field">
     <%= form.label :day %>
-    <%= form.text_field :day %>
+    <%= form.select(:day, options_for_select(["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"]) ) %>
   </div>
 
   <div class="field">

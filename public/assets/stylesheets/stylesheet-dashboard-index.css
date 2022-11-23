@@ -49,8 +49,6 @@
 * {
     margin: 0;
     padding: 0;
-    outline: 0;
-    appearance: none;
     border: 0;
     text-decoration: none;
     list-style: none;
@@ -91,6 +89,11 @@ body {
 
 .container-flex .material-icons-sharp {
     font-size: 1.1rem;
+}
+
+.container-table {
+    display: flex;
+    justify-content: space-between;
 }
 
 .container-btn {
@@ -376,16 +379,27 @@ main .card-display a {
 }
 
 .create-btn {
-    font-size: 1.1rem;
     color: var(--color-white)!important;
     border: 2px solid var(--color-success);
     background-color: var(--color-success);
-    width: 225px;
 }
 
 .create-btn:hover {
     color: var(--color-success)!important;
-    background-color: var(--color-background);
+    background-color: var(--color-white);
+}
+
+.create-user-btn {
+    font-weight: 600;
+    padding: 0px 4px;
+    cursor: pointer;
+    border: 2px dashed var(--color-primary);
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.create-user-btn:hover {
+    border: 2px dashed var(--color-success);
 }
 
 .edit-btn {
@@ -511,6 +525,33 @@ nav.pagination {
     display: flex;
     justify-content: space-evenly;
     font-size: 14px;
+}
+
+input {
+    color: var(--color-primary);
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 0;
+    font-size: 1.2em;
+    border-bottom: 2px solid var(--color-primary);
+    background-color: var(--color-background);
+    cursor: pointer;
+}
+
+label {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    padding-top: 20px;
+}
+
+select {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    background-color: var(--color-background);
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    border: 2px solid var(--color-primary);
+
 }
 
 /* Media Queries */

@@ -15,8 +15,22 @@ class Backoffice::UsersController < BackofficeController
   end
 
   def create
+    
     @user = User.new(params_user)
+    # @user.status_id = Status.where(name: "ativo").first.id
     if @user.save
+      if @user.person.blank?
+        @user.person = Person.new
+      end
+ 
+      @user.person.first_name = params[:user][:first_name]
+      @user.person.last_name = params[:user][:last_name]
+      @user.person.phone_number = params[:user][:phone_number]
+
+      @user.person.save
+
+      @user.roles << Role.find(params[:user][:role_id])
+
       redirect_to backoffice_users_path, notice:
       "Usuário cadastrado com sucesso!"
     else
@@ -59,6 +73,6 @@ class Backoffice::UsersController < BackofficeController
   end
 
   def params_user
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :status_id, person_attributes: [:first_name, :last_name, :phone_number])
   end
 end

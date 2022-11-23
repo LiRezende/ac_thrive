@@ -1,4 +1,5 @@
-class IdiomLevelsController < ApplicationController
+class Backoffice::IdiomLevelsController < BackofficeController
+  skip_before_action :verify_authenticity_token
   before_action :set_idiom_level, only: %i[ show edit update destroy ]
 
   # GET /idiom_levels or /idiom_levels.json
@@ -25,7 +26,7 @@ class IdiomLevelsController < ApplicationController
 
     respond_to do |format|
       if @idiom_level.save
-        format.html { redirect_to idiom_level_url(@idiom_level), notice: "Idiom level was successfully created." }
+        format.html { redirect_to backoffice_idiom_levels_path, notice: "Idiom level was successfully created." }
         format.json { render :show, status: :created, location: @idiom_level }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class IdiomLevelsController < ApplicationController
   def update
     respond_to do |format|
       if @idiom_level.update(idiom_level_params)
-        format.html { redirect_to idiom_level_url(@idiom_level), notice: "Idiom level was successfully updated." }
+        format.html { redirect_to backoffice_idiom_level_url(@idiom_level), notice: "Idiom level was successfully updated." }
         format.json { render :show, status: :ok, location: @idiom_level }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class IdiomLevelsController < ApplicationController
     @idiom_level.destroy
 
     respond_to do |format|
-      format.html { redirect_to idiom_levels_url, notice: "Idiom level was successfully destroyed." }
+      format.html { redirect_to backoffice_idiom_levels_path, notice: "Idiom level was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +66,6 @@ class IdiomLevelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def idiom_level_params
-      params.require(:idiom_level).permit(:name, :idiom_id)
+      params.require(:idiom_level).permit(:name)
     end
 end

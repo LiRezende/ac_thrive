@@ -38,11 +38,15 @@ class Backoffice::PeopleController < BackofficeController
   # PATCH/PUT /people/1 or /people/1.json
   def update
     person = Person.find(params[:id])
-    params_person = params.require(:person).permit(:first_name, :last_name)
+    params_person = params.require(:person).permit(:first_name, :last_name, :phone_number, :birthdate)
     
     if person.update(params_person)
-      redirect_to backoffice_user_path, notice:
-      "Identificação atualizada com sucesso!"
+      if @user == current_user
+        redirect_to backoffice_profile_path
+      else 
+        redirect_to "/backoffice/users/#{@user.id}"
+      end
+      flash[:notice] = "Endereço atualizado com sucesso!"
     else
       render :edit
     end
@@ -69,8 +73,7 @@ class Backoffice::PeopleController < BackofficeController
       @user = User.find(user_id)
     end
 
-    # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :phone_number, :birthdate, :user_id)
+      params.require(:person).permit(:first_name, :last_name, :phone_number, :birthdate)
     end
 end

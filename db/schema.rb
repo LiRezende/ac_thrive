@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_21_232122) do
+ActiveRecord::Schema.define(version: 2022_11_23_131319) do
 
   create_table "adresses", force: :cascade do |t|
     t.string "street"
@@ -24,16 +24,6 @@ ActiveRecord::Schema.define(version: 2022_11_21_232122) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_adresses_on_person_id"
-  end
-
-  create_table "backoffice_companies", force: :cascade do |t|
-    t.string "name"
-    t.string "cnpj"
-    t.string "legal_representative"
-    t.string "phone_number"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "companies", force: :cascade do |t|
@@ -59,12 +49,22 @@ ActiveRecord::Schema.define(version: 2022_11_21_232122) do
     t.index ["person_id"], name: "index_documents_on_person_id"
   end
 
-  create_table "idiom_levels", force: :cascade do |t|
-    t.string "name"
-    t.integer "idiom_id"
+  create_table "financial_responsibles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "email"
+    t.string "cpf"
+    t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["idiom_id"], name: "index_idiom_levels_on_idiom_id"
+    t.index ["person_id"], name: "index_financial_responsibles_on_person_id"
+  end
+
+  create_table "idiom_levels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "idioms", force: :cascade do |t|
@@ -108,6 +108,24 @@ ActiveRecord::Schema.define(version: 2022_11_21_232122) do
     t.string "status_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "occupation"
+    t.string "position"
+    t.boolean "financial_responsible"
+    t.integer "person_id"
+    t.integer "idiom_id"
+    t.integer "idiom_level_id"
+    t.integer "teacher_id"
+    t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_students_on_company_id"
+    t.index ["idiom_id"], name: "index_students_on_idiom_id"
+    t.index ["idiom_level_id"], name: "index_students_on_idiom_level_id"
+    t.index ["person_id"], name: "index_students_on_person_id"
+    t.index ["teacher_id"], name: "index_students_on_teacher_id"
   end
 
   create_table "teachers", force: :cascade do |t|

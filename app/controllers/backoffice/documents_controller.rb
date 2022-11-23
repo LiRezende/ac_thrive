@@ -34,7 +34,7 @@ class Backoffice::DocumentsController < BackofficeController
 
   def update
     document = Document.find(params[:id])
-    params_document = params.require(:document).permit(:identity, :expeditor, :cpf, :nacionality, :father_name, :mother_name, :person_id)
+    params_document = params.require(:document).permit(:identity, :expeditor, :cpf, :nacionality, :father_name, :mother_name)
     
     if document.update(params_document)
       if @user == current_user
@@ -51,7 +51,7 @@ class Backoffice::DocumentsController < BackofficeController
   
   private
   def document_params
-    params.require(:document).permit(:identity, :expeditor, :cpf, :nacionality, :father_name, :mother_name, :person_id)
+    params.require(:document).permit(:identity, :expeditor, :cpf, :nacionality, :father_name, :mother_name)
   end
     
   def set_document
@@ -62,6 +62,6 @@ class Backoffice::DocumentsController < BackofficeController
     user_id = params[:user_id]
     @user = User.find(user_id)
     @person = @user.person
-    @document = @person.adress
+    @document = @person.document
   end
 end

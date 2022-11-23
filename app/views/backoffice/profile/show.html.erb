@@ -1,25 +1,24 @@
 <h1>Meu Perfil</h1>
 <div class="card-display">
-  <h2><span class="material-icons-sharp">account_circle</span> Informações Pessoais</h2>
+  <h2><span class="material-icons-sharp">person</span> Informações Pessoais</h2>
   <div class="container-flex">
     <div>
       <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @profile.person.first_name %> <%= @profile.person.last_name %></h3>
       <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @profile.person.phone_number %></h3>
     </div>
     <div>
-      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @profile.status.status_name %></h3>
       <h3><strong><span class="material-icons-sharp">calendar_month</span> Data de nascimento:</strong> <%= @profile.person.birthdate %></h3>
     </div>
   </div>
   <div class="container-btn">
-    <%= link_to edit_backoffice_profile_path(@profile), class:"edit-btn" do %>
+    <%= link_to edit_backoffice_user_person_path(@profile), class:"edit-btn" do %>
       Editar
     <% end %>
   </div>
 </div>
 
 <div class="card-display">
-  <h2><span class="material-icons-sharp">pin_drop</span> Documentos Pessoais</h2>
+  <h2><span class="material-icons-sharp">summarize</span> Documentos Pessoais</h2>
   <% if @profile.person.document.present? %>
     <div class="container-flex">
       <div>
@@ -39,28 +38,13 @@
       <% end %>
     </div>
   <% else %>
-    <p>Endereço ainda não cadastrado. Clique no botão abaixo para cadastrar o endereço.</p>
+    <p>Docmentos ainda não preenchidos. Clique no botão abaixo para preencher seus documentos pessoais.</p>
     <div class="container-btn">
       <%= link_to new_backoffice_user_document_path(current_user), class:"create-btn" do %>
-        Cadastrar Documento Pessoal
+        Cadastrar Documento
       <% end %>
     </div>
   <% end %>
-</div>
-
-<div class="card-display">
-  <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
-  <div class="container-flex">
-    <div>
-      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= current_user.email %></h3>
-    </div>
-    <div>
-      <h3><strong><span class="material-icons-sharp">key</span> Senha:</strong> ******</h3>
-    </div>
-  </div>
-  <div class="container-btn">
-      Editar
-  </div>
 </div>
 
 <div class="card-display">
@@ -95,7 +79,7 @@
 </div>
 
 <div class="card-display">
-  <h2><span class="material-icons-sharp">pin_drop</span> Matrícula do Professor</h2>
+  <h2><span class="material-icons-sharp">school</span> Matrícula do Professor</h2>
   <% if @profile.person.teacher.present? %>
     <div class="container-flex">
       <div>
@@ -109,40 +93,67 @@
 </div>
 
 <div class="card-display">
-  <h2><strong><span class="material-icons-sharp">person</span> Horários Disponíveis</h2>
-  <div class="container-flex">
-    <table>
-      <thead>
-        <tr>
-          <th>Dia</th>
-          <th>Horário</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @profile.person.schedules.each do |s| %>
+  <h2><span class="material-icons-sharp">alarm</span> Horários Disponíveis</h2>
+  <% if @profile.person.schedules.present? %>
+    <div class="container-flex">
+      <table>
+        <thead>
           <tr>
-            <td><%= s.day %></td>
-            <td><%= s.hour %></td>
-            <td>
-              <%= link_to edit_backoffice_user_schedule_path(@profile, @profile.person.schedules), class:"edit-btn" do %>
-                Editar
-              <% end %>
-            </td>
-            <td>
-              <%= link_to edit_backoffice_user_schedule_path(@profile, @profile.person.schedules), class:"exclude-btn" do %>
-                Deletar
-              <% end %>
-            </td>
+            <th>Dia</th>
+            <th>Horário</th>
+            <th></th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @profile.person.schedules.each do |s| %>
+            <tr>
+              <td><%= s.day %></td>
+              <td><%= s.hour.strftime("%H:%M") %></td>
+              <td>
+                <%= link_to edit_backoffice_user_schedule_path(@profile, s) do %>
+                  Editar
+                <% end %>
+              </td>
+              <td>
+                <%= link_to backoffice_user_schedule_path(@profile, s), method: :delete, data: { confirm: 'Confirma a exclusão? A ação não poderá ser desfeita.' } do %>
+                  Deletar
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_schedule_path(current_user), class:"create-btn" do %>
+        Cadastrar Horário
+      <% end %>
+    </div>
+  <% else %>
+    <p>Você ainda não preencheu os melhores dias e horários disponíveis para as aulas. Que tal fazer isso agora?</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_schedule_path(current_user), class:"create-btn" do %>
+        Cadastrar Horário
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
+  <div class="container-flex">
+    <div>
+      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= current_user.email %></h3>
+      <h3><strong><span class="material-icons-sharp">key</span> Senha:</strong> ******</h3>
+    </div>
+    <div>
+      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @profile.status.status_name %></h3>
+    </div>
   </div>
   <div class="container-btn">
-    <%= link_to new_backoffice_user_schedule_path(current_user), class:"create-btn" do %>
-      Cadastrar Horário
+    <%= link_to edit_backoffice_user_path(@profile), class:"edit-btn" do %>
+      Editar
     <% end %>
   </div>
 </div>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h1>Níveis dos Cursos</h1>
+<div class="card-display">
+  <div "container-flex, container-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Nível</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @idiom_levels.each do |idiom_level| %>
+          <tr>
+            <td><%= idiom_level.name %></td>
+            <td><%= link_to 'Editar', edit_backoffice_idiom_level_path(idiom_level) %></td>
+            <td><%= link_to 'Deletar', backoffice_idiom_level_path(idiom_level), method: :delete, data: { confirm: 'Confirma a exclusão? A ação não poderá ser desfeita.' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="container-btn">
+    <%= link_to 'Cadastrar Nível do Curso', new_backoffice_idiom_level_path, class:"create-btn" %>
+  </div>
+</div>

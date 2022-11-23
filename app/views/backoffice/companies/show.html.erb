@@ -1,29 +1,20 @@
 <p id="notice"><%= notice %></p>
+<h1>Cadastro de <%= @company.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
-
-<p>
-  <strong>Cnpj:</strong>
-  <%= @company.cnpj %>
-</p>
-
-<p>
-  <strong>Legal representative:</strong>
-  <%= @company.legal_representative %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @company.phone_number %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @company.email %>
-</p>
-
-<%= link_to 'Editar', edit_backoffice_company_path(@company) %> |
-<%= link_to 'Voltar', backoffice_companies_path %>
+<div class="card-display">
+  <div class="container-flex">
+    <div>
+      <h3><strong>CNPJ:</strong> <%= @company.cnpj %></h3>
+      <h3><strong>Representante Legal:</strong> <%= @company.legal_representative %></h3>
+    </div>
+    <div>
+      <h3><strong>Telefone:</strong> <%= @company.phone_number %></h3>
+      <h3><strong>Email:</strong> <%= @company.email %></h3>
+      
+    </div>
+  </div>
+  <div class="container-btn">
+    <%= link_to 'Editar', edit_backoffice_company_path(@company) %> |
+    <%= link_to 'Voltar', backoffice_companies_path %>
+  </div>
+</div>

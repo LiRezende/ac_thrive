@@ -6,12 +6,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   belongs_to :status
-  has_many :roles
+  has_and_belongs_to_many :roles, :join_table => :users_roles
   has_one :person
   has_one :adress, :through => :person
+  has_one :document, :through => :person
+  has_many :schedules, :through => :person
+  has_one :student, :through => :person
   
   accepts_nested_attributes_for :status
-  accepts_nested_attributes_for :roles
   accepts_nested_attributes_for :person
 
   def with_person

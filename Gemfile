@@ -37,10 +37,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
-gem 'rolify'
 gem 'nested_form'
 gem 'htmlbeautifier'
 gem 'kaminari'
+gem 'rails-i18n', '~> 5.1'
+gem 'rolify'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

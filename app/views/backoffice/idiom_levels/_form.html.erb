@@ -1,4 +1,4 @@
-<%= form_with(model: idiom_level, local: true) do |form| %>
+<%= form_with(model: [ :backoffice, @user, @idiom_level ], local: true) do |form| %>
   <% if idiom_level.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(idiom_level.errors.count, "error") %> prohibited this idiom_level from being saved:</h2>
@@ -14,11 +14,6 @@
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :idiom_id %>
-    <%= form.text_field :idiom_id %>
   </div>
 
   <div class="actions">

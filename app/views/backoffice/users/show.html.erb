@@ -18,7 +18,7 @@
 </div>
 
 <div class="card-display">
-  <h2><span class="material-icons-sharp">pin_drop</span> Documentos Pessoais</h2>
+  <h2><span class="material-icons-sharp">summarize</span> Documentos Pessoais</h2>
   <% if @user.person.document.present? %>
     <div class="container-flex">
       <div>
@@ -38,30 +38,13 @@
       <% end %>
     </div>
   <% else %>
-    <p>Endereço ainda não cadastrado. Clique no botão abaixo para cadastrar o endereço.</p>
+    <p>Docmentos ainda não preenchidos. Clique no botão abaixo para preencher os documentos pessoais.</p>
     <div class="container-btn">
       <%= link_to new_backoffice_user_document_path(@user), class:"create-btn" do %>
-        Cadastrar Documento Pessoal
+        Cadastrar Documentos
       <% end %>
     </div>
   <% end %>
-</div>
-
-<div class="card-display">
-  <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
-  <div class="container-flex">
-    <div>
-      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= @user.email %></h3>
-    </div>
-    <div>
-      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @user.status.status_name %></h3>
-    </div>
-  </div>
-  <div class="container-btn">
-    <%= link_to edit_backoffice_user_path(@user), class:"edit-btn" do %>
-      Editar
-    <% end %>
-  </div>
 </div>
 
 <div class="card-display">
@@ -96,7 +79,67 @@
 </div>
 
 <div class="card-display">
-  <h2><span class="material-icons-sharp">pin_drop</span> Matrícula do Professor</h2>
+  <h2><span class="material-icons-sharp">local_library</span> Matrícula do Aluno</h2>
+  <% if @user.person.student.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Idioma:</strong> <%= @user.person.student.idiom.name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Nível do Curso:</strong> <%= @user.person.student.idiom_level.name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Professor:</strong> <%= @user.person.student.teacher.person.first_name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Responsável Financeiro:</strong> <%= @user.person.student.financial_responsible %></h3>
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Profissão:</strong> <%= @user.person.student.occupation %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Cargo:</strong> <%= @user.person.student.position %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Empresa (caso possua convênio):</strong> <%= @user.person.student.company.name rescue "Não se aplica" %></h3>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_student_path(@user), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Informações da matrícula ainda não cadastradas. Clique no botão abaixo para cadastrar matrícula.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_student_path(@user), class:"create-btn" do %>
+        Cadastrar Matrícula
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">monetization_on</span> Responsável Financeiro</h2>
+  <% if @user.person.financial_responsible.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Nome:</strong> <%= @user.person.financial_responsible.first_name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Sobrenome:</strong> <%= @user.person.financial_responsible.last_name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Telefone:</strong> <%= @user.person.financial_responsible.phone %></h3>        
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Email:</strong> <%= @user.person.financial_responsible.email %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> CPF:</strong> <%= @user.person.financial_responsible.cpf %></h3>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_financial_responsible_path(@user), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Caso o aluno tenha um responsável financeiro, utilize o botão abaixo para cadastrá-lo.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_financial_responsible_path(@user), class:"create-btn" do %>
+        Cadastrar Responsável
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">school</span> Matrícula do Professor</h2>
   <% if @user.person.teacher.present? %>
     <div class="container-flex">
       <div>
@@ -121,10 +164,29 @@
   <% end %>
 </div>
 
+<div class="card-display">
+  <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
+  <div class="container-flex">
+    <div>
+      <h3><strong><span class="material-icons-sharp">badge</span> Perfil:</strong> <%= @user.roles.name %></h3>  
+      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= @user.email %></h3>
+    </div>
+    <div>
+      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @user.status.status_name %></h3>
+      <h3><strong><span class="material-icons-sharp">key</span> Senha:</strong> ******</h3>
+    </div>
+  </div>
+  <div class="container-btn">
+    <%= link_to edit_backoffice_user_path(@user), class:"edit-btn" do %>
+      Editar
+    <% end %>
+  </div>
+</div>
+
 <div class="container-danger">
   <h2><span class="material-icons-sharp">warning</span> Atenção!</h2>
   <p>Caso tenha interesse em excluir este usuário, clique no botão abaixo. 
-  <strong>Observação importante: após excluir o usuário não será possível recuperar seus dados.</strong></p>      
+  <strong>Observação: após excluir o usuário não será possível recuperar seus dados.</strong></p>      
   <div class="container-btn">
     <%= link_to "/backoffice/users/#{@user.id}/delete", class:"exclude-btn" do %>
       Excluir

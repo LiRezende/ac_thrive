@@ -44,7 +44,11 @@
           <td><%= user.person.first_name %></td>
           <td><%= user.person.last_name %></td>
           <td><%= user.person.phone_number %></td>
-          <td><%= user.roles.name %></td>
+          <td>
+            <% user.roles.each do |role| %>
+              <%= role.name %>
+            <% end %>
+          </td>
           <td><%= user.status.status_name %></td>
           <td><a href="/backoffice/dashboard/<%= user.id%>">Mostrar <span class="material-icons-sharp">visibility</span></a></td>
         </tr>

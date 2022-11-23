@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :idiom_levels
+  
   resources :statuses
 
   devise_for :users
@@ -13,13 +13,16 @@ Rails.application.routes.draw do
       
       resources :people
       resources :adresses
+      resources :documents
       resources :teachers
       resources :schedules
-      resources :documents
+      resources :students
+      resources :financial_responsibles
     end
 
     resources :profile
     resources :idioms
+    resources :idiom_levels
     resources :companies
   end
 

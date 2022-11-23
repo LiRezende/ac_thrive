@@ -13,7 +13,15 @@
     </div>
   <% end %>
 
-  <%= f.select(:status, Status.all.map{|s| s.id}) %>
+  <div class="field">
+    <p>Selecione o Status:</p>
+    <%= f.select(:status_id, Status.all.map{|s| [s.status_name, s.id]}) %>
+  </div>
+
+  <div class="field">
+    <p>Selecione o Perfil:</p>
+    <%= f.select(:role_id, Role.all.map{|r| [r.name, r.id]}) %>
+  </div>
   
   <div class="field">
     <%= f.label :email %><br />

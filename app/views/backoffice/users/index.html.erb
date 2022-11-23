@@ -24,16 +24,14 @@
 </div>
 <!-- Table of Users -->
 <div class="card-display">
-<div class="container-btn">
-  <%= link_to new_backoffice_user_path, class:"material-icons-sharp" do %>
-      Novo 
-  <% end %>
-</div>
-</div>
-<div class="card-display">
-  <div class="container-flex">
+  <div class="container-flex, container-table">
     <div>
       <h2>Usuários</h2>
+    </div>
+    <div class="create-user-btn">
+      <%= link_to new_backoffice_user_path do %>
+          Cadastrar Novo
+      <% end %>
     </div>
   </div>
   <table>
@@ -55,7 +53,11 @@
           <td><%= user.person.first_name %></td>
           <td><%= user.person.last_name %></td>
           <td><%= user.person.phone_number %></td>
-          <td><%= user.roles.name %></td>
+          <td>
+            <% user.roles.each do |role| %>
+              <%= role.name %>
+            <% end %>
+          </td>
           <td><%= user.status.status_name %></td>
           <td>
           <%= link_to backoffice_user_path(user), class:"material-icons-sharp" do %>

@@ -1,4 +1,4 @@
 class IdiomLevel < ApplicationRecord
-  belongs_to :idiom
   has_one :teacher
+  has_one :student
 end
