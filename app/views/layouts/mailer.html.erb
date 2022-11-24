@@ -3,11 +3,54 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: #363949;
+        background-color: #f6f6f9;
+      }
+
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      h3, p {
+        font-size: 1.1rem;
+      }
+
+      .container {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .container-icons {
+        display: flex;
+        allign-items: center;
+        justify-content: center;
+      }
     </style>
   </head>
 
   <body>
+    <img class="logo-img" src="https://aliancacultural.com/wp-content/uploads/2020/08/ALIANCA-CULTURAL-LOGO-152x152-1.png" alt="Logotipo da Aliança Cultural Idiomas." width="150px" />  
     <%= yield %>
+    <div class="container">
+      <h3>Conecte-se:</h3>
+      <div class="container-icons">
+        <div>
+          <a href="https://facebook.com/aliancaculturaloficial/"><img src="/assets/images/icon_facebook.png" alt="Ícone do Facebook." /></a>
+        </div>
+        <div>
+          <a href="https://www.instagram.com/aliancaculturaloficial/"><img src="/assets/images/icon_instagram.png" alt="Ícone do Instagram." /></a>
+        </div>
+        <div>
+          <a href="https://www.linkedin.com/company/alian%C3%A7a-cultural-idiomas/"><img src="/assets/images/icon_linkedin.png" alt="Ícone do LinkedIn." /></a>
+        </div>
+        <div>
+          <a href="https://www.youtube.com/channel/UC_UimbpsHoGQK7nMt2DQE-A/videos"><img src="/assets/images/icon_youtube.png" alt="Ícone do YouTube." /></a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

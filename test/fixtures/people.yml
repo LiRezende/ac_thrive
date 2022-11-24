@@ -3,9 +3,13 @@
 one:
   first_name: MyString
   last_name: MyString
-  phone: MyString
+  phone_number: MyString
+  birthdate: 2022-09-29
+  user: one
 
 two:
   first_name: MyString
   last_name: MyString
-  phone: MyString
+  phone_number: MyString
+  birthdate: 2022-09-29
+  user: two

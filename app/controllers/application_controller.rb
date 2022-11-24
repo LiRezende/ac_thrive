@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
 
     def configure_sanitized_params
         devise_parameter_sanitizer.permit(:sign_up) do |u|
-            u.permit(:email, :password, :password_confirmation, person_attributes: [:first_name, :last_name, :phone])
+            u.permit(:email, :password, :password_confirmation, :status_id, :role_id, person_attributes: [:first_name, :last_name, :phone_number])
         end
     end
 
-    private
+    protected
 
     def user_not_authorized(exception)
         policy_name = exception.policy.class.to_s.underscore

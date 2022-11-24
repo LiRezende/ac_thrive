@@ -1,15 +1,34 @@
 Rails.application.routes.draw do
-  resources :teachers
+  
+  resources :statuses
+
   devise_for :users
-  resources :people
+  
   namespace :backoffice do
-    get 'dashboard/index'
+    get 'home/index'
+    get '/dashboard/index', to: 'dashboard#index'
+
+    resources :users do
+      get '/delete', to: 'users#destroy'
+      
+      resources :people
+      resources :adresses
+      resources :documents
+      resources :teachers
+      resources :schedules
+      resources :students
+      resources :financial_responsibles
+    end
+
+    resources :profile
+    resources :idioms
+    resources :idiom_levels
+    resources :companies
   end
+
   namespace :site do
     get 'home/index'
   end
-  resources :idioms
-  get 'inicio', to: 'site/home#index'
+
   root to: 'site/home#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -14,7 +14,11 @@ class TeachersTest < ApplicationSystemTestCase
     visit teachers_url
     click_on "New Teacher"
 
-    fill_in "Hour fee", with: @teacher.hour_fee
+    fill_in "Class day", with: @teacher.class_day_id
+    fill_in "Class hour", with: @teacher.class_hour_id
+    fill_in "Fee", with: @teacher.fee
+    fill_in "Idiom", with: @teacher.idiom_id
+    fill_in "Person", with: @teacher.person_id
     click_on "Create Teacher"
 
     assert_text "Teacher was successfully created"
@@ -25,7 +29,11 @@ class TeachersTest < ApplicationSystemTestCase
     visit teachers_url
     click_on "Edit", match: :first
 
-    fill_in "Hour fee", with: @teacher.hour_fee
+    fill_in "Class day", with: @teacher.class_day_id
+    fill_in "Class hour", with: @teacher.class_hour_id
+    fill_in "Fee", with: @teacher.fee
+    fill_in "Idiom", with: @teacher.idiom_id
+    fill_in "Person", with: @teacher.person_id
     click_on "Update Teacher"
 
     assert_text "Teacher was successfully updated"

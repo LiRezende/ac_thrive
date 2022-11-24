@@ -1,0 +1,33 @@
+<h1>Cadastro de <%= @user.person.first_name %> <%= @user.person.last_name %></h1>
+<div class="card-display">
+  <h2><span class="material-icons-sharp">account_circle</span> Informações Pessoais</h2>
+  <div class="container-flex">
+    <div>
+      <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @user.person.first_name %> <%= @user.person.last_name %></h3>
+      <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @user.person.phone_number %></h3>
+      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= @user.email %></h3>
+    </div>
+    <div>
+      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @user.status.status_name %></h3>
+      <h3><strong><span class="material-icons-sharp">calendar_month</span> Data de nascimento:</strong> <%= @user.person.birthdate %></h3>
+    </div>
+  </div>
+  <button type="button" onclick="location.href = '/profile/edit';" class="edit-btn">Editar <span class="material-icons-sharp">draw</span></button>
+</div>
+<div class="card-display">
+  <h2><span class="material-icons-sharp">account_circle</span> Endereço</h2>
+  <div class="container-flex">
+    <div>
+      <h3><strong><span class="material-icons-sharp">person</span> Rua:</strong> <%= @user.person.adress.street %></h3>
+      <h3><strong><span class="material-icons-sharp">mail</span> Complemento:</strong> <%= @user.person.adress.complement %></h3>
+      <h3><strong><span class="material-icons-sharp">calendar_month</span> CEP:</strong> <%= @user.person.adress.cep %></h3>
+      <h3><strong><span class="material-icons-sharp">calendar_month</span> Estado:</strong> <%= @user.person.adress.state %></h3>
+    </div>
+    <div>
+      <h3><strong><span class="material-icons-sharp">phone_iphone</span> Número:</strong> <%= @user.person.adress.number %></h3>
+      <h3><strong><span class="material-icons-sharp">calendar_month</span> Bairro:</strong> <%= @user.person.adress.neighborhood %></h3>
+      <h3><strong><span class="material-icons-sharp">calendar_month</span> Cidade:</strong> <%= @user.person.adress.city %></h3>
+    </div>
+  </div>
+  <button type="button" onclick="location.href = '/profile/addresses/edit';" class="edit-btn">Editar <span class="material-icons-sharp">draw</span></button>
+</div>

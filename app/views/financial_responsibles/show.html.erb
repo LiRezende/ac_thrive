@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @financial_responsible.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @financial_responsible.last_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @financial_responsible.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @financial_responsible.email %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @financial_responsible.cpf %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @financial_responsible.person %>
+</p>
+
+<%= link_to 'Edit', edit_financial_responsible_path(@financial_responsible) %> |
+<%= link_to 'Back', financial_responsibles_path %>

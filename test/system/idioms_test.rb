@@ -14,8 +14,7 @@ class IdiomsTest < ApplicationSystemTestCase
     visit idioms_url
     click_on "New Idiom"
 
-    fill_in "Idiom level", with: @idiom.idiom_level
-    fill_in "Idiom name", with: @idiom.idiom_name
+    fill_in "Name", with: @idiom.name
     click_on "Create Idiom"
 
     assert_text "Idiom was successfully created"
@@ -26,8 +25,7 @@ class IdiomsTest < ApplicationSystemTestCase
     visit idioms_url
     click_on "Edit", match: :first
 
-    fill_in "Idiom level", with: @idiom.idiom_level
-    fill_in "Idiom name", with: @idiom.idiom_name
+    fill_in "Name", with: @idiom.name
     click_on "Update Idiom"
 
     assert_text "Idiom was successfully updated"

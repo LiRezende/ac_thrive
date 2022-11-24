@@ -1,0 +1,22 @@
+<%= form_with(model: [ :backoffice, @idiom ], local: true) do |form| %>
+  <% if idiom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(idiom.errors.count, "error") %> prohibited this idiom from being saved:</h2>
+
+      <ul>
+      <% idiom.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

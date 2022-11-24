@@ -1,1 +1,59 @@
-<h1>Backoffice::Dashboard#index</h1>
+<div class="insights">
+  <!-- Card Students -->
+  <div class="sales">
+    <span class="material-icons-sharp">group</span>
+    <div class="middle">
+      <div class="left">
+        <h3>Total de Estudantes</h3>
+        <h1>200</h1>
+      </div>
+    </div>
+  </div>
+  <!-- End of Students -->
+  <!-- Card Teachers -->
+  <div class="expenses">
+    <span class="material-icons-sharp">school</span>
+    <div class="middle">
+      <div class="left">
+        <h3>Total de Professores</h3>
+        <h1>30</h1>
+      </div>
+    </div>
+  </div>
+  <!-- End of Card Teachers -->
+</div>
+<!-- Table of Users -->
+<div class="card-display">
+  <h2>Usuários</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Telefone</th>
+        <th>Perfil</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.person.first_name %></td>
+          <td><%= user.person.last_name %></td>
+          <td><%= user.person.phone_number %></td>
+          <td>
+            <% user.roles.each do |role| %>
+              <%= role.name %>
+            <% end %>
+          </td>
+          <td><%= user.status.status_name %></td>
+          <td><a href="/backoffice/dashboard/<%= user.id%>">Mostrar <span class="material-icons-sharp">visibility</span></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- End of Table of Users -->

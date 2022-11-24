@@ -1,146 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/stylesheets/stylesheet-dashboard-index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <title>Aliança Cultural Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Theme Toggler -->
     <nav class="right">
-        <div class="top">
-            <button id="menu-btn">
-                <span class="material-icons-sharp">menu</span>
-            </button>
-            <div class="theme-toggler">
-                <span class="material-icons-sharp active">light_mode</span>
-                <span class="material-icons-sharp">dark_mode</span>
-            </div>
-            <div class="profile">
-                <div class="info">
-                    <p>Hey, <b><%= current_user.email %></b>!</p>                    
-                </div>
-            </div>
+      <div class="top">
+        <button id="menu-btn">
+          <span class="material-icons-sharp">menu</span>
+        </button>
+        <div class="theme-toggler">
+          <span class="material-icons-sharp active">light_mode</span>
+          <span class="material-icons-sharp">dark_mode</span>
         </div>
+        <div class="profile">
+          <div class="info">
+            <p>Olá, <b><%= current_user.person.first_name %></b>!</p>
+          </div>
+        </div>
+      </div>
     </nav>
     <!-- End of Theme Toggler -->
-
     <section class="container">
-        <!-- Side Menu -->
-        <aside>
-            <div class="top"> 
-                <div class="logo">
-                    <img src="/assets/images/alianca-cultural-simbolo.png" alt="Logo" />
-                </div>
-            </div>
-            <div class="sidebar">
-                <a href="#">
-                    <span class="material-icons-sharp">grid_view</span>
-                    <h3>Dashboard</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">person_add</span>
-                    <h3>Novo Usuário</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">forum</span>
-                    <h3>Idiomas</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">manage_accounts</span>
-                    <h3>Meu Perfil</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">logout</span>
-                    <h3>Logout</h3>
-                </a>
-            </div>
-        </aside>
-        <!-- End of Side Menu -->
-
-        <!-- Main Content -->
-        <main>
-            <h1>Dashboard</h1>
-            <div class="insights">
-                <!-- Card Students -->
-                <div class="sales">
-                    <span class="material-icons-sharp">group</span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total de Estudantes</h3>
-                            <h1>200</h1>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Students -->
-
-                <!-- Card Teachers -->
-                <div class="expenses">
-                    <span class="material-icons-sharp">school</span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total de Professores</h3>
-                            <h1>30</h1>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Card Teachers -->
-            </div>
-
-            <!-- Table Recent Order -->
-            <div class="recent-orders">
-                <h2>Usuários</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Sobrenome</th>
-                            <th>Telefone</th>
-                            <th>Status</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @people.each do |p| %>
-                            <tr>
-                                <td><%= p.id %></td>
-                                <td><%= p.first_name %></td>
-                                <td><%= p.last_name %></td>
-                                <td><%= p.phone %></td>
-                                <td>Ativo</td>
-                                <td><span class="material-icons-sharp">edit</span>Editar</td>
-                            </tr>
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
-        </main>
-        <!-- End of Main Section -->
+      <!-- Side Menu -->
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="/assets/images/alianca-cultural-simbolo.png" alt="Logo" />
+          </div>
+        </div>
+        <div class="sidebar">
+          <a href="/backoffice/home/index">
+            <span class="material-icons-sharp">grid_view</span>
+            <h3>Início</h3>
+          </a>
+          <a href="/backoffice/users">
+            <span class="material-icons-sharp">group</span>
+            <h3>Usuários</h3>
+          </a>
+          <%= link_to backoffice_idioms_path do %>
+            <span class="material-icons-sharp">forum</span>
+            <h3>Idiomas</h3>
+          <% end %>
+          <%= link_to backoffice_idiom_levels_path do %>
+            <span class="material-icons-sharp">chat</span>
+            <h3>Níveis dos<br>Cursos</h3>
+          <% end %>
+          <%= link_to backoffice_companies_path do %>
+            <span class="material-icons-sharp">store</span>
+            <h3>Empresas<br>Parceiras</h3>
+          <% end %>
+          <%= link_to backoffice_profile_path(current_user) do %>
+            <span class="material-icons-sharp">manage_accounts</span>
+            <h3>Meu Perfil</h3>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="material-icons-sharp">logout</span>
+            <h3>Logout</h3>
+          <% end %>
+        </div>
+      </aside>
+      <!-- End of Side Menu -->
+      <!-- Main Content -->
+      <main>
+        <%= yield %>
+      </main>
+      <!-- End of Main Section -->
     </section>
-
     <!-- Footer -->
     <footer>
-        <div>
-            <img src="https://aliancacultural.com/wp-content/uploads/2020/08/ALIANCA-CULTURAL-LOGO-152x152-1.png" />
-        </div>
-        <div>
-            <h3>Atendimento</h3>
-            <p><a href="https://api.whatsapp.com/send?phone=5521969799697"><span class="material-icons-sharp">phone_iphone</span> +55 21 96979 9697</a></p>
-            <p><a href="mailto:corporate@aliancacultural.com"><span class="material-icons-sharp">mail</span> corporate@aliancacultural.com</a></p>
-            <p><span class="material-icons-sharp">alarm_on</span> Segunda a Sexta: 8h às 21h</p>
-            <p><span class="material-icons-sharp">alarm_on</span> Sábados: 8h às 16h</p>
-        </div>
-        <div>
-            <h3>Conecte-se</h3>
-            <p><a href="https://api.whatsapp.com/send?phone=5521969799697"><span class="material-icons-sharp">phone_iphone</span></a></p>
-        </div>       
+      <div>
+        <img src="https://aliancacultural.com/wp-content/uploads/2020/08/ALIANCA-CULTURAL-LOGO-152x152-1.png" />
+      </div>
+      <div>
+        <p>Desenvolvido por</p>
+      </div>
     </footer>
     <!-- End of Footer -->
-    <script src="/javascripts/dashboard-index.js"></script>
-</body>
+    <script src="/assets/javascripts/dashboard-index.js"></script>
+  </body>
 </html>

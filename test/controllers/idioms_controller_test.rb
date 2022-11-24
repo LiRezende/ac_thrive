@@ -17,7 +17,7 @@ class IdiomsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create idiom" do
     assert_difference('Idiom.count') do
-      post idioms_url, params: { idiom: { idiom_level: @idiom.idiom_level, idiom_name: @idiom.idiom_name } }
+      post idioms_url, params: { idiom: { name: @idiom.name } }
     end
 
     assert_redirected_to idiom_url(Idiom.last)
@@ -34,7 +34,7 @@ class IdiomsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update idiom" do
-    patch idiom_url(@idiom), params: { idiom: { idiom_level: @idiom.idiom_level, idiom_name: @idiom.idiom_name } }
+    patch idiom_url(@idiom), params: { idiom: { name: @idiom.name } }
     assert_redirected_to idiom_url(@idiom)
   end
 

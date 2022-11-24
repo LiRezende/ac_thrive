@@ -1,0 +1,159 @@
+<h1>Meu Perfil</h1>
+<div class="card-display">
+  <h2><span class="material-icons-sharp">person</span> Informações Pessoais</h2>
+  <div class="container-flex">
+    <div>
+      <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @profile.person.first_name %> <%= @profile.person.last_name %></h3>
+      <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @profile.person.phone_number %></h3>
+    </div>
+    <div>
+      <h3><strong><span class="material-icons-sharp">calendar_month</span> Data de nascimento:</strong> <%= @profile.person.birthdate %></h3>
+    </div>
+  </div>
+  <div class="container-btn">
+    <%= link_to edit_backoffice_user_person_path(@profile), class:"edit-btn" do %>
+      Editar
+    <% end %>
+  </div>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">summarize</span> Documentos Pessoais</h2>
+  <% if @profile.person.document.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Identidade:</strong> <%= @profile.person.document.identity %></h3> 
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> CPF:</strong> <%= @profile.person.document.cpf %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nome do Pai:</strong> <%= @profile.person.document.father_name %></h3>
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">mail</span> Orgão Expeditor:</strong> <%= @profile.person.document.expeditor %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nacionalidade:</strong> <%= @profile.person.document.nacionality %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nome da Mãe:</strong> <%= @profile.person.document.mother_name %></h3>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_document_path(@profile, @profile.person.document), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Docmentos ainda não preenchidos. Clique no botão abaixo para preencher seus documentos pessoais.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_document_path(current_user), class:"create-btn" do %>
+        Cadastrar Documento
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">pin_drop</span> Endereço</h2>
+  <% if @profile.person.adress.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Rua:</strong> <%= @profile.person.adress.street %></h3>
+        <h3><strong><span class="material-icons-sharp">mail</span> Complemento:</strong> <%= @profile.person.adress.complement %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> CEP:</strong> <%= @profile.person.adress.cep %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Estado:</strong> <%= @profile.person.adress.state %></h3>
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">phone_iphone</span> Número:</strong> <%= @profile.person.adress.number %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Bairro:</strong> <%= @profile.person.adress.neighborhood %></h3>
+        <h3><strong><span class="material-icons-sharp">calendar_month</span> Cidade:</strong> <%= @profile.person.adress.city %></h3>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_adress_path(@profile, @profile.person.adress), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Endereço ainda não cadastrado. Clique no botão abaixo para cadastrar o endereço.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_adress_path(current_user), class:"create-btn" do %>
+        Cadastrar Endereço
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">school</span> Matrícula do Professor</h2>
+  <% if @profile.person.teacher.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Idioma:</strong> <%= @profile.person.teacher.idiom.name %></h3>
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Valor hora:</strong> <%= @profile.person.teacher.fee %></h3>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">alarm</span> Horários Disponíveis</h2>
+  <% if @profile.person.schedules.present? %>
+    <div class="container-flex">
+      <table>
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Horário</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @profile.person.schedules.each do |s| %>
+            <tr>
+              <td><%= s.day %></td>
+              <td><%= s.hour.strftime("%H:%M") %></td>
+              <td>
+                <%= link_to edit_backoffice_user_schedule_path(@profile, s) do %>
+                  Editar
+                <% end %>
+              </td>
+              <td>
+                <%= link_to backoffice_user_schedule_path(@profile, s), method: :delete, data: { confirm: 'Confirma a exclusão? A ação não poderá ser desfeita.' } do %>
+                  Deletar
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_schedule_path(current_user), class:"create-btn" do %>
+        Cadastrar Horário
+      <% end %>
+    </div>
+  <% else %>
+    <p>Você ainda não preencheu os melhores dias e horários disponíveis para as aulas. Que tal fazer isso agora?</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_schedule_path(current_user), class:"create-btn" do %>
+        Cadastrar Horário
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
+  <div class="container-flex">
+    <div>
+      <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= current_user.email %></h3>
+      <h3><strong><span class="material-icons-sharp">key</span> Senha:</strong> ******</h3>
+    </div>
+    <div>
+      <h3><strong><span class="material-icons-sharp">badge</span> Status:</strong> <%= @profile.status.status_name %></h3>
+    </div>
+  </div>
+  <div class="container-btn">
+    <%= link_to edit_backoffice_user_path(@profile), class:"edit-btn" do %>
+      Editar
+    <% end %>
+  </div>
+</div>

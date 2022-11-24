@@ -5,7 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>Hour fee</th>
+      <th>Fee</th>
+      <th>Person</th>
+      <th>Idiom</th>
+      <th>Class day</th>
+      <th>Class hour</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +17,11 @@
   <tbody>
     <% @teachers.each do |teacher| %>
       <tr>
-        <td><%= teacher.hour_fee %></td>
+        <td><%= teacher.fee %></td>
+        <td><%= teacher.person %></td>
+        <td><%= teacher.idiom %></td>
+        <td><%= teacher.class_day %></td>
+        <td><%= teacher.class_hour %></td>
         <td><%= link_to 'Show', teacher %></td>
         <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
         <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
