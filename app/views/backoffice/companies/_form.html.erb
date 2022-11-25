@@ -12,31 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label 'Nome Fantasia' %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :cnpj %>
+    <%= form.label 'CNPJ' %>
     <%= form.text_field :cnpj %>
   </div>
 
   <div class="field">
-    <%= form.label :legal_representative %>
+    <%= form.label 'Nome do Representante' %>
     <%= form.text_field :legal_representative %>
   </div>
 
   <div class="field">
-    <%= form.label :phone_number %>
+    <%= form.label 'Telefone' %>
     <%= form.text_field :phone_number %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
+    <%= form.label 'Email' %>
     <%= form.text_field :email %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar' %>
   </div>
 <% end %>

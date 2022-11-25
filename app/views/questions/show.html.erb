@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Motivation:</strong>
+  <%= @question.motivation %>
+</p>
+
+<p>
+  <strong>Hobby:</strong>
+  <%= @question.hobby %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @question.country %>
+</p>
+
+<p>
+  <strong>Culture:</strong>
+  <%= @question.culture %>
+</p>
+
+<p>
+  <strong>Work:</strong>
+  <%= @question.work %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @question.person %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

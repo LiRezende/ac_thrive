@@ -6,4 +6,5 @@ class Person < ApplicationRecord
   has_one :document
   has_one :student
   has_one :financial_responsible
+  has_one :question
 end

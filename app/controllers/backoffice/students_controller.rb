@@ -26,21 +26,25 @@ class Backoffice::StudentsController < BackofficeController
       else
         redirect_to "/backoffice/users/#{@user.id}"
       end
-      flash[:notice] = "Estudante cadastrado com sucesso!"  
+      flash[:notice] = "Matrícula de estudante cadastrada com sucesso!"  
     else
       render :create
     end
   end
 
   def update
-    respond_to do |format|
-      if @student.update(student_params)
-        format.html { redirect_to backoffice_user_path(@student), notice: "Student was successfully updated." }
-        format.json { render :show, status: :ok, location: @student }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
+    student = Student.find(params[:id])
+    params_student = params.require(:student).permit(:occupation, :position, :financial_responsible, :person_id, :idiom_id, :idiom_level_id, :teacher_id, :company_id)
+    
+    if student.update(params_student)
+      if @user == current_user
+        redirect_to backoffice_profile_path(current_user)
+      else 
+        redirect_to "/backoffice/users/#{@user.id}"
       end
+      flash[:notice] = "Matrícula de estudante atualizada com sucesso!"
+    else
+      render :edit
     end
   end
 

@@ -2,26 +2,16 @@
 <%= form_with(model: [ :backoffice, @user, @teacher ], local: true) do |form| %>
 
   <div class="field">
-    <%= form.label :fee %>
+    <%= form.label 'Valor / Hora' %>
     <%= form.text_field :fee %>
   </div>
 
   <div class="field">
-    <%= form.label :idiom_id %>
+    <%= form.label 'Idioma' %>
     <%= form.text_field :idiom_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :class_day_id %>
-    <%= form.text_field :class_day_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :class_hour_id %>
-    <%= form.text_field :class_hour_id %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar' %>
   </div>
 <% end %>

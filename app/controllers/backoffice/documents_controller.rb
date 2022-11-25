@@ -38,7 +38,7 @@ class Backoffice::DocumentsController < BackofficeController
     
     if document.update(params_document)
       if @user == current_user
-        redirect_to "/backoffice/users"
+        redirect_to backoffice_profile_path(current_user)
       else 
         redirect_to "/backoffice/users/#{@user.id}"
       end

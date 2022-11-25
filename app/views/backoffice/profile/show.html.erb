@@ -79,6 +79,98 @@
 </div>
 
 <div class="card-display">
+  <h2><span class="material-icons-sharp">local_library</span> Matrícula do Aluno</h2>
+  <% if @profile.person.student.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Idioma:</strong> <%= @profile.person.student.idiom.name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Nível do Curso:</strong> <%= @profile.person.student.idiom_level.name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Professor:</strong> <%= @profile.person.student.teacher.person.first_name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Responsável Financeiro:</strong> <%= @profile.person.student.financial_responsible %></h3>
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Profissão:</strong> <%= @profile.person.student.occupation %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Cargo:</strong> <%= @profile.person.student.position %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Empresa (caso possua convênio):</strong> <%= @profile.person.student.company.name rescue "Não se aplica" %></h3>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_student_path(@profile, @profile.person.student), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Informações da matrícula ainda não cadastradas. Clique no botão abaixo para cadastrar matrícula.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_student_path(current_user), class:"create-btn" do %>
+        Cadastrar Matrícula
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">monetization_on</span> Responsável Financeiro</h2>
+  <% if @profile.person.financial_responsible.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Nome:</strong> <%= @profile.person.financial_responsible.first_name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Sobrenome:</strong> <%= @profile.person.financial_responsible.last_name %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> Telefone:</strong> <%= @profile.person.financial_responsible.phone %></h3>        
+      </div>
+      <div>
+        <h3><strong><span class="material-icons-sharp">person</span> Email:</strong> <%= @profile.person.financial_responsible.email %></h3>
+        <h3><strong><span class="material-icons-sharp">person</span> CPF:</strong> <%= @profile.person.financial_responsible.cpf %></h3>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_financial_responsible_path(@profile, @profile.person.financial_responsible), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Caso o aluno tenha um responsável financeiro, utilize o botão abaixo para cadastrá-lo.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_financial_responsible_path(current_user), class:"create-btn" do %>
+        Cadastrar Responsável
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">quiz</span> Questões do Plano de Aulas</h2>
+  <% if @profile.person.student.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong>1. Quais os motivos que levaram você a optar por estudar esse idioma?</strong></h3>
+        <p><%= @profile.person.question.motivation %></p>
+        <h3><strong>2. Quais os seus hobbies e interesses gerais?</strong></h3>
+        <p><%= @profile.person.question.hobby %></p>
+        <h3><strong>3. Identifique um país, cuja cultura lhe interesse bastante.</strong></h3>
+        <p><%= @profile.person.question.country %></p>
+        <h3><strong>4. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, um tipo de música (pop, rock, reggae, etc...) e um ou dois cantores / grupos musicais que lhe agradem: (no caso de espanhol: tango, rumba, mambo, música flamenga, etc.).</strong></h3>
+        <p><%= @profile.person.question.culture %></p>
+        <h3><strong>5. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?</strong></h3>
+        <p><%= @profile.person.question.work %></p>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_question_path(@profile, @profile.person.question), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Questões do plano de aulas ainda não respondidas. Clique no botão abaixo para responder questões do plano de aulas.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_question_path(current_user), class:"create-btn" do %>
+        Cadastrar Matrícula
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
   <h2><span class="material-icons-sharp">school</span> Matrícula do Professor</h2>
   <% if @profile.person.teacher.present? %>
     <div class="container-flex">

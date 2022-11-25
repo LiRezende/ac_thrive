@@ -1,7 +1,7 @@
 class Student < ApplicationRecord
   belongs_to :person
-  belongs_to :idiom
-  belongs_to :idiom_level
-  belongs_to :teacher
+  belongs_to :idiom, optional: true
+  belongs_to :idiom_level, optional: true
+  belongs_to :teacher, optional: true
   belongs_to :company, optional: true
 end

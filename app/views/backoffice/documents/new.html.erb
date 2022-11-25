@@ -2,36 +2,36 @@
 <%= form_with(model: [ :backoffice, @user, @document ], local: true) do |form| %>
 
   <div class="field">
-    <%= form.label :identity %>
+    <%= form.label 'Identidade' %>
     <%= form.text_field :identity %>
   </div>
 
   <div class="field">
-    <%= form.label :expeditor %>
+    <%= form.label 'Órgão Expeditor' %>
     <%= form.text_field :expeditor %>
   </div>
 
   <div class="field">
-    <%= form.label :cpf %>
+    <%= form.label 'CPF' %>
     <%= form.text_field :cpf %>
   </div>
 
   <div class="field">
-    <%= form.label :nacionality %>
+    <%= form.label 'Nacionalidade' %>
     <%= form.text_field :nacionality %>
   </div>
 
   <div class="field">
-    <%= form.label :father_name %>
+    <%= form.label 'Nome do Pai' %>
     <%= form.text_field :father_name %>
   </div>
 
   <div class="field">
-    <%= form.label :mother_name %>
+    <%= form.label 'Nome da Mãe' %>
     <%= form.text_field :mother_name %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar' %>
   </div>
 <% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  motivation: MyText
+  hobby: MyText
+  country: MyText
+  culture: MyText
+  work: MyText
+  person: one
+
+two:
+  motivation: MyText
+  hobby: MyText
+  country: MyText
+  culture: MyText
+  work: MyText
+  person: two

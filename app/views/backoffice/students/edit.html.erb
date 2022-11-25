@@ -2,42 +2,42 @@
 <%= form_with(model: [ :backoffice, @user, @student ], local: true) do |form| %>
 
   <div class="field">
-    <%= form.label :occupation %>
+    <%= form.label 'Profissão' %>
     <%= form.text_field :occupation %>
   </div>
 
   <div class="field">
-    <%= form.label :position %>
+    <%= form.label 'Cargo' %>
     <%= form.text_field :position %>
   </div>
 
   <div class="field">
-    <%= form.label :financial_responsible %>
+    <%= form.label 'Responsável Financeiro' %>
     <%= form.check_box :financial_responsible %>
   </div>
 
   <div class="field">
     <p>Selecione o Idioma:</p>
-    <%= form.select(:idiom_id, Idiom.all.map{|idiom| [idiom.name, idiom.id]}) %>
+    <%= form.select(:idiom_id, Idiom.all.map{|idiom| [idiom.name, idiom.id]}, {:include_blank => 'Não especificado'}) %>
   </div>
 
   <div class="field">
     <p>Selecione o Nível do Curso:</p>
-    <%= form.select(:idiom_level_id, IdiomLevel.all.map{|idiom_level| [idiom_level.name, idiom_level.id]}) %>
+    <%= form.select(:idiom_level_id, IdiomLevel.all.map{|idiom_level| [idiom_level.name, idiom_level.id]}, {:include_blank => 'Não especificado'}) %>
   </div>
 
   <div class="field">
     <p>Selecione o Professor:</p>
-    <%= form.select(:teacher_id, Teacher.all.map{|teacher| [teacher.person.first_name, teacher.id]}) %>
+    <%= form.select(:teacher_id, Teacher.all.map{|teacher| [teacher.person.first_name, teacher.id]}, {:include_blank => 'Não especificado'}) %>
   </div>
 
   <div class="field">
     <p>Selecione a Empresa (caso tenha convênio):</p>
-    <%= form.select(:company_id, Company.all.map{|company| [company.name, company.id]}) %>
+    <%= form.select(:company_id, Company.all.map{|company| [company.name, company.id]}, {:include_blank => 'Não se aplica'}) %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar' %>
   </div>
 
 <% end %>

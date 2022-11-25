@@ -139,6 +139,38 @@
 </div>
 
 <div class="card-display">
+  <h2><span class="material-icons-sharp">quiz</span> Questões do Plano de Aulas</h2>
+  <% if @user.person.student.present? %>
+    <div class="container-flex">
+      <div>
+        <h3><strong>1. Quais os motivos que levaram você a optar por estudar esse idioma?</strong></h3>
+        <p><%= @user.person.question.motivation %></p>
+        <h3><strong>2. Quais os seus hobbies e interesses gerais?</strong></h3>
+        <p><%= @user.person.question.hobby %></p>
+        <h3><strong>3. Identifique um país, cuja cultura lhe interesse bastante.</strong></h3>
+        <p><%= @user.person.question.country %></p>
+        <h3><strong>4. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, um tipo de música (pop, rock, reggae, etc...) e um ou dois cantores / grupos musicais que lhe agradem: (no caso de espanhol: tango, rumba, mambo, música flamenga, etc.).</strong></h3>
+        <p><%= @user.person.question.culture %></p>
+        <h3><strong>5. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?</strong></h3>
+        <p><%= @user.person.question.work %></p>
+      </div>
+    </div>
+    <div class="container-btn">
+      <%= link_to edit_backoffice_user_question_path(@user), class:"edit-btn" do %>
+        Editar
+      <% end %>
+    </div>
+  <% else %>
+    <p>Questões do plano de aulas ainda não respondidas. Clique no botão abaixo para responder questões do plano de aulas.</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_question_path(@user), class:"create-btn" do %>
+        Cadastrar Matrícula
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
   <h2><span class="material-icons-sharp">school</span> Matrícula do Professor</h2>
   <% if @user.person.teacher.present? %>
     <div class="container-flex">
@@ -159,6 +191,54 @@
     <div class="container-btn">
       <%= link_to new_backoffice_user_teacher_path(@user), class:"create-btn" do %>
         Cadastrar Matrícula
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card-display">
+  <h2><span class="material-icons-sharp">alarm</span> Horários Disponíveis</h2>
+  <% if @user.person.schedules.present? %>
+    <div class="container-flex">
+      <table>
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Horário</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.person.schedules.each do |s| %>
+            <tr>
+              <td><%= s.day %></td>
+              <td><%= s.hour.strftime("%H:%M") %></td>
+              <td>
+                <%= link_to edit_backoffice_user_schedule_path(@user, s) do %>
+                  Editar
+                <% end %>
+              </td>
+              <td>
+                <%= link_to backoffice_user_schedule_path(@user, s), method: :delete, data: { confirm: 'Confirma a exclusão? A ação não poderá ser desfeita.' } do %>
+                  Deletar
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_schedule_path(@user), class:"create-btn" do %>
+        Cadastrar Horário
+      <% end %>
+    </div>
+  <% else %>
+    <p>Você ainda não preencheu os melhores dias e horários disponíveis para as aulas. Que tal fazer isso agora?</p>
+    <div class="container-btn">
+      <%= link_to new_backoffice_user_schedule_path(@user), class:"create-btn" do %>
+        Cadastrar Horário
       <% end %>
     </div>
   <% end %>

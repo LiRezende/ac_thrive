@@ -21,8 +21,13 @@ class Backoffice::SchedulesController < BackofficeController
     @schedule = Schedule.new(schedule_params)
     @schedule.person_id = @person.id
 
-    if @schedule.save  
-      redirect_to "/backoffice/users/#{@user.id}"
+    if @schedule.save
+      if @user == current_user
+        redirect_to backoffice_profile_path(current_user)
+      else  
+        redirect_to "/backoffice/users/#{@user.id}"
+      end
+      flash[:notice] = "Horário registrado com sucesso!"
     else
       render :create
     end
@@ -34,11 +39,11 @@ class Backoffice::SchedulesController < BackofficeController
     
     if schedule.update(params_schedule)
       if @user == current_user
-        redirect_to "/backoffice/users"
+        redirect_to backoffice_profile_path(current_user)
       else 
         redirect_to "/backoffice/users/#{@user.id}"
       end
-      flash[:notice] = "Matrícula atualizada com sucesso!"
+      flash[:notice] = "Horário atualizado com sucesso!"
     else
       render :edit
     end

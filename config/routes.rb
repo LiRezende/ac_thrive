@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   resources :statuses
 
   devise_for :users
@@ -18,6 +17,9 @@ Rails.application.routes.draw do
       resources :schedules
       resources :students
       resources :financial_responsibles
+      resources :questions
+
+      get 'search', to: 'search#users'
     end
 
     resources :profile

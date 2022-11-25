@@ -40,7 +40,7 @@ class Backoffice::AdressesController < BackofficeController
     
     if adress.update(params_adress)
       if @user == current_user
-        redirect_to "/backoffice/users"
+        redirect_to backoffice_profile_path(current_user)
       else 
         redirect_to "/backoffice/users/#{@user.id}"
       end

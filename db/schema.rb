@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_23_131319) do
+ActiveRecord::Schema.define(version: 2022_11_24_222626) do
 
   create_table "adresses", force: :cascade do |t|
     t.string "street"
@@ -82,6 +82,18 @@ ActiveRecord::Schema.define(version: 2022_11_23_131319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_people_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "motivation"
+    t.text "hobby"
+    t.text "country"
+    t.text "culture"
+    t.text "work"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_questions_on_person_id"
   end
 
   create_table "roles", force: :cascade do |t|
