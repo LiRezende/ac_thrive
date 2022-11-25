@@ -11,7 +11,7 @@ class Backoffice::UsersController < BackofficeController
       @users = @users.where("people.first_name LIKE ?", "%#{params[:term]}%")
     end
 
-    if params[:dia].present?
+    if params[:day].present?
       @users = @users.where("schedules.day = ?", params[:dia])
     end
 

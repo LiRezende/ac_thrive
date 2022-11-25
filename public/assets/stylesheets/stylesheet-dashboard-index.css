@@ -412,6 +412,10 @@ main .card-display a {
     background-color: var(--color-background);
 }
 
+button.edit-btn {
+    color: var(--color-primary);
+}
+
 .exclude-btn {
     color: var(--color-danger)!important;
     border: 2px solid var(--color-background);
@@ -533,9 +537,14 @@ nav.pagination {
     width: 60%;
 }
 
+.container-search-form {
+    display: flex;
+    gap:3rem;
+}
+
 input, textarea {
     color: var(--color-primary);
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: 600;
     padding: 10px 15px;
     margin-bottom: 20px;
@@ -560,7 +569,6 @@ label {
     font-size: 1.2rem;
     padding-top: 20px;
     margin-top: 20px;
-
 }
 
 select {

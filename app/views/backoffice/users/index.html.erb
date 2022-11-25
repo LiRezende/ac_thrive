@@ -24,35 +24,40 @@
 </div>
 <!-- Table of Users -->
 <div class="card-display">
+  <div>
+    <div>
+      <h2>Filtros de Pesquisa</h2>
+    </div>
+    <div>
+      <%= form_with(url: backoffice_users_path, local: true, method: :get) do |form| %>
+        <div>
+          <label>Nome</label>
+          <%= form.text_field :term, placeholder:"Digite sua pesquisa..." %>
+        </div>
+        <div class="container-search-form">
+          <div>
+            <label>Dias da Semana</label>
+            <%= form.select(:day, options_for_select(["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"]), {:include_blank => 'Selecione'} ) %>
+          </div>
+          <div>
+            <label>Hora Inicial</label>
+            <%= form.time_field :hora_inicio %>
+            <label>Hora Final</label>
+            <%= form.time_field :hora_fim %>
+          </div>
+        </div>
+        <div>
+          <button class="edit-btn" type="submit">Pesquisar</button>
+        </div>
+      <% end %>
+      </div>
+  </div>
+</div>
+<div class="card-display">
   <div class="container-flex, container-table">
     <div>
       <h2>Usuários</h2>
     </div>
-
-    <div>
-      <div>
-        <%= form_with(url: backoffice_users_path, local: true, method: :get) do |form| %>
-          <div class="field">
-            <%= form.label 'Dia' %>
-            <%= form.select(:dia, options_for_select(["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"]), {:include_blank => 'Selecione'} ) %>
-          </div>
-          
-          <div>
-            <label>hora inicio</label>
-            <%= form.time_field :hora_inicio, placeholder:"Digite sua pesquisa..." %>
-            <label>hora fim</label>
-            <%= form.time_field :hora_fim, placeholder:"Digite sua pesquisa..." %>
-          </div>
-
-          <div>
-            <label>nome</label>
-            <%= form.text_field :term, placeholder:"Digite sua pesquisa..." %>
-          </div>
-          <button type="submit">Pesquisar</button>
-        <% end %>
-      </div>
-    </div>
-
     <div class="create-user-btn">
       <%= link_to new_backoffice_user_path do %>
           Cadastrar Novo

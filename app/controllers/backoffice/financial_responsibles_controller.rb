@@ -1,4 +1,5 @@
 class Backoffice::FinancialResponsiblesController < BackofficeController
+  skip_before_action :verify_authenticity_token
   before_action :set_financial_responsible, only: %i[ show edit update destroy ]
   before_action :set_user
 
@@ -52,7 +53,7 @@ class Backoffice::FinancialResponsiblesController < BackofficeController
     @financial_responsible.destroy
 
     respond_to do |format|
-      format.html { redirect_to financial_responsibles_url, notice: "Financial responsible was successfully destroyed." }
+      format.html { redirect_to "/backoffice/users/#{@user.id}", notice: "Financial responsible was successfully destroyed." }
       format.json { head :no_content }
     end
   end

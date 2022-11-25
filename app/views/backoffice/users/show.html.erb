@@ -128,6 +128,11 @@
         Editar
       <% end %>
     </div>
+    <div class="container-btn">
+    <%= link_to backoffice_user_financial_responsible_path(@user, @user.person.financial_responsible), method: :delete, data: { confirm: 'Confirma a exclusão? A ação não poderá ser desfeita.' }, class:"exclude-btn" do %>
+      Excluir
+    <% end %>
+  </div>
   <% else %>
     <p>Caso o aluno tenha um responsável financeiro, utilize o botão abaixo para cadastrá-lo.</p>
     <div class="container-btn">
