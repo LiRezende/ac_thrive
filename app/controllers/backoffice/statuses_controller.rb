@@ -1,31 +1,27 @@
-class StatusesController < ApplicationController
+class Backoffice::StatusesController < BackofficeController
+  skip_before_action :verify_authenticity_token
   before_action :set_status, only: %i[ show edit update destroy ]
 
-  # GET /statuses or /statuses.json
   def index
     @statuses = Status.all
   end
 
-  # GET /statuses/1 or /statuses/1.json
   def show
   end
 
-  # GET /statuses/new
   def new
     @status = Status.new
   end
 
-  # GET /statuses/1/edit
   def edit
   end
 
-  # POST /statuses or /statuses.json
   def create
     @status = Status.new(status_params)
 
     respond_to do |format|
       if @status.save
-        format.html { redirect_to status_url(@status), notice: "Status was successfully created." }
+        format.html { redirect_to backoffice_statuses_path, notice: "Status criado com sucesso." }
         format.json { render :show, status: :created, location: @status }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -34,11 +30,10 @@ class StatusesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /statuses/1 or /statuses/1.json
   def update
     respond_to do |format|
       if @status.update(status_params)
-        format.html { redirect_to status_url(@status), notice: "Status was successfully updated." }
+        format.html { redirect_to backoffice_statuses_path, notice: "Status atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @status }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,23 +42,20 @@ class StatusesController < ApplicationController
     end
   end
 
-  # DELETE /statuses/1 or /statuses/1.json
   def destroy
     @status.destroy
 
     respond_to do |format|
-      format.html { redirect_to statuses_url, notice: "Status was successfully destroyed." }
+      format.html { redirect_to backoffice_statuses_path, notice: "Status excluído com sucesso." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_status
       @status = Status.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def status_params
       params.require(:status).permit(:status_name)
     end

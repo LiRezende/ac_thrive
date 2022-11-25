@@ -1,4 +1,4 @@
-<%= form_with(model: status, local: true) do |form| %>
+<%= form_with(model: [ :backoffice, @status ], local: true) do |form| %>
   <% if status.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(status.errors.count, "error") %> prohibited this status from being saved:</h2>
@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :status_name %>
+    <%= form.label 'Nome do Status' %>
     <%= form.text_field :status_name %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar' %>
   </div>
 <% end %>

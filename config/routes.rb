@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
-  resources :statuses
-
   devise_for :users
   
   namespace :backoffice do
     get 'home/index'
     get '/dashboard/index', to: 'dashboard#index'
+    resources :statuses
 
     resources :users do
       get '/delete', to: 'users#destroy'
-      
+    
       resources :people
       resources :adresses
       resources :documents
