@@ -3,7 +3,27 @@ class Backoffice::UsersController < BackofficeController
   before_action :verify_password, only: [:update]
   
   def index
-    @users = User.all.page(params[:page])
+    @users = User.all.distinct
+    @users = @users.joins("left join people on people.user_id = users.id")
+    @users = @users.joins("left join schedules on schedules.person_id = people.id")
+
+    if params[:term].present?
+      @users = @users.where("people.first_name LIKE ?", "%#{params[:term]}%")
+    end
+
+    if params[:dia].present?
+      @users = @users.where("schedules.day = ?", params[:dia])
+    end
+
+    if params[:hora_inicio].present?
+      @users = @users.where("schedules.hour >= ?", params[:hora_inicio].to_time)
+    end
+
+    if params[:hora_fim].present?
+      @users = @users.where("schedules.hour <= ?", params[:hora_fim].to_time)
+    end
+
+    @users = @users.page(params[:page])
   end
     
   def show

@@ -2,27 +2,29 @@
 <%= form_with(model: [ :backoffice, @user, @question ], local: true) do |form| %>
 
   <div class="field">
-    <%= form.label '1. Quais os motivos que levaram você a optar por estudar esse idioma?' %>
+    <p>1. Quais os motivos que levaram você a optar por estudar esse idioma?</p>
     <%= form.text_area :motivation %>
   </div>
 
   <div class="field">
-    <%= form.label '2. Quais os seus hobbies e interesses gerais?' %>
+    <p>2. Quais os seus hobbies e interesses gerais?</p>
     <%= form.text_area :hobby %>
   </div>
 
   <div class="field">
-    <%= form.label '3. Identifique um país, cuja cultura lhe interesse bastante.' %>
+    <p>3. Identifique um país, cuja cultura lhe interesse bastante.</p>
     <%= form.text_area :country %>
   </div>
 
   <div class="field">
-    <%= form.label '4. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, um tipo de música (pop, rock, reggae, etc...) e um ou dois cantores / grupos musicais que lhe agradem: (no caso de espanhol: tango, rumba, mambo, música flamenga, etc.).' %>
+    <p>4. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, 
+    um tipo de música (pop, rock, reggae, etc...) e um ou dois cantores / grupos musicais que lhe agradem: 
+    (no caso de espanhol: tango, rumba, mambo, música flamenga, etc.).</p>
     <%= form.text_area :culture %>
   </div>
 
   <div class="field">
-    <%= form.label '5. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?' %>
+    <p>5. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?</p>
     <%= form.text_area :work %>
   </div>
 

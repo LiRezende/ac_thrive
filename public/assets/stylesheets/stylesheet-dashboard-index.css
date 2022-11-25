@@ -533,22 +533,34 @@ nav.pagination {
     width: 60%;
 }
 
-input {
+input, textarea {
     color: var(--color-primary);
+    font-size: 1.4em;
+    font-weight: 600;
     padding: 10px 15px;
     margin-bottom: 20px;
-    border-radius: 0;
-    font-size: 1.2em;
-    font-weight: 600;
-    border-bottom: 2px solid var(--color-primary);
     background-color: var(--color-background);
     cursor: pointer;
+}
+
+input {
+    border-radius: 0;
+    border-bottom: 2px solid var(--color-primary);
+}
+
+textarea {
+    height: 200px;
+    resize: none;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius-1);
 }
 
 label {
     color: var(--secondary);
     font-size: 1.2rem;
     padding-top: 20px;
+    margin-top: 20px;
+
 }
 
 select {
