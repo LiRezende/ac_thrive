@@ -17,14 +17,14 @@ class Backoffice::StudentsController < BackofficeController
   end
 
   def create
-    @student = Student.new(teacher_params)
+    @student = Student.new(student_params)
     @student.person_id = @person.id
 
     if @student.save
       if @user == current_user
         redirect_to backoffice_profile_path(current_user)
       else  
-      redirect_to backoffice_users_path
+      redirect_to "/backoffice/users/#{@user.id}"
       end
       flash[:notice] = "Matrícula de aluno cadastrada com sucesso!"
     else
@@ -40,9 +40,9 @@ class Backoffice::StudentsController < BackofficeController
       if @user == current_user
         redirect_to backoffice_profile_path(current_user)
       else 
-        redirect_to backoffice_users_path
+        redirect_to "/backoffice/users/#{@user.id}"
       end
-      flash[:notice] = "Matrícula de estudante atualizada com sucesso!"
+      flash[:notice] = "Matrícula de aluno atualizada com sucesso!"
     else
       render :edit
     end
