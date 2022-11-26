@@ -24,7 +24,7 @@ class Backoffice::StudentsController < BackofficeController
       if @user == current_user
         redirect_to backoffice_profile_path(current_user)
       else  
-      redirect_to "/backoffice/users/"
+      redirect_to backoffice_users_path
       end
       flash[:notice] = "Matrícula de aluno cadastrada com sucesso!"
     else
@@ -40,7 +40,7 @@ class Backoffice::StudentsController < BackofficeController
       if @user == current_user
         redirect_to backoffice_profile_path(current_user)
       else 
-        redirect_to "/backoffice/users/"
+        redirect_to backoffice_users_path
       end
       flash[:notice] = "Matrícula de estudante atualizada com sucesso!"
     else
