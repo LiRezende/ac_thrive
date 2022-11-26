@@ -253,7 +253,14 @@
   <h2><span class="material-icons-sharp">login</span> Informações de Acesso</h2>
   <div class="container-flex">
     <div>
-      <h3><strong><span class="material-icons-sharp">badge</span> Perfil:</strong> <%= @user.roles.name %></h3>  
+      <h3><strong><span class="material-icons-sharp">badge</span> Perfil:</strong></h3>
+      <ul>
+        <li>
+          <% @user.roles.each do |role| %>
+            <%= role.name %>
+          <% end %>
+        </li>
+      </ul>
       <h3><strong><span class="material-icons-sharp">mail</span> E-mail:</strong> <%= @user.email %></h3>
     </div>
     <div>
