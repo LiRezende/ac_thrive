@@ -67,4 +67,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "pundit", "~> 2.2"
-gem 'pg', '~> 0.18.4', group: :production
+gem 'pg', '~> 1.4', '>= 1.4.5', group: :production

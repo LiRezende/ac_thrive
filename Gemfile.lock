@@ -141,7 +141,7 @@ GEM
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (0.18.4)
+    pg (1.4.5)
     public_suffix (5.0.0)
     puma (3.12.6)
     pundit (2.2.0)
@@ -254,7 +254,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   nested_form
-  pg (~> 0.18.4)
+  pg (~> 1.4, >= 1.4.5)
   puma (~> 3.11)
   pundit (~> 2.2)
   rails (~> 6.1)
