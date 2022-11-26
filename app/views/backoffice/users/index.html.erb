@@ -64,6 +64,7 @@
       <% end %>
     </div>
   </div>
+  <%= if @user.status.present? %>
   <table>
     <thead>
       <tr>
@@ -94,6 +95,7 @@
       <% end %>
     </tbody>
   </table>
+  <% end %>
   <div class="pag">
   <%= paginate @users %>
   </div>
