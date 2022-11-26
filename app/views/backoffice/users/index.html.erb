@@ -41,9 +41,9 @@
           </div>
           <div>
             <label>Hora Inicial</label>
-            <%= form.time_field :hora_inicio %>
+            <%= form.time_field :initial_hour %>
             <label>Hora Final</label>
-            <%= form.time_field :hora_fim %>
+            <%= form.time_field :final_hour %>
           </div>
         </div>
         <div>
@@ -67,10 +67,8 @@
   <table>
     <thead>
       <tr>
-        <th>ID</th>
         <th>Nome</th>
         <th>Sobrenome</th>
-        <th>Telefone</th>
         <th>Perfil</th>
         <th>Status</th>
         <th></th>
@@ -79,10 +77,8 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.id %></td>
           <td><%= user.person.first_name %></td>
           <td><%= user.person.last_name %></td>
-          <td><%= user.person.phone_number %></td>
           <td>
             <% user.roles.each do |role| %>
               <%= role.name %>

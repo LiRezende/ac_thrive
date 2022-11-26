@@ -32,15 +32,16 @@
                   <div class="field">
                     <div class="label-remember">
                       <%= f.check_box :remember_me %>
-                      <%= f.label :remember_me %>
+                      <%= f.label 'Lembrar-me' %>
                     </div>
                   </div>
                 <% end %>
               
                 <div class="actions">
-                  <%= f.submit "Log in" %>
+                  <%= f.submit 'Entrar' %>
                 </div>
               <% end %>
+              <%= render "users/shared/links" %>
             </div>
           </div>
         </section>

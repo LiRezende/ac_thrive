@@ -63,9 +63,9 @@
           <% end %>
           <%= link_to backoffice_profile_path(current_user) do %>
             <span class="material-icons-sharp">manage_accounts</span>
-            <h3>Meu Perfil</h3>
+            <h3>Minha Conta</h3>
           <% end %>
-          <%= link_to destroy_user_session_path, method: :delete do %>
+          <%= link_to destroy_user_session_path, method: :get do %>
             <span class="material-icons-sharp">logout</span>
             <h3>Logout</h3>
           <% end %>

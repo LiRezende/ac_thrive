@@ -273,7 +273,7 @@
   <p>Caso tenha interesse em excluir este usuário, clique no botão abaixo. 
   <strong>Observação: após excluir o usuário não será possível recuperar seus dados.</strong></p>      
   <div class="container-btn">
-    <%= link_to "/backoffice/users/#{@user.id}/delete", class:"exclude-btn" do %>
+    <%= link_to "/backoffice/users/#{@user.id}/delete", class:"exclude-btn", data: { confirm: 'Confirma a exclusão do usuário? A ação não poderá ser desfeita.' } do %>
       Excluir
     <% end %>
   </div>

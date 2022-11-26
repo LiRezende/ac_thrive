@@ -12,15 +12,15 @@ class Backoffice::UsersController < BackofficeController
     end
 
     if params[:day].present?
-      @users = @users.where("schedules.day = ?", params[:dia])
+      @users = @users.where("schedules.day = ?", params[:day])
     end
 
-    if params[:hora_inicio].present?
-      @users = @users.where("schedules.hour >= ?", params[:hora_inicio].to_time)
+    if params[:initial_hour].present?
+      @users = @users.where("schedules.hour >= ?", params[:initial_hour].to_time.strftime("%H:%M"))
     end
 
-    if params[:hora_fim].present?
-      @users = @users.where("schedules.hour <= ?", params[:hora_fim].to_time)
+    if params[:final_hour].present?
+      @users = @users.where("schedules.hour <= ?", params[:final_hour].to_time.strftime("%H:%M"))
     end
 
     @users = @users.page(params[:page])
@@ -73,12 +73,12 @@ class Backoffice::UsersController < BackofficeController
 
   def destroy
     if @user.person.present?
-      @user.person.adress.destroy  if @user.person.adress.present?
+      @user.person.adress.destroy if @user.person.adress.present?
       @user.person.destroy
     end
     @user.destroy
 
-    redirect_to "/backoffice/users", notice: "Usuário atualizado com sucesso!"
+    redirect_to "/backoffice/users", notice: "Usuário excluído com sucesso!"
   end
 
   private
