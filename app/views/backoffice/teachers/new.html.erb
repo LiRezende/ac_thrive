@@ -7,8 +7,8 @@
   </div>
 
   <div class="field">
-    <%= form.label 'Idioma' %>
-    <%= form.text_field :idiom_id %>
+    <p>Selecione o Idioma:</p>
+    <%= form.select(:idiom_id, Idiom.all.map{|i| [i.name, i.id]}, {:include_blank => 'Selecione'})%>
   </div>
 
   <div class="actions">
