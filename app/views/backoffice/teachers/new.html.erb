@@ -8,7 +8,7 @@
 
   <div class="field">
     <p>Selecione o Idioma:</p>
-    <%= form.select(:idiom_id, Idiom.all.map{|i| [i.name, i.id]}, {:include_blank => 'Selecione'})%>
+    <%= form.select(:idiom_id, Idiom.all.map{|idiom| [idiom.name, idiom.id]}) %>
   </div>
 
   <div class="actions">
