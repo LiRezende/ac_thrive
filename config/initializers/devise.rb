@@ -27,7 +27,7 @@ Devise.setup do |config|
   config.mailer_sender = if Rails.env.production?
                           Rails.application.credentials.gmail[:user_name].to_s
                         else 
-                          'please-change-me-at-config-initializers-devise@example.com'
+                          'devise@example.com'
                         end
 
   # Configure the class responsible to send e-mails.
