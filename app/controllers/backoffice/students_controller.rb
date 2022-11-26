@@ -17,16 +17,16 @@ class Backoffice::StudentsController < BackofficeController
   end
 
   def create
-    @student = Student.new(student_params)
+    @student = Student.new(teacher_params)
     @student.person_id = @person.id
 
     if @student.save
       if @user == current_user
         redirect_to backoffice_profile_path(current_user)
-      else
-        redirect_to "/backoffice/users/#{@user.id}"
+      else  
+      redirect_to "/backoffice/users/"
       end
-      flash[:notice] = "Matrícula de estudante cadastrada com sucesso!"  
+      flash[:notice] = "Matrícula de aluno cadastrada com sucesso!"
     else
       render :create
     end
@@ -34,13 +34,13 @@ class Backoffice::StudentsController < BackofficeController
 
   def update
     student = Student.find(params[:id])
-    params_student = params.require(:student).permit(:occupation, :position, :financial_responsible, :person_id, :idiom_id, :idiom_level_id, :teacher_id, :company_id)
+    params_student = params.require(:student).permit(:occupation, :position, :financial_responsible, :idiom_id, :idiom_level_id, :teacher_id)
     
     if student.update(params_student)
       if @user == current_user
         redirect_to backoffice_profile_path(current_user)
       else 
-        redirect_to "/backoffice/users/#{@user.id}"
+        redirect_to "/backoffice/users/"
       end
       flash[:notice] = "Matrícula de estudante atualizada com sucesso!"
     else
@@ -58,12 +58,12 @@ class Backoffice::StudentsController < BackofficeController
   end
 
   private
-    def set_student
-      @student = Student.find(params[:id])
-    end
-
     def student_params
       params.require(:student).permit(:occupation, :position, :financial_responsible, :person_id, :idiom_id, :idiom_level_id, :teacher_id, :company_id)
+    end
+    
+    def set_student
+      @student = Student.find(params[:id])
     end
 
     def set_user
