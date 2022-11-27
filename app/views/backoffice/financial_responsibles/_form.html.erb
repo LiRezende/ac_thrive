@@ -1,0 +1,32 @@
+<%= form_with(model: [ :backoffice, @user, @financial_responsible ], local: true) do |form| %>
+
+    <div class="field">
+      <%= form.label 'Nome' %>
+      <%= form.text_field :first_name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Sobrenome' %>
+      <%= form.text_field :last_name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Telefone' %>
+      <%= form.text_field :phone, id:'phone', :maxlength => 14, placeholder:'digite somente números' %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Email' %>
+      <%= form.email_field :email %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'CPF' %>
+      <%= form.text_field :cpf, id:'cpf', :maxlength => 14, placeholder:'digite somente números' %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit 'Salvar' %>
+    </div>
+  <% end %>
+  <script src="/assets/javascripts/backoffice-financial-responsible.js"></script>
