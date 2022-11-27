@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label 'CNPJ' %>
-    <%= form.text_field :cnpj %>
+    <%= form.text_field :cnpj, id:'cnpj', :maxlength => 18, placeholder:'digite somente números' %>
   </div>
 
   <div class="field">
@@ -28,15 +28,16 @@
 
   <div class="field">
     <%= form.label 'Telefone' %>
-    <%= form.text_field :phone_number %>
+    <%= form.text_field :phone_number, id:'phone', :maxlength => 14, placeholder:'digite somente números' %>
   </div>
 
   <div class="field">
     <%= form.label 'Email' %>
-    <%= form.text_field :email %>
+    <%= form.email_field :email %>
   </div>
 
   <div class="actions">
     <%= form.submit 'Salvar' %>
   </div>
 <% end %>
+<script src="/assets/javascripts/backoffice-company.js"></script>
