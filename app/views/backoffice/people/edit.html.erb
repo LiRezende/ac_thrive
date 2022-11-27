@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label 'Telefone' %>
-    <%= form.text_field :phone_number %>
+    <%= form.text_field :phone_number, id:'phone', :maxlength => 14, placeholder:'digite somente números' %>
   </div>
 
   <div class="field">
@@ -25,3 +25,4 @@
     <%= form.submit 'Salvar' %>
   </div>
 <% end %>
+<script src="/assets/javascripts/phone.js"></script>
