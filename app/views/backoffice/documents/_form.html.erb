@@ -1,0 +1,36 @@
+<%= form_with(model: [ :backoffice, @user, @document ], local: true) do |form| %>
+
+    <div class="field">
+      <%= form.label 'Identidade' %>
+      <%= form.text_field :identity %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Órgão Expeditor' %>
+      <%= form.text_field :expeditor %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'CPF' %>
+      <%= form.text_field :cpf, id:'cpf', :maxlength => 14, placeholder:'digite somente números' %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Nacionalidade' %>
+      <%= form.text_field :nacionality %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Nome do Pai' %>
+      <%= form.text_field :father_name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Nome da Mãe' %>
+      <%= form.text_field :mother_name %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit 'Salvar' %>
+    </div>
+  <% end %>

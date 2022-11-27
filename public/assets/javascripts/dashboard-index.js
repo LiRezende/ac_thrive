@@ -3,6 +3,7 @@ const sideMenuItem = document.querySelectorAll('.sidebar a');
 const menuBtn = document.querySelector('#menu-btn');
 const closeBtn = document.querySelector('#close-btn');
 const themeToggler = document.querySelector('.theme-toggler');
+const input = document.querySelector('#cpf')
 
 // Open and Close Mobile Menu
 menuBtn.addEventListener('click', () => {
@@ -22,3 +23,14 @@ sideMenuItem.forEach(item => {
         this.classList.add('active');        
     });
 });
+
+// CPF Mask
+input.addEventListener('keypress', () => {
+    let inputLength = input.value.length
+
+    if (inputLength == 3 || inputLength == 7) {
+        input.value += '.'
+    } else if (inputLength == 11) {
+        input.value += '-'
+    }
+})
