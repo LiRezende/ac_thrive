@@ -1,0 +1,42 @@
+<%= form_with(model: [ :backoffice, @user, @adress ], local: true) do |form| %>
+
+    <div class="field">
+      <%= form.label 'Logradouro' %>
+      <%= form.text_field :street %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Número' %>
+      <%= form.number_field :number %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Complemento' %>
+      <%= form.text_field :complement %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Bairro' %>
+      <%= form.text_field :neighborhood %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'CEP' %>
+      <%= form.text_field :cep, id:'cep', :maxlength => 9, placeholder:'digite somente números' %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Cidade' %>
+      <%= form.text_field :city %>
+    </div>
+  
+    <div class="field">
+      <%= form.label 'Estado' %>
+      <%= form.text_field :state, :maxlength => 2, %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit 'Salvar' %>
+    </div>
+  <% end %>
+  <script src="/assets/javascripts/backoffice-adress.js"></script>
