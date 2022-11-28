@@ -2,28 +2,24 @@ class Backoffice::IdiomsController < BackofficeController
   skip_before_action :verify_authenticity_token
   before_action :set_idiom, only: %i[ show edit update destroy ]
 
-  # GET /idioms or /idioms.json
   def index
-    @idioms = Idiom.all
+    @idioms = policy_scope(Idiom.all)
   end
 
-  # GET /idioms/1 or /idioms/1.json
   def show
   end
 
-  # GET /idioms/new
   def new
     @idiom = Idiom.new
+    authorize @idiom
   end
 
-  # GET /idioms/1/edit
   def edit
   end
 
-  # POST /idioms or /idioms.json
   def create
     @idiom = Idiom.new(idiom_params)
-
+    authorize @idiom
     respond_to do |format|
       if @idiom.save
         format.html { redirect_to backoffice_idioms_path, notice: "Idioma cadastrado com sucesso." }
@@ -35,7 +31,6 @@ class Backoffice::IdiomsController < BackofficeController
     end
   end
 
-  # PATCH/PUT /idioms/1 or /idioms/1.json
   def update
     respond_to do |format|
       if @idiom.update(idiom_params)
@@ -48,7 +43,6 @@ class Backoffice::IdiomsController < BackofficeController
     end
   end
 
-  # DELETE /idioms/1 or /idioms/1.json
   def destroy
     @idiom.destroy
 
@@ -59,12 +53,11 @@ class Backoffice::IdiomsController < BackofficeController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_idiom
       @idiom = Idiom.find(params[:id])
+      authorize @idiom
     end
 
-    # Only allow a list of trusted parameters through.
     def idiom_params
       params.require(:idiom).permit(:name)
     end
