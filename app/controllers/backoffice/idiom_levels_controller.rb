@@ -2,28 +2,24 @@ class Backoffice::IdiomLevelsController < BackofficeController
   skip_before_action :verify_authenticity_token
   before_action :set_idiom_level, only: %i[ show edit update destroy ]
 
-  # GET /idiom_levels or /idiom_levels.json
   def index
-    @idiom_levels = IdiomLevel.all
+    @idiom_levels = policy_scope(IdiomLevel.all)
   end
 
-  # GET /idiom_levels/1 or /idiom_levels/1.json
   def show
   end
 
-  # GET /idiom_levels/new
   def new
     @idiom_level = IdiomLevel.new
+    authorize @idiom_level
   end
 
-  # GET /idiom_levels/1/edit
   def edit
   end
 
-  # POST /idiom_levels or /idiom_levels.json
   def create
     @idiom_level = IdiomLevel.new(idiom_level_params)
-
+    authorize @idiom_level
     respond_to do |format|
       if @idiom_level.save
         format.html { redirect_to backoffice_idiom_levels_path, notice: "Idiom level was successfully created." }
@@ -35,7 +31,6 @@ class Backoffice::IdiomLevelsController < BackofficeController
     end
   end
 
-  # PATCH/PUT /idiom_levels/1 or /idiom_levels/1.json
   def update
     respond_to do |format|
       if @idiom_level.update(idiom_level_params)
@@ -48,7 +43,6 @@ class Backoffice::IdiomLevelsController < BackofficeController
     end
   end
 
-  # DELETE /idiom_levels/1 or /idiom_levels/1.json
   def destroy
     @idiom_level.destroy
 
@@ -59,12 +53,11 @@ class Backoffice::IdiomLevelsController < BackofficeController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_idiom_level
       @idiom_level = IdiomLevel.find(params[:id])
+      authorize @idiom_level
     end
 
-    # Only allow a list of trusted parameters through.
     def idiom_level_params
       params.require(:idiom_level).permit(:name)
     end

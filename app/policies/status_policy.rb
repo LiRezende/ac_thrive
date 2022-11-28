@@ -1,4 +1,4 @@
-class IdiomPolicy < ApplicationPolicy
+class StatusPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user&.has_role?(:Administrador)

@@ -2,28 +2,24 @@ class Backoffice::CompaniesController < BackofficeController
   skip_before_action :verify_authenticity_token
   before_action :set_company, only: %i[ show edit update destroy ]
 
-  # GET /companies or /companies.json
   def index
-    @companies = Company.all
+    @companies = policy_scope(Company.all)
   end
 
-  # GET /companies/1 or /companies/1.json
   def show
   end
 
-  # GET /companies/new
   def new
     @company = Company.new
+    authorize @company
   end
 
-  # GET /companies/1/edit
   def edit
   end
 
-  # POST /companies or /companies.json
   def create
     @company = Company.new(company_params)
-
+    authorize @company
     respond_to do |format|
       if @company.save
         format.html { redirect_to backoffice_companies_path, notice: "Company was successfully created." }
@@ -35,7 +31,6 @@ class Backoffice::CompaniesController < BackofficeController
     end
   end
 
-  # PATCH/PUT /companies/1 or /companies/1.json
   def update
     respond_to do |format|
       if @company.update(company_params)
@@ -48,7 +43,6 @@ class Backoffice::CompaniesController < BackofficeController
     end
   end
 
-  # DELETE /companies/1 or /companies/1.json
   def destroy
     @company.destroy
 
@@ -59,12 +53,11 @@ class Backoffice::CompaniesController < BackofficeController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(params[:id])
+      authorize @company
     end
 
-    # Only allow a list of trusted parameters through.
     def company_params
       params.require(:company).permit(:name, :cnpj, :legal_representative, :phone_number, :email)
     end
