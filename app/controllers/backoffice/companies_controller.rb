@@ -4,7 +4,7 @@ class Backoffice::CompaniesController < BackofficeController
 
   # GET /companies or /companies.json
   def index
-    @companies = Company.all
+    @companies = policy_scope(Company.all)
   end
 
   # GET /companies/1 or /companies/1.json
@@ -14,6 +14,7 @@ class Backoffice::CompaniesController < BackofficeController
   # GET /companies/new
   def new
     @company = Company.new
+    authorize @company
   end
 
   # GET /companies/1/edit
@@ -23,7 +24,7 @@ class Backoffice::CompaniesController < BackofficeController
   # POST /companies or /companies.json
   def create
     @company = Company.new(company_params)
-
+    authorize @company
     respond_to do |format|
       if @company.save
         format.html { redirect_to backoffice_companies_path, notice: "Company was successfully created." }
@@ -62,6 +63,7 @@ class Backoffice::CompaniesController < BackofficeController
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(params[:id])
+      authorize @company
     end
 
     # Only allow a list of trusted parameters through.
