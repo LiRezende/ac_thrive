@@ -3,7 +3,7 @@ class Backoffice::StatusesController < BackofficeController
   before_action :set_status, only: %i[ show edit update destroy ]
 
   def index
-    @statuses = Status.all
+    @statuses = policy_scope(Status.all)
   end
 
   def show
@@ -11,6 +11,7 @@ class Backoffice::StatusesController < BackofficeController
 
   def new
     @status = Status.new
+    authorize @status
   end
 
   def edit
@@ -18,7 +19,7 @@ class Backoffice::StatusesController < BackofficeController
 
   def create
     @status = Status.new(status_params)
-
+    authorize @status
     respond_to do |format|
       if @status.save
         format.html { redirect_to backoffice_statuses_path, notice: "Status criado com sucesso." }
@@ -54,6 +55,7 @@ class Backoffice::StatusesController < BackofficeController
   private
     def set_status
       @status = Status.find(params[:id])
+      authorize @status
     end
 
     def status_params
