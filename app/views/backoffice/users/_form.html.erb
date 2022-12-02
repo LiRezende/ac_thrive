@@ -1,0 +1,42 @@
+<div class="field">
+  <p>Selecione o Status:</p>
+  <%= f.select(:status_id, Status.all.map{|s| [s.status_name, s.id]}) %>
+</div>
+  
+<div class="field">
+  <p>Selecione o Perfil:</p>
+  <%= f.collection_check_boxes(:role_ids, Role.all, :id, :name) do |b| %>
+    <div>
+      <%= b.label(class: "check_box") do %>
+        <div class="container-flex">
+        <div>
+        <span class="material-icons-sharp">keyboard_double_arrow_right</span> <%= b.object.name %>
+        </div>
+        <div>
+          <%= b.check_box(class: "check_box", checked: @user.roles.where(id: b.object.id).count > 0) %>
+        </div>
+        </div>       
+      <% end %>
+    </div>
+  <% end %>
+</div>
+  
+<div class="field">
+  <label for="first_name">Nome</label><br>
+  <input autofocus="autofocus" autocomplete="first_name" type="first_name" value="<%= @user.person&.first_name %>" name="user[first_name]" id="user_first_name">
+</div>
+  
+<div class="field">
+  <label for="last_name">Sobrenome</label><br>
+  <input autofocus="autofocus" autocomplete="last_name" type="last_name" value="<%= @user.person&.last_name %>" name="user[last_name]" id="user_last_name">
+</div>
+  
+<div class="field">
+  <label for="phone_number">Telefone</label><br>
+  <input autofocus="autofocus" autocomplete="phone_number" type="phone_number" value="<%= @user.person&.phone_number%>" name="user[phone_number]" id="phone" placeholder="digite somente números" maxlength="14">
+</div>
+  
+<div class="field">
+  <%= f.label 'Email' %><br />
+  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+</div>

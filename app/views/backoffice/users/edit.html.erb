@@ -1,32 +1,7 @@
 <h1>Editando Informações de Acesso</h1>
 <%= form_with(model: [ :backoffice, @user], local: true) do |f| %>
 
-  <% if @user.errors.any? %>
-    <div>
-      <ul>
-        <% @user.errors.full_messages.each do |m| %>
-          <li>
-            <%= m %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <p>Selecione o Status:</p>
-    <%= f.select(:status_id, Status.all.map{|s| [s.status_name, s.id]}) %>
-  </div>
-
-  <div class="field">
-    <p>Selecione o Perfil:</p>
-    <%= f.select(:role_id, Role.all.map{|r| [r.name, r.id]}) %>
-  </div>
-  
-  <div class="field">
-    <%= f.label 'Email' %><br />
-    <%= f.email_field :email %>
-  </div>
+  <%= render "form", f: f %>
 
   <div class="field">
     <%= f.label 'Senha' %><br />

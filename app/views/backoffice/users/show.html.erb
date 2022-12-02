@@ -22,14 +22,14 @@
   <% if @user.person.document.present? %>
     <div class="container-flex">
       <div>
-        <h3><strong><span class="material-icons-sharp">person</span> Identidade:</strong> <%= @user.person.document.identity %></h3> 
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> CPF:</strong> <%= @user.person.document.cpf %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nome do Pai:</strong> <%= @user.person.document.father_name %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Identidade:</strong> <%= @user.person.document.identity %></h3> 
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> CPF:</strong> <%= @user.person.document.cpf %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Nome do Pai:</strong> <%= @user.person.document.father_name %></h3>
       </div>
       <div>
-        <h3><strong><span class="material-icons-sharp">mail</span> Orgão Expeditor:</strong> <%= @user.person.document.expeditor %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nacionalidade:</strong> <%= @user.person.document.nacionality %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nome da Mãe:</strong> <%= @user.person.document.mother_name %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Orgão Expeditor:</strong> <%= @user.person.document.expeditor %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Nacionalidade:</strong> <%= @user.person.document.nacionality %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Nome da Mãe:</strong> <%= @user.person.document.mother_name %></h3>
       </div>
     </div>
     <div class="container-btn">
@@ -52,15 +52,15 @@
   <% if @user.person.adress.present? %>
     <div class="container-flex">
       <div>
-        <h3><strong><span class="material-icons-sharp">person</span> Rua:</strong> <%= @user.person.adress.street %></h3>
-        <h3><strong><span class="material-icons-sharp">mail</span> Complemento:</strong> <%= @user.person.adress.complement %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> CEP:</strong> <%= @user.person.adress.cep %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Estado:</strong> <%= @user.person.adress.state %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Rua:</strong> <%= @user.person.adress.street %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Complemento:</strong> <%= @user.person.adress.complement %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> CEP:</strong> <%= @user.person.adress.cep %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Estado:</strong> <%= @user.person.adress.state %></h3>
       </div>
       <div>
-        <h3><strong><span class="material-icons-sharp">phone_iphone</span> Número:</strong> <%= @user.person.adress.number %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Bairro:</strong> <%= @user.person.adress.neighborhood %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Cidade:</strong> <%= @user.person.adress.city %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Número:</strong> <%= @user.person.adress.number %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Bairro:</strong> <%= @user.person.adress.neighborhood %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Cidade:</strong> <%= @user.person.adress.city %></h3>
       </div>
     </div>
     <div class="container-btn">
@@ -84,15 +84,15 @@
     <% if @user.person.student.present? %>
       <div class="container-flex">
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Idioma:</strong> <%= @user.person.student.idiom.name %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Nível do Curso:</strong> <%= @user.person.student.idiom_level.name %></h3>
+          <h3><strong><span class="material-icons-sharp">forum</span> Idioma:</strong> <%= @user.person.student.idiom.name %></h3>
+          <h3><strong><span class="material-icons-sharp">chat</span> Nível do Curso:</strong> <%= @user.person.student.idiom_level.name %></h3>
           <h3><strong><span class="material-icons-sharp">person</span> Professor:</strong></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Responsável Financeiro:</strong> <%= @user.person.student.financial_responsible %></h3>
+          <h3><strong><span class="material-icons-sharp">monetization_on</span> Responsável Financeiro:</strong> <%= @user.person.student.financial_responsible %></h3>
         </div>
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Profissão:</strong> <%= @user.person.student.occupation %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Cargo:</strong> <%= @user.person.student.position %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Empresa (caso possua convênio):</strong> <%= @user.person.student.company.name rescue "Não se aplica" %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Profissão:</strong> <%= @user.person.student.occupation %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Cargo:</strong> <%= @user.person.student.position %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Empresa (caso possua convênio):</strong> <%= @user.person.student.company.name rescue "Não se aplica" %></h3>
         </div>
       </div>
       <div class="container-btn">
@@ -115,25 +115,26 @@
     <% if @user.person.financial_responsible.present? %>
       <div class="container-flex">
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Nome:</strong> <%= @user.person.financial_responsible.first_name %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Sobrenome:</strong> <%= @user.person.financial_responsible.last_name %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Telefone:</strong> <%= @user.person.financial_responsible.phone %></h3>        
+          <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @user.person.financial_responsible.first_name %> <%= @user.person.financial_responsible.last_name %><%= @user.person.financial_responsible.last_name %></h3>
+          <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @user.person.financial_responsible.phone %></h3>        
         </div>
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Email:</strong> <%= @user.person.financial_responsible.email %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> CPF:</strong> <%= @user.person.financial_responsible.cpf %></h3>
+          <h3><strong><span class="material-icons-sharp">mail</span> Email:</strong> <%= @user.person.financial_responsible.email %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> CPF:</strong> <%= @user.person.financial_responsible.cpf %></h3>
         </div>
       </div>
-      <div class="container-btn">
-        <%= link_to edit_backoffice_user_financial_responsible_path(@user), class:"edit-btn" do %>
-          Editar
-        <% end %>
+      <div class="container-table">
+        <div class="container-btn">
+          <%= link_to edit_backoffice_user_financial_responsible_path(@user), class:"edit-btn" do %>
+            Editar
+          <% end %>
+        </div>
+        <div class="container-btn">
+          <%= link_to backoffice_user_financial_responsible_path(@user, @user.person.financial_responsible), method: :delete, data: { confirm: 'Confirma a exclusão? A ação não poderá ser desfeita.' }, class:"exclude-btn" do %>
+            Excluir
+          <% end %>
+        </div>
       </div>
-      <div class="container-btn">
-      <%= link_to backoffice_user_financial_responsible_path(@user, @user.person.financial_responsible), method: :delete, data: { confirm: 'Confirma a exclusão? A ação não poderá ser desfeita.' }, class:"exclude-btn" do %>
-        Excluir
-      <% end %>
-    </div>
     <% else %>
       <p>Caso o aluno tenha um responsável financeiro, utilize o botão abaixo para cadastrá-lo.</p>
       <div class="container-btn">
@@ -182,10 +183,10 @@
     <% if @user.person.teacher.present? %>
       <div class="container-flex">
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Idioma:</strong> <%= @user.person.teacher.idiom.name %></h3>
+          <h3><strong><span class="material-icons-sharp">forum</span> Idioma:</strong> <%= @user.person.teacher.idiom.name %></h3>
         </div>
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Valor hora:</strong> <%= @user.person.teacher.fee %></h3>
+          <h3><strong><span class="material-icons-sharp">monetization_on</span> Valor hora:</strong> <%= @user.person.teacher.fee %></h3>
         </div>
       </div>
       <div class="container-btn">

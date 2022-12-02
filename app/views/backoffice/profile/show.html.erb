@@ -22,14 +22,14 @@
   <% if @profile.person.document.present? %>
     <div class="container-flex">
       <div>
-        <h3><strong><span class="material-icons-sharp">person</span> Identidade:</strong> <%= @profile.person.document.identity %></h3> 
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> CPF:</strong> <%= @profile.person.document.cpf %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nome do Pai:</strong> <%= @profile.person.document.father_name %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Identidade:</strong> <%= @profile.person.document.identity %></h3> 
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> CPF:</strong> <%= @profile.person.document.cpf %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right/span> Nome do Pai:</strong> <%= @profile.person.document.father_name %></h3>
       </div>
       <div>
-        <h3><strong><span class="material-icons-sharp">mail</span> Orgão Expeditor:</strong> <%= @profile.person.document.expeditor %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nacionalidade:</strong> <%= @profile.person.document.nacionality %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Nome da Mãe:</strong> <%= @profile.person.document.mother_name %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Orgão Expeditor:</strong> <%= @profile.person.document.expeditor %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Nacionalidade:</strong> <%= @profile.person.document.nacionality %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Nome da Mãe:</strong> <%= @profile.person.document.mother_name %></h3>
       </div>
     </div>
     <div class="container-btn">
@@ -52,15 +52,15 @@
   <% if @profile.person.adress.present? %>
     <div class="container-flex">
       <div>
-        <h3><strong><span class="material-icons-sharp">person</span> Rua:</strong> <%= @profile.person.adress.street %></h3>
-        <h3><strong><span class="material-icons-sharp">mail</span> Complemento:</strong> <%= @profile.person.adress.complement %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> CEP:</strong> <%= @profile.person.adress.cep %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Estado:</strong> <%= @profile.person.adress.state %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Rua:</strong> <%= @profile.person.adress.street %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Complemento:</strong> <%= @profile.person.adress.complement %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> CEP:</strong> <%= @profile.person.adress.cep %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Estado:</strong> <%= @profile.person.adress.state %></h3>
       </div>
       <div>
-        <h3><strong><span class="material-icons-sharp">phone_iphone</span> Número:</strong> <%= @profile.person.adress.number %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Bairro:</strong> <%= @profile.person.adress.neighborhood %></h3>
-        <h3><strong><span class="material-icons-sharp">calendar_month</span> Cidade:</strong> <%= @profile.person.adress.city %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Número:</strong> <%= @profile.person.adress.number %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Bairro:</strong> <%= @profile.person.adress.neighborhood %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Cidade:</strong> <%= @profile.person.adress.city %></h3>
       </div>
     </div>
     <div class="container-btn">
@@ -83,15 +83,15 @@
     <% if @profile.person.student.present? %>
       <div class="container-flex">
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Idioma:</strong> <%= @profile.person.student.idiom.name %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Nível do Curso:</strong> <%= @profile.person.student.idiom_level.name %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Professor:</strong> </h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Responsável Financeiro:</strong> <%= @profile.person.student.financial_responsible %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Idioma:</strong> <%= @profile.person.student.idiom.name %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Nível do Curso:</strong> <%= @profile.person.student.idiom_level.name %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Professor:</strong> </h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Responsável Financeiro:</strong> <%= @profile.person.student.financial_responsible %></h3>
         </div>
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Profissão:</strong> <%= @profile.person.student.occupation %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Cargo:</strong> <%= @profile.person.student.position %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Empresa (caso possua convênio):</strong> <%= @profile.person.student.company.name rescue "Não se aplica" %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Profissão:</strong> <%= @profile.person.student.occupation %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Cargo:</strong> <%= @profile.person.student.position %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Empresa (caso possua convênio):</strong> <%= @profile.person.student.company.name rescue "Não se aplica" %></h3>
         </div>
       </div>
       <div class="container-btn">
@@ -113,13 +113,12 @@
     <% if @profile.person.financial_responsible.present? %>
       <div class="container-flex">
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Nome:</strong> <%= @profile.person.financial_responsible.first_name %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Sobrenome:</strong> <%= @profile.person.financial_responsible.last_name %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> Telefone:</strong> <%= @profile.person.financial_responsible.phone %></h3>        
+          <h3><strong><span class="material-icons-sharp">person</span> Nome:</strong> <%= @profile.person.financial_responsible.first_name %> <%= @profile.person.financial_responsible.last_name %></h3>
+          <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @profile.person.financial_responsible.phone %></h3>        
         </div>
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Email:</strong> <%= @profile.person.financial_responsible.email %></h3>
-          <h3><strong><span class="material-icons-sharp">person</span> CPF:</strong> <%= @profile.person.financial_responsible.cpf %></h3>
+          <h3><strong><span class="material-icons-sharp">mail</span> Email:</strong> <%= @profile.person.financial_responsible.email %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> CPF:</strong> <%= @profile.person.financial_responsible.cpf %></h3>
         </div>
       </div>
       <div class="container-btn">
@@ -174,10 +173,10 @@
     <% if @profile.person.teacher.present? %>
       <div class="container-flex">
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Idioma:</strong> <%= @profile.person.teacher.idiom.name %></h3>
+          <h3><strong><span class="material-icons-sharp">forum</span> Idioma:</strong> <%= @profile.person.teacher.idiom.name %></h3>
         </div>
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Valor hora:</strong> <%= @profile.person.teacher.fee %></h3>
+          <h3><strong><span class="material-icons-sharp">monetization_on</span> Valor hora:</strong> <%= @profile.person.teacher.fee %></h3>
         </div>
       </div>
     <% end %>

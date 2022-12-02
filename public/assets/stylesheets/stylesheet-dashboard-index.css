@@ -498,9 +498,11 @@ a span.material-icons-sharp {
 footer {
     display: flex;
     flex: 1;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: flex-end;
     border-top: 1px solid #eee;
-    margin-top: 10rem;
+    margin-top: 15px;
+    padding: 0px 25px;
 }
 
 footer div {
