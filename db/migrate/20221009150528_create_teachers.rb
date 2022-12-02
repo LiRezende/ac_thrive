@@ -1,9 +1,9 @@
 class CreateTeachers < ActiveRecord::Migration[5.2]
   def change
-    create_table :teachers do |t|
+    create_table :teachers, id: :uuid do |t|
       t.decimal :fee
-      t.references :person, foreign_key: true
-      t.references :idiom, foreign_key: true
+      t.references :person, foreign_key: true, type: :uuid
+      t.references :idiom, foreign_key: true, type: :uuid
 
       t.timestamps
     end
