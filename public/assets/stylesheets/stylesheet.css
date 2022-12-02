@@ -135,11 +135,16 @@ span.material-icons-sharp {
 
 .container-section {
     display: flex;
+    align-items: center;
     gap: 25px;
 }
 
-.container-section {
-    align-items: center;
+.signature p {
+    color: #878787;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 25px;
 }
 
 /* Footer */
@@ -178,12 +183,13 @@ span.material-icons-sharp {
     }
 
     .container-section,
-    .container-footer {
+    .container-footer, .container-footer-contact {
         flex-direction: column;
+        padding: 20px;
     }
 
     nav a {
-        color: var(--tertiary);
+        color: var(--secondary);
     }
 
     nav ul {
@@ -192,7 +198,7 @@ span.material-icons-sharp {
         position: absolute;
         left: 0;
         width: 100%;
-        background-color: var(--primary);
+        background-color: #fff;
     }
         
     .menuMobile {
