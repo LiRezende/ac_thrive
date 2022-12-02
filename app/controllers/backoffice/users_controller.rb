@@ -49,7 +49,7 @@ class Backoffice::UsersController < BackofficeController
 
       @user.person.save
 
-      @user.roles << Role.find(params[:user][:role_id])
+      save_role
 
       redirect_to backoffice_users_path, notice:
       "Usuário cadastrado com sucesso!"
@@ -62,8 +62,9 @@ class Backoffice::UsersController < BackofficeController
 
   end
 
-  def update  
+  def update    
     if @user.update(params_user)
+      save_role
       redirect_to backoffice_user_path, notice:
       "Usuário atualizado com sucesso!"
     else
@@ -82,6 +83,15 @@ class Backoffice::UsersController < BackofficeController
   end
 
   private
+  def save_role
+    if params[:user][:role_ids].present?
+      @user.roles.destroy_all
+      params[:user][:role_ids].compact.select{|element| element.present?}.each do |role_id|
+        @user.roles << Role.find(role_id)
+      end
+    end
+  end
+
   def set_user
     @user = User.find(params[:id] || params[:user_id])
   end
