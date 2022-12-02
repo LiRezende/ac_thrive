@@ -59,10 +59,10 @@ class Backoffice::UsersController < BackofficeController
   end
 
   def edit
-    
+
   end
 
-  def update    
+  def update  
     if @user.update(params_user)
       redirect_to backoffice_user_path, notice:
       "Usuário atualizado com sucesso!"
