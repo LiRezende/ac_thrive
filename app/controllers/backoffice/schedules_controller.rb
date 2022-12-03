@@ -52,10 +52,12 @@ class Backoffice::SchedulesController < BackofficeController
   def destroy
     @schedule.destroy
 
-    respond_to do |format|
-      format.html { redirect_to backoffice_users_path, notice: "Schedule excluído com sucesso." }
-      format.json { head :no_content }
+    if @user == current_user
+      redirect_to backoffice_profile_path(current_user)
+    else 
+      redirect_to "/backoffice/users/#{@user.id}"
     end
+    flash[:notice] = "Horário excluído com sucesso!"
   end
 
   private
