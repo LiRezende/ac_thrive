@@ -84,7 +84,7 @@
       <div class="container-flex">
         <div>
           <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Idioma:</strong> <%= @profile.person.student.idiom.name %></h3>
-          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Nível do Curso:</strong> <%= @profile.person.student.idiom_level.name %></h3>
+          <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Nível do Curso:</strong> <%= @profile.person.student.idiom_level.name rescue "Não se aplica" %></h3>
           <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Professor:</strong> </h3>
           <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Responsável Financeiro:</strong> <%= @profile.person.student.financial_responsible %></h3>
         </div>
