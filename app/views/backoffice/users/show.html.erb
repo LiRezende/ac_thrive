@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="container-btn">
-    <%= link_to edit_backoffice_user_person_path(@user), class:"edit-btn" do %>
+    <%= link_to edit_backoffice_user_person_path(@user, @user.person), class:"edit-btn" do %>
       Editar
     <% end %>
   </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="container-btn">
-      <%= link_to edit_backoffice_user_document_path(@user), class:"edit-btn" do %>
+      <%= link_to edit_backoffice_user_document_path(@user, @user.person.document), class:"edit-btn" do %>
         Editar
       <% end %>
     </div>
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="container-btn">
-      <%= link_to edit_backoffice_user_adress_path(@user), class:"edit-btn" do %>
+      <%= link_to edit_backoffice_user_adress_path(@user, @user.person.adress), class:"edit-btn" do %>
         Editar
       <% end %>
     </div>
@@ -96,7 +96,7 @@
         </div>
       </div>
       <div class="container-btn">
-        <%= link_to edit_backoffice_user_student_path(@user), class:"edit-btn" do %>
+        <%= link_to edit_backoffice_user_student_path(@user, @user.person.student), class:"edit-btn" do %>
           Editar
         <% end %>
       </div>
@@ -115,7 +115,7 @@
     <% if @user.person.financial_responsible.present? %>
       <div class="container-flex">
         <div>
-          <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @user.person.financial_responsible.first_name %> <%= @user.person.financial_responsible.last_name %><%= @user.person.financial_responsible.last_name %></h3>
+          <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @user.person.financial_responsible.first_name %> <%= @user.person.financial_responsible.last_name %></h3>
           <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @user.person.financial_responsible.phone %></h3>        
         </div>
         <div>
@@ -125,7 +125,7 @@
       </div>
       <div class="container-table">
         <div class="container-btn">
-          <%= link_to edit_backoffice_user_financial_responsible_path(@user), class:"edit-btn" do %>
+          <%= link_to edit_backoffice_user_financial_responsible_path(@user, @user.person.financial_responsible), class:"edit-btn" do %>
             Editar
           <% end %>
         </div>
@@ -150,20 +150,28 @@
     <% if @user.person.question.present? %>
       <div class="container-flex">
         <div>
-          <h3><strong>1. Quais os motivos que levaram você a optar por estudar esse idioma?</strong></h3>
+          <h3><strong>1. Já estudou em outros cursos? Qual?</strong></h3>
+          <p><%= @user.person.question.course %></p>
+          <h3><strong>2. Quanto tempo de estudo em outros cursos?</strong></h3>
+          <p><%= @user.person.question.period %></p>
+          <h3><strong>3. Parou quando?</strong></h3>
+          <p><%= @user.person.question.end_period %></p>
+          <h3><strong>4. Em qual nível?</strong></h3>
+          <p><%= @user.person.question.level %></p>
+          <h3><strong>5. Quais os motivos que levaram você a optar por estudar esse idioma?</strong></h3>
           <p><%= @user.person.question.motivation %></p>
-          <h3><strong>2. Quais os seus hobbies e interesses gerais?</strong></h3>
+          <h3><strong>6. Quais os seus hobbies e interesses gerais?</strong></h3>
           <p><%= @user.person.question.hobby %></p>
-          <h3><strong>3. Identifique um país, cuja cultura lhe interesse bastante.</strong></h3>
+          <h3><strong>7. Identifique um país, cuja cultura lhe interesse bastante.</strong></h3>
           <p><%= @user.person.question.country %></p>
-          <h3><strong>4. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, um tipo de música (pop, rock, reggae, etc...) e um ou dois cantores / grupos musicais que lhe agradem: (no caso de espanhol: tango, rumba, mambo, música flamenga, etc.).</strong></h3>
+          <h3><strong>8. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, um tipo de música (pop, rock, reggae, etc...) e um ou dois cantores / grupos musicais que lhe agradem: (no caso de espanhol: tango, rumba, mambo, música flamenga, etc.).</strong></h3>
           <p><%= @user.person.question.culture %></p>
-          <h3><strong>5. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?</strong></h3>
+          <h3><strong>9. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?</strong></h3>
           <p><%= @user.person.question.work %></p>
         </div>
       </div>
       <div class="container-btn">
-        <%= link_to edit_backoffice_user_question_path(@user), class:"edit-btn" do %>
+        <%= link_to edit_backoffice_user_question_path(@user, @user.person.question), class:"edit-btn" do %>
           Editar
         <% end %>
       </div>

@@ -24,7 +24,7 @@
       <div>
         <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Identidade:</strong> <%= @profile.person.document.identity %></h3> 
         <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> CPF:</strong> <%= @profile.person.document.cpf %></h3>
-        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right/span> Nome do Pai:</strong> <%= @profile.person.document.father_name %></h3>
+        <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Nome do Pai:</strong> <%= @profile.person.document.father_name %></h3>
       </div>
       <div>
         <h3><strong><span class="material-icons-sharp">keyboard_double_arrow_right</span> Orgão Expeditor:</strong> <%= @profile.person.document.expeditor %></h3>
@@ -140,15 +140,23 @@
     <% if @profile.person.question.present? %>
       <div class="container-flex">
         <div>
-          <h3><strong>1. Quais os motivos que levaram você a optar por estudar esse idioma?</strong></h3>
+          <h3><strong>1. Já estudou em outros cursos? Qual?</strong></h3>
+          <p><%= @profile.person.question.course %></p>
+          <h3><strong>2. Quanto tempo de estudo em outros cursos?</strong></h3>
+          <p><%= @profile.person.question.period %></p>
+          <h3><strong>3. Parou quando?</strong></h3>
+          <p><%= @profile.person.question.end_period %></p>
+          <h3><strong>4. Em qual nível?</strong></h3>
+          <p><%= @profile.person.question.level %></p>
+          <h3><strong>5. Quais os motivos que levaram você a optar por estudar esse idioma?</strong></h3>
           <p><%= @profile.person.question.motivation %></p>
-          <h3><strong>2. Quais os seus hobbies e interesses gerais?</strong></h3>
+          <h3><strong>6. Quais os seus hobbies e interesses gerais?</strong></h3>
           <p><%= @profile.person.question.hobby %></p>
-          <h3><strong>3. Identifique um país, cuja cultura lhe interesse bastante.</strong></h3>
+          <h3><strong>7. Identifique um país, cuja cultura lhe interesse bastante.</strong></h3>
           <p><%= @profile.person.question.country %></p>
-          <h3><strong>4. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, um tipo de música (pop, rock, reggae, etc...) e um ou dois cantores / grupos musicais que lhe agradem: (no caso de espanhol: tango, rumba, mambo, música flamenga, etc.).</strong></h3>
+          <h3><strong>8. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, um tipo de música (pop, rock, reggae, etc...) e um ou dois cantores / grupos musicais que lhe agradem: (no caso de espanhol: tango, rumba, mambo, música flamenga, etc.).</strong></h3>
           <p><%= @profile.person.question.culture %></p>
-          <h3><strong>5. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?</strong></h3>
+          <h3><strong>9. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?</strong></h3>
           <p><%= @profile.person.question.work %></p>
         </div>
       </div>
