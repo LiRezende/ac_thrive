@@ -4,7 +4,7 @@ const inputIdentity = document.querySelector('#identity')
 inputIdentity.addEventListener('keypress', () => {
     let inputLength = inputIdentity.value.length
 
-    if (inputLength == 2 || inputLength == 7) {
+    if (inputLength == 2 || inputLength == 6) {
         inputIdentity.value += '.'
     } else if (inputLength == 11) {
         inputIdentity.value += '-'
