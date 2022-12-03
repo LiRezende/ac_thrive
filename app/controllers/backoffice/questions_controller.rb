@@ -34,7 +34,7 @@ class Backoffice::QuestionsController < BackofficeController
 
   def update
     question = Question.find(params[:id])
-    params_question = params.require(:question).permit(:motivation, :hobby, :country, :culture, :work, :person_id)
+    params_question = params.require(:question).permit(:motivation, :hobby, :country, :culture, :work, :course, :period, :end_period, :level)
     
     if question.update(params_question)
       if @user == current_user
@@ -63,7 +63,7 @@ class Backoffice::QuestionsController < BackofficeController
     end
 
     def question_params
-      params.require(:question).permit(:motivation, :hobby, :country, :culture, :work, :person_id)
+      params.require(:question).permit(:motivation, :hobby, :country, :culture, :work, :course, :period, :end_period, :level)
     end
 
     def set_user
