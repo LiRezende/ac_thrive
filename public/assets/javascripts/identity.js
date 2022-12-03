@@ -6,7 +6,7 @@ inputIdentity.addEventListener('keypress', () => {
 
     if (inputLength == 2 || inputLength == 6) {
         inputIdentity.value += '.'
-    } else if (inputLength == 11) {
+    } else if (inputLength == 10) {
         inputIdentity.value += '-'
     }
 })
