@@ -2,29 +2,49 @@
 <%= form_with(model: [ :backoffice, @user, @question ], local: true) do |form| %>
 
   <div class="field">
-    <p>1. Quais os motivos que levaram você a optar por estudar esse idioma?</p>
+    <p>1. Já estudou em outros cursos? Qual?</p>
+    <%= form.text_field :course %>
+  </div>
+
+  <div class="field">
+    <p>2. Quanto tempo de estudo em outros cursos?</p>
+    <%= form.text_field :period %>
+  </div>
+
+  <div class="field">
+    <p>3. Parou quando?</p>
+    <%= form.text_field :end_period %>
+  </div>
+
+  <div class="field">
+    <p>4. Em qual nível?</p>
+    <%= form.text_field :level %>
+  </div>
+
+  <div class="field">
+    <p>5. Quais os motivos que levaram você a optar por estudar esse idioma?</p>
     <%= form.text_area :motivation %>
   </div>
 
   <div class="field">
-    <p>2. Quais os seus hobbies e interesses gerais?</p>
+    <p>6. Quais os seus hobbies e interesses gerais?</p>
     <%= form.text_area :hobby %>
   </div>
 
   <div class="field">
-    <p>3. Identifique um país, cuja cultura lhe interesse bastante.</p>
+    <p>7. Identifique um país, cuja cultura lhe interesse bastante.</p>
     <%= form.text_area :country %>
   </div>
 
   <div class="field">
-    <p>4. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, 
+    <p>8. Caso não tenha classificado nenhum esporte no item 2, identifique um esporte de seu interesse, 
     um tipo de música (pop, rock, reggae, etc...) e um ou dois cantores / grupos musicais que lhe agradem: 
     (no caso de espanhol: tango, rumba, mambo, música flamenga, etc.).</p>
     <%= form.text_area :culture %>
   </div>
 
   <div class="field">
-    <p>5. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?</p>
+    <p>9. Com que profissionais interage em inglês na sua profissão e com que tipo de abordagens?</p>
     <%= form.text_area :work %>
   </div>
 
