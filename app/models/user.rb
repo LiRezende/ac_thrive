@@ -23,13 +23,22 @@ class User < ApplicationRecord
 
   after_create :send_password
   def password_required?
-  return false if new_record?
-  super
+    return false if new_record?
+    super
   end
 
   def send_password
-  pass = SecureRandom.hex(6)
-  update(password: pass)
-  UserMailer.send_password(self, pass).deliver_now
+    pass = SecureRandom.base64(12) + '&0_W)q$3'
+    update(password: pass)
+    UserMailer.send_password(self, pass).deliver_now
+  end
+
+  validate :password_complexity
+
+  def password_complexity
+    # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+    return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
+
+    errors.add :password, 'Complexity requirement not met. Please use: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
   end
 end
