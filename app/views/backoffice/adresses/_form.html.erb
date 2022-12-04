@@ -34,6 +34,11 @@
       <%= form.label 'Estado' %>
       <%= form.text_field :state, :maxlength => 2 %>
     </div>
+
+    <div class="field">
+      <%= form.label 'País' %>
+      <%= form.text_field :country, value:'Brasil' %>
+    </div>
   
     <div class="actions">
       <%= form.submit 'Salvar' %>

@@ -36,7 +36,7 @@ class Backoffice::AdressesController < BackofficeController
 
   def update
     adress = Adress.find(params[:id])
-    params_adress = params.require(:adress).permit(:street, :number, :complement, :neighborhood, :cep, :city, :state)
+    params_adress = params.require(:adress).permit(:street, :number, :complement, :neighborhood, :cep, :city, :state, :country)
     
     if adress.update(params_adress)
       if @user == current_user
@@ -52,7 +52,7 @@ class Backoffice::AdressesController < BackofficeController
 
   private
   def adress_params
-    params_adress = params.require(:adress).permit(:street, :number, :complement, :neighborhood, :cep, :city, :state)
+    params_adress = params.require(:adress).permit(:street, :number, :complement, :neighborhood, :cep, :city, :state, :country)
   end
 
   def set_adress
