@@ -4,7 +4,7 @@
   <div class="container-flex">
     <div>
       <h3><strong><span class="material-icons-sharp">person</span> Nome completo:</strong> <%= @user.person.first_name %> <%= @user.person.last_name %></h3>
-      <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong> <%= @user.person.phone_number %></h3>
+      <h3><strong><span class="material-icons-sharp">phone_iphone</span> Telefone:</strong><%= @user.person.country_code %><%= @user.person.phone_number %></h3>
     </div>
     <div>
       <h3><strong><span class="material-icons-sharp">calendar_month</span> Data de nascimento:</strong> <%= @user.person.birthdate %></h3>

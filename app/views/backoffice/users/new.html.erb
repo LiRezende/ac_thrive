@@ -11,6 +11,11 @@
     <label for="last_name">Sobrenome</label><br>
     <input autofocus="autofocus" autocomplete="last_name" type="last_name" value="<%= @user.person&.last_name %>" name="user[last_name]" id="user_last_name">
   </div>
+
+  <div class="field">
+    <label for="country_code">Código do País</label><br>
+    <input autofocus="autofocus" autocomplete="country_code" type="country_code" value="+55" name="user[country_code]" id="country_code" placeholder="digite somente números" maxlength="4">
+  </div>
   
   <div class="field">
     <label for="phone_number">Telefone</label><br>

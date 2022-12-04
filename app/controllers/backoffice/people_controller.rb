@@ -2,25 +2,20 @@ class Backoffice::PeopleController < BackofficeController
   before_action :set_person, only: %i[ show edit update destroy ]
   before_action :set_user
 
-  # GET /people or /people.json
   def index
     @people = Person.all
   end
 
-  # GET /people/1 or /people/1.json
   def show
   end
 
-  # GET /people/new
   def new
     @person = Person.new
   end
 
-  # GET /people/1/edit
   def edit
   end
 
-  # POST /people or /people.json
   def create
     @person = Person.new(person_params)
 
@@ -35,10 +30,9 @@ class Backoffice::PeopleController < BackofficeController
     end
   end
 
-  # PATCH/PUT /people/1 or /people/1.json
   def update
     person = Person.find(params[:id])
-    params_person = params.require(:person).permit(:first_name, :last_name, :phone_number, :birthdate)
+    params_person = params.require(:person).permit(:first_name, :last_name, :phone_number, :birthdate, :country_code)
     
     if person.update(params_person)
       if @user == current_user
@@ -52,7 +46,6 @@ class Backoffice::PeopleController < BackofficeController
     end
   end
 
-  # DELETE /people/1 or /people/1.json
   def destroy
     @person.destroy
 
@@ -63,7 +56,6 @@ class Backoffice::PeopleController < BackofficeController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_person
       @person = Person.find(params[:id])
     end
@@ -74,6 +66,6 @@ class Backoffice::PeopleController < BackofficeController
     end
 
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :phone_number, :birthdate)
+      params.require(:person).permit(:first_name, :last_name, :phone_number, :birthdate, :country_code)
     end
 end

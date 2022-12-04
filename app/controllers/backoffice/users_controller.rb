@@ -46,6 +46,7 @@ class Backoffice::UsersController < BackofficeController
  
       @user.person.first_name = params[:user][:first_name]
       @user.person.last_name = params[:user][:last_name]
+      @user.person.country_code = params[:user][:country_code]
       @user.person.phone_number = params[:user][:phone_number]
 
       @user.person.save
@@ -109,6 +110,6 @@ class Backoffice::UsersController < BackofficeController
   end
 
   def params_user
-    params.require(:user).permit(:email, :password, :password_confirmation, :status_id, person_attributes: [:first_name, :last_name, :phone_number])
+    params.require(:user).permit(:email, :password, :password_confirmation, :status_id, person_attributes: [:first_name, :last_name, :phone_number, :country_code])
   end
 end

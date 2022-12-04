@@ -1,4 +1,5 @@
 const inputPhone = document.querySelector('#phone')
+const inputCountryCode = document.querySelector('#country_code')
 
 // Phone Mask
 inputPhone.addEventListener('keypress', () => {
@@ -10,5 +11,14 @@ inputPhone.addEventListener('keypress', () => {
         inputPhone.value += ')'
     } else if (inputLength == 8) {
         inputPhone.value += '-'
+    }
+})
+
+// Country Code Mask
+inputCountryCode.addEventListener('keypress', () => {
+    let inputLength = inputCountryCode.value.length
+
+    if (inputLength == 0) {
+        inputCountryCode.value += '+'
     }
 })
