@@ -3,7 +3,7 @@ class Backoffice::UsersController < BackofficeController
   before_action :verify_password, only: [:update]
   
   def index
-    @users = User.all.distinct
+    @users = policy_scope(User.all.distinct)
     @users = @users.joins("left join people on people.user_id = users.id")
     @users = @users.joins("left join schedules on schedules.person_id = people.id")
 
@@ -32,12 +32,13 @@ class Backoffice::UsersController < BackofficeController
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def create
     
     @user = User.new(params_user)
-    # @user.status_id = Status.where(name: "ativo").first.id
+    authorize @user
     if @user.save
       if @user.person.blank?
         @user.person = Person.new
@@ -65,8 +66,12 @@ class Backoffice::UsersController < BackofficeController
   def update    
     if @user.update(params_user)
       save_role
-      redirect_to backoffice_user_path, notice:
-      "Usuário atualizado com sucesso!"
+      if @user == current_user
+        redirect_to backoffice_profile_path(current_user)
+      else
+        redirect_to "/backoffice/users/#{@user.id}"
+      end
+      flash[:notice] = "Usuário atualizado com sucesso!"
     else
       render :edit
     end
@@ -94,6 +99,7 @@ class Backoffice::UsersController < BackofficeController
 
   def set_user
     @user = User.find(params[:id] || params[:user_id])
+    authorize @user
   end
 
   def verify_password

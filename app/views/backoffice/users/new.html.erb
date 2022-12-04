@@ -1,11 +1,29 @@
 <h2>Registrar Novo Usuário</h2>
 <%= form_with(model: [ :backoffice, @user ], local: true) do |f| %>
-    <%= render "form", f: f %>
+  <%= render "form", f: f %>
+
+  <div class="field">
+    <label for="first_name">Nome</label><br>
+    <input autofocus="autofocus" autocomplete="first_name" type="first_name" value="<%= @user.person&.first_name %>" name="user[first_name]" id="user_first_name">
+  </div>
   
-    <div class="actions">
-      <%= f.submit 'Salvar' %>
-    </div>
+  <div class="field">
+    <label for="last_name">Sobrenome</label><br>
+    <input autofocus="autofocus" autocomplete="last_name" type="last_name" value="<%= @user.person&.last_name %>" name="user[last_name]" id="user_last_name">
+  </div>
+  
+  <div class="field">
+    <label for="phone_number">Telefone</label><br>
+    <input autofocus="autofocus" autocomplete="phone_number" type="phone_number" value="<%= @user.person&.phone_number%>" name="user[phone_number]" id="phone" placeholder="digite somente números" maxlength="14">
+  </div>
+  
+  <div class="field">
+    <%= f.label 'Email' %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit 'Salvar' %>
+  </div>
 <% end %>
 <script src="/assets/javascripts/phone.js"></script>
-
-
