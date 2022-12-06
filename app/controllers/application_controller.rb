@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
     protected
     def user_not_authorized
         flash[:alert] = "Você não possui permissõ para realizar esta ação."
-        redirect_back(fallback_location: root_path)
+        redirect_back(fallback_location: '/backoffice/home/index')
     end
 end

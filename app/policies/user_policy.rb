@@ -22,14 +22,19 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user&.has_role?(:Administrador) || user&.id == user.id
+    user&.has_role?(:Administrador) || is_owner?
   end
 
   def edit?
-    user&.has_role?(:Administrador) || user&.id == user.id
+    user&.has_role?(:Administrador) || is_owner?
   end
 
   def destroy?
     user&.has_role?(:Administrador)
+  end
+
+  private
+  def is_owner?
+    user&.id == record.id
   end
 end

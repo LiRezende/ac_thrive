@@ -1,4 +1,5 @@
 class Backoffice::UsersController < BackofficeController
+  before_action :authenticate_user!
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :verify_password, only: [:update]
   
@@ -61,10 +62,11 @@ class Backoffice::UsersController < BackofficeController
   end
 
   def edit
-
+    authorize @user
   end
 
-  def update    
+  def update 
+    authorize @user
     if @user.update(params_user)
       save_role
       if @user == current_user
