@@ -12,16 +12,28 @@ class Backoffice::AdressesController < BackofficeController
 
   def new
     @adress = Adress.new
+    if !current_user.has_role?(:Administrador) && @person.id != current_user.person.id
+      flash[:error] = 'Você não tem permissão para fazer esta ação.'
+      redirect_to "/backoffice/users/#{@user.id}"
+    end
   end
 
   def edit
-    
+    if !current_user.has_role?(:Administrador) && @person.id != current_user.person.id
+      flash[:error] = 'Você não tem permissão para fazer esta ação.'
+      redirect_to "/backoffice/users/#{@user.id}"
+    end
   end
 
   def create
     @adress = Adress.new(adress_params)
-    @adress.person_id = @person.id
 
+    if current_user.has_role?(:Administrador) 
+      @adress.person_id = @person.id
+    else
+      @adress.person_id = current_user.person.id
+    end
+    
     if @adress.save
       if @user == current_user
         redirect_to backoffice_profile_path(current_user)
