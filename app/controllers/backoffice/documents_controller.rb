@@ -11,14 +11,27 @@ class Backoffice::DocumentsController < BackofficeController
 
   def new
     @document = Document.new
+    if !current_user.has_role?(:Administrador) && @person.id != current_user.person.id
+      flash[:error] = 'Você não tem permissão para fazer esta ação.'
+      redirect_to "/backoffice/users/#{@user.id}"
+    end
   end
 
   def edit
+    if !current_user.has_role?(:Administrador) && @person.id != current_user.person.id
+      flash[:error] = 'Você não tem permissão para fazer esta ação.'
+      redirect_to "/backoffice/users/#{@user.id}"
+    end
   end
 
   def create
     @document = Document.new(document_params)
-    @document.person_id = @person.id
+    
+    if current_user.has_role?(:Administrador) 
+      @document.person_id = @person.id
+    else
+      @document.person_id = current_user.person.id
+    end
 
     if @document.save
       if @user == current_user
