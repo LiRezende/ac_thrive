@@ -12,14 +12,27 @@ class Backoffice::FinancialResponsiblesController < BackofficeController
 
   def new
     @financial_responsible = FinancialResponsible.new
+    if !current_user.has_role?(:Administrador) && @person.id != current_user.person.id
+      flash[:error] = 'Você não tem permissão para fazer esta ação.'
+      redirect_to "/backoffice/users/#{@user.id}"
+    end
   end
 
   def edit
+    if !current_user.has_role?(:Administrador) && @person.id != current_user.person.id
+      flash[:error] = 'Você não tem permissão para fazer esta ação.'
+      redirect_to "/backoffice/users/#{@user.id}"
+    end
   end
 
   def create
     @financial_responsible = FinancialResponsible.new(financial_responsible_params)
-    @financial_responsible.person_id = @person.id
+
+    if current_user.has_role?(:Administrador) 
+      @financial_responsible.person_id = @person.id
+    else
+      @financial_responsible.person_id = current_user.person.id
+    end
 
     if @financial_responsible.save
       if @user == current_user
