@@ -201,7 +201,7 @@
         </div>
       </div>
       <div class="container-btn">
-        <%= link_to edit_backoffice_user_teacher_path(@user), class:"edit-btn" do %>
+        <%= link_to edit_backoffice_user_teacher_path(@user, @user.person.teacher), class:"edit-btn" do %>
           Editar
         <% end %>
       </div>

@@ -3,7 +3,7 @@
 
   <div class="field">
     <%= form.label 'Valor / Hora' %>
-    <%= form.text_field :fee %>
+    <%= form.number_field :fee, step: 0.01 %>
   </div>
 
   <div class="field">
