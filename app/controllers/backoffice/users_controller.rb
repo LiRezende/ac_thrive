@@ -9,7 +9,7 @@ class Backoffice::UsersController < BackofficeController
     @users = @users.joins("left join schedules on schedules.person_id = people.id")
 
     if params[:term].present?
-      @users = @users.where("people.first_name LIKE ?", "%#{params[:term]}%")
+      @users = @users.where("lower(people.first_name) LIKE ?", "%#{params[:term].downcase}%")
     end
 
     if params[:day].present?
