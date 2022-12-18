@@ -1,25 +1,42 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=5"/>
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" href="assets/images/code-solid.svg" type="image/x-icon" />
+    <title>Alterar a Senha | Aliança Cultural Idiomas</title>
+    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet-login.css">
+  </head>
+  <body>
+    <section class="container-login">
+    <div>
+      <img class="logo-img" src="https://aliancacultural.com/wp-content/uploads/2020/08/ALIANCA-CULTURAL-LOGO-152x152-1.png" alt="Logotipo da Aliança Cultural Idiomas." width="150px" />
+      <h2>Atualizar Senha</h2>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
+      
+        <div class="field">
+          <div class="label"><%= f.label :password, "Nova senha" %><br /></div>
+          <% if @minimum_password_length %>
+            (mínimo <%= @minimum_password_length %> caracteres)<br />
+          <% end %>
+          <div class="field-label"><%= f.password_field :password, autofocus: true, autocomplete: "new-password" %></div>
+        </div>
+      
+        <div class="field">
+          <div class="label"><%= f.label :password_confirmation, "Confirmar nova senha" %><br /></div>
+          <div class="field-label"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
+        </div>
+      
+        <div class="actions">
+          <%= f.submit "Atualizar senha" %>
+        </div>
+        <% end %>
+        
+        <%= render "users/shared/links" %>
+    </div>
+    </section>
+  </body>
+</html>
