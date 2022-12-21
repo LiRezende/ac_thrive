@@ -4,9 +4,10 @@ class Backoffice::UsersController < BackofficeController
   before_action :verify_password, only: [:update]
   
   def index
-    @users = policy_scope(User.all.distinct)
+    @users = policy_scope(User.all)
     @users = @users.joins("left join people on people.user_id = users.id")
     @users = @users.joins("left join schedules on schedules.person_id = people.id")
+    @users = @users.order(first_name: :asc)
 
     if params[:term].present?
       @users = @users.where("lower(people.first_name) LIKE ?", "%#{params[:term].downcase}%")
