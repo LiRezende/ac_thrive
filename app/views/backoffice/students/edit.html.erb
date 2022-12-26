@@ -29,7 +29,7 @@
 
     <div class="field">
       <p>Selecione o Professor:</p>
-      <%= form.select(:teacher_id, Teacher.all.map{|teacher| [teacher.person.first_name, teacher.id]}, {:include_blank => 'Não especificado'}) %>
+      <%= form.select(:teacher_id, Teacher.all.map{|teacher| [teacher.person.first_name + " " + teacher.person.last_name, teacher.id]}, {:include_blank => 'Não especificado'}) %>
     </div>
 
     <div class="field">
