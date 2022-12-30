@@ -34,7 +34,7 @@ class Backoffice::StudentsController < BackofficeController
 
   def update
     student = Student.find(params[:id])
-    params_student = params.require(:student).permit(:occupation, :position, :financial_responsible, :idiom_id, :idiom_level_id, :teacher_id)
+    params_student = params.require(:student).permit(:occupation, :position, :financial_responsible, :idiom_id, :idiom_level_id, :teacher_id, :company_id)
     
     if student.update(params_student)
       if @user == current_user
