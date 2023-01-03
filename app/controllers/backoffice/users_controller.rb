@@ -7,7 +7,9 @@ class Backoffice::UsersController < BackofficeController
     @users = policy_scope(User.all)
     @users = @users.joins("left join people on people.user_id = users.id")
     @users = @users.joins("left join schedules on schedules.person_id = people.id")
+    @users = @users.group(:id, :first_name, :last_name, :phone_number, :birthdate, :created_at, :updated_at)
     @users = @users.order(first_name: :asc)
+    
 
     if params[:term].present?
       @users = @users.where("lower(people.first_name) LIKE ?", "%#{params[:term].downcase}%")
